@@ -724,15 +724,24 @@ html[data-theme="dark"] .badge-transforming {
   font-style: italic;
 }
 .add-icon {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  border: 1.5px dashed var(--text-muted);
+  border: 1.5px solid var(--role-color, var(--text-muted));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: 0.85rem;
+  color: var(--role-color, var(--text-muted));
+  background: transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.role-card:hover .add-icon {
+  background: var(--role-color, var(--teal));
+  color: #ffffff;
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* ─── TIMELINE & JOURNEY ──────────────────────────────────────── */
