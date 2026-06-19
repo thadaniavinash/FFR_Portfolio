@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<!--
+╔══════════════════════════════════════════════════════════════════╗
+║   AVINASH THADANI — FFR PORTFOLIO                                ║
+║   Faculty Reflection Portfolio · Georgian College · 2025–2028   ║
+╠══════════════════════════════════════════════════════════════════╣
+║                                                                  ║
+║   SHAREPOINT UPLOAD STRUCTURE                                    ║
+║   Your site: Avinash Thadani - FFR                               ║
+║                                                                  ║
+║   RECOMMENDED: Upload into "Site Assets" library first.          ║
+║   If HTML doesn't render, try "Documents" library instead,       ║
+║   or ask Georgian IT to set browser file handling to             ║
+║   "Permissive" on the Documents library.                         ║
+║                                                                  ║
+║   Site Assets/                   ← or Documents/ — pick one     ║
+║   ├── FFR_Portfolio_Thadani.html ← upload here                   ║
+║   └── files/                     ← create this subfolder         ║
+║       ├── CV_AThadani.docx                                       ║
+║       ├── CV_AThadani.pdf        ← add when ready                ║
+║       └── artifacts/             ← future linked evidence        ║
+║                                                                  ║
+║   After uploading, get the direct URL to FFR_Portfolio_          ║
+║   Thadani.html and share that link with your coach/Dean.         ║
+║   Then paste the full SharePoint URLs for each file in           ║
+║   the CV LINK comment below (search "CV LINK").                  ║
+║                                                                  ║
+║   EDITING GUIDE (using VS Code or Notepad++)                     ║
+║                                                                  ║
+║   To find a section quickly: Ctrl+F (Cmd+F on Mac) and search   ║
+║   for the section ID listed below:                               ║
+║                                                                  ║
+║   #about          → About Me                                     ║
+║   #philosophy     → Teaching Philosophy                          ║
+║   #compass        → Personal Compass                             ║
+║   #cv             → CV section                                   ║
+║   #competencies   → FRAME / 8 Roles overview                     ║
+║   #journey        → Reflective Practice timeline                 ║
+║     #design-entry       → Designer reflection                    ║
+║     #researcher-entry   → Researcher reflection                  ║
+║     #inclusive-entry    → Inclusive Practitioner reflection      ║
+║     #changemaker-entry  → Changemaker reflection                 ║
+║     #digital-entry      → Digital Explorer reflection            ║
+║     #collaborator-entry → Collaborator reflection                ║
+║     #reflector-entry    → Reflector reflection                   ║
+║     #mentor-entry       → Mentor reflection                      ║
+║   #scholarship    → Scholarship & publications                   ║
+║   #goals          → 3-Year Goal Plan                             ║
+║   #development    → Professional Development                     ║
+║   #edib           → EDIB & Indigenous Ways of Knowing            ║
+║   #student-feedback → Student Testimonials                       ║
+║   #peer-review    → Faculty Peer Review                          ║
+║   #ethics-board   → Research Ethics Board (More menu)            ║
+║   #program-dev    → Program Development (More menu)              ║
+║   #curriculum     → Curriculum Design (More menu)                ║
+║   #accreditation  → Accreditation Work (More menu)               ║
+║   #committees     → Committee Work (More menu)                   ║
+║                                                                  ║
+║   TO ADD A REFLECTION:                                           ║
+║   1. Find the section by its ID above                            ║
+║   2. Replace the [bracketed placeholder text] with your content  ║
+║   3. Save the file and refresh your browser to preview           ║
+║                                                                  ║
+║   TO ADD AN ARTIFACT CHIP (linked file):                         ║
+║   Copy this pattern and add inside .artifact-chips:              ║
+║   <a href="files/artifacts/yourfile.pdf"                         ║
+║      class="chip" target="_blank">📄 File Label</a>              ║
+║                                                                  ║
+║   TO CHANGE A STATUS BADGE:                                      ║
+║   Replace class name on the badge span:                          ║
+║   badge-emerging   → Emerging (amber)                            ║
+║   badge-performing → Performing (teal)                           ║
+║   badge-transforming → Transforming (purple)                     ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avinash Thadani | Faculty Reflection Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function() {
+    const saved = localStorage.getItem('avinash-portfolio-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = saved || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Avinash <span>Thadani</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About Me</a></li>
+    <li><a href="#philosophy">Teaching Philosophy</a></li>
+    <li><a href="#compass">Personal Compass</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#competencies">FRAME</a></li>
+    <li><a href="#journey">Reflective Practice</a></li>
+    <li><a href="#scholarship">Scholarship</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#development">Professional Dev</a></li>
+    <li><a href="#edib">EDIB</a></li>
+    <li><a href="#student-feedback">Student Feedback</a></li>
+    <li><a href="#peer-review">Faculty Peer Review</a></li>
+    <li>
+      <span class="nav-drop-trigger">More <span class="caret">▾</span></span>
+      <ul class="nav-dropdown">
+        <li><a href="#ethics-board">Research Ethics Board</a></li>
+        <li><a href="#program-dev">Program Development</a></li>
+        <li><a href="#curriculum">Curriculum Design</a></li>
+        <li><a href="#accreditation">Accreditation Work</a></li>
+        <li><a href="#committees">Committee Work</a></li>
+      </ul>
+    </li>
+    <!-- Desktop Theme Toggler -->
+    <li class="theme-toggle-wrapper">
+      <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle theme">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+      </button>
+    </li>
+  </ul>
+  
+  <!-- Mobile Navigation Controls -->
+  <div class="mobile-nav-controls">
+    <!-- Theme Toggler for mobile -->
+    <button id="theme-toggle-btn-mobile" class="theme-toggle-btn mobile-theme-btn" aria-label="Toggle theme">
+      <span class="sun-icon">☀️</span>
+      <span class="moon-icon">🌙</span>
+    </button>
+    <!-- Hamburger menu button -->
+    <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Open navigation menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Drawer -->
+<div id="mobile-menu-drawer" class="mobile-menu-drawer">
+  <div class="mobile-drawer-header">
+    <div class="nav-brand">Avinash <span>Thadani</span></div>
+    <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="#about">About Me</a></li>
+    <li><a href="#philosophy">Teaching Philosophy</a></li>
+    <li><a href="#compass">Personal Compass</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#competencies">FRAME</a></li>
+    <li><a href="#journey">Reflective Practice</a></li>
+    <li><a href="#scholarship">Scholarship</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#development">Professional Dev</a></li>
+    <li><a href="#edib">EDIB</a></li>
+    <li><a href="#student-feedback">Student Feedback</a></li>
+    <li><a href="#peer-review">Faculty Peer Review</a></li>
+    <li class="mobile-divider"></li>
+    <li><a href="#ethics-board">Research Ethics Board</a></li>
+    <li><a href="#program-dev">Program Development</a></li>
+    <li><a href="#curriculum">Curriculum Design</a></li>
+    <li><a href="#accreditation">Accreditation Work</a></li>
+    <li><a href="#committees">Committee Work</a></li>
+  </ul>
+</div>
+<div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Faculty Reflection Portfolio · Georgian College</div>
+      <div class="hero-title">
+        <h1>Avinash <em>Thadani</em></h1>
+        <h1 style="color: rgba(255,255,255,0.35); font-size: 2rem; margin-top: 0.25rem;">Ph.D.</h1>
+      </div>
+      <p class="hero-subtitle"><strong>Faculty — HBSN Nursing Program</strong></p>
+      <p class="hero-subtitle">School of Health, Wellness and Sciences · Georgian College · Since 2011</p>
+      <p class="hero-subtitle" style="margin-top:0.4rem;">Anatomy & Physiology · Pathophysiology · Research Ethics</p>
+      <p class="hero-tagline">"Critically reflective teaching happens when we identify and scrutinize assumptions that undergird how we work. The most effective way to become aware of these assumptions is to view our practice from different perspectives." <br>— Stephen Brookfield</p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-title">FFR Journey Overview</div>
+        <div class="ffr-step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>FFR Kickoff</strong>
+            Attend the FRAME kick-off session with the Faculty Developers (Tracy Mitchell-Ashley and Emma Greenfield) to start the reflection cycle. (May 2026)
+          </div>
+        </div>
+        <div class="ffr-step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Coaching and Work Time</strong>
+            Connected with my faculty development coach, Emma Greenfield, to start and work towards building this portfolio and goal plan in a reflective manner. (May 2026)
+          </div>
+        </div>
+        <div class="ffr-step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Community of Practice (COP)</strong>
+            Attended weekly meetings where I connected with the faculty developers to get feedback and answers, and with peers to discuss the reflective practice. (May/June 2026)
+          </div>
+        </div>
+        <div class="ffr-step">
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <strong>Submit and Discuss</strong>
+            Submit the portfolio and goal plan to the Associate Dean, and discuss the outcomes. (TBA)
+          </div>
+        </div>
+        <div class="ffr-step">
+          <div class="step-num">5</div>
+          <div class="step-text">
+            <strong>Refresh Portfolio and Continue Reflective Practice</strong>
+            Maintain and refresh the portfolio, while continually reiterating and improving reflective practice at Georgian College in a three-year cycle. (2026 - 2029)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About Me</div>
+    <h2>My Teaching <em>Journey</em></h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am a full-time faculty member in the HBSN program at Georgian College, where I have taught since 2011. My teaching focuses on the biomedical sciences foundational to nursing practice (e.g., Anatomy &amp; Physiology, Pathophysiology). I teach four of these courses and substantially developed them from the ground up using open educational resources (OER).</p>
+        <p>My academic background spans medicinal chemistry (Ph.D., University of Toronto, 2001), post-doctoral research at the University of Chicago, and 5+ years of faculty and research experience at the University of Windsor before joining Georgian. I hold five American patents, published more than 20 peer-reviewed scientific articles (including in prestigious journals such as <em>Nature</em> and the <em>Proceedings of the National Academy of Sciences</em>), and have served as Chair of Georgian College's Research Ethics Board (GCREB) since 2023.</p>
+        <p>As I enter the FRAME process, I find myself reflecting on a teaching career defined by continual growth, adaptation, and reinvention from an academic researcher to nursing science educator. This reflective process offers me an opportunity to look more carefully at how my experiences, values, and teaching practices have evolved over time. I remain deeply committed to strengthening my reflective practice in ways that support student success, enrich the students' learning experiences, and contribute meaningfully to the mission of the program and Georgian College.</p>
+        <ul class="credential-list">
+          <li>Ph.D. Medical Chemistry — University of Toronto (2001)</li>
+          <li>M.Sc. Chemistry — University of Toronto (1998)</li>
+          <li>B.Sc. (Hons.) Biochemistry — University of Toronto (1996)</li>
+          <li>Chair, Georgian College Research Ethics Board (2023–present)</li>
+          <li>VR Educator Micro-credential — Georgian College (2021)</li>
+          <li>Curator & Technologist Micro-credentials — Ontario Extend (2020)</li>
+          <li>Keystones of Healthcare Simulation — SIM-one (2017)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-number">14+</div>
+            <div class="stat-label">Years at Georgian</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">5</div>
+            <div class="stat-label">US Patents</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Peer-Reviewed Articles</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Years Teaching</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING PHILOSOPHY -->
+<section id="philosophy" class="alt-bg">
+  <div class="container">
+    <div class="section-label">Teaching Philosophy</div>
+    <h2>My Teaching <em>Philosophy</em></h2>
+    <div class="divider"></div>
+    <div style="max-width: 760px;">
+
+      <!-- Short version -->
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 1.25rem;">
+        <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.1rem;">My teaching philosophy is grounded in care, connection, and student-centred learning. As a professor in a baccalaureate nursing program, I see teaching as both an academic and relational responsibility. I care deeply about my students, want them to succeed, and strive to do everything within my power to support their growth as novice learners and future registered nurses.</p>
+        <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.1rem;">Although I am an introvert by nature, I find great energy and purpose in the classroom. I aim to create a warm, welcoming, and respectful learning environment where students feel seen, supported, and challenged. I believe students learn best when they are actively engaged, so I use case-based learning, discussion, problem-solving, and peer-to-peer collaboration to help them connect theory to nursing practice.</p>
+        <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.1rem;">I also believe motivation is one of the most important predictors of student success. At the same time, I recognize that first-year students are still learning how to take responsibility for their own learning journey. My role is to guide them toward confidence, independence, and professional accountability.</p>
+        <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 0;">As John Dewey is often paraphrased, <em>"We do not learn from experience; we learn from reflecting on experience."</em> This belief shapes my own teaching practice. I continually reflect, adapt, and incorporate useful technologies, including VR and AI tools, to enrich learning and prepare students for contemporary nursing practice.</p>
+      </div>
+
+      <!-- Expand / collapse longer version -->
+      <div>
+        <button onclick="togglePhilosophy()" id="phil-toggle-btn"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; border: 1px solid var(--teal); color: var(--teal); padding: 0.55rem 1.1rem; border-radius: 100px; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif;">
+          <span id="phil-toggle-icon" style="font-size: 0.7rem; transition: transform 0.25s;">▶</span>
+          Read full teaching philosophy
+        </button>
+
+        <div id="phil-extended" style="display: none; overflow: hidden;">
+          <div style="background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--teal); border-radius: 0 0 var(--radius) var(--radius); padding: 2.5rem; margin-top: 0.5rem;">
+
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.1rem;">My teaching philosophy is grounded in care, connection, reflection, and student-centred learning. As a professor in a baccalaureate nursing program at a mid-sized college, I see teaching as more than the delivery of course content. It is a relational, developmental, and professional responsibility. I care deeply about my students, want them to succeed, and strive to do everything within my power to support their academic growth, confidence, and emerging professional identity as future registered nurses.</p>
+
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.1rem;">I approach the classroom with warmth, kindness, and respect. Although I am an introvert by nature, I love being in the classroom because it allows me to connect with students in meaningful ways. I believe that students learn best when they feel psychologically safe, valued, and encouraged to participate. For this reason, I work intentionally to create a welcoming learning environment where students can ask questions, make mistakes, think critically, and gradually build confidence as novice learners.</p>
+
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.1rem;">Because I primarily teach first-year students, I am mindful that many are still developing the habits, discipline, and self-awareness required for success in higher education and in nursing. I believe student motivation is one of the most important criteria for success. However, I also believe that personal responsibility for learning must be learned over time. My role is to support students while also helping them develop accountability, independence, and resilience. I aim to meet students where they are, while guiding them toward the professional expectations of nursing education and practice.</p>
+
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.1rem;">My teaching is strongly rooted in active learning and case-based problem solving. Nursing students need more than factual knowledge; they need to apply concepts, interpret clinical information, make judgments, and communicate their reasoning. I use case studies, classroom discussion, group activities, and applied problem-solving to help students connect foundational knowledge to real-world nursing situations. These strategies encourage students to move from passive reception of information to active engagement with ideas, evidence, and practice-based thinking.</p>
+
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.1rem;">I also value peer-to-peer learning and the development of a classroom community. Students often learn deeply when they explain concepts to one another, compare reasoning, and work through uncertainty together. By building a community of learning, I hope to help students see themselves not only as individual learners, but also as members of a collaborative profession. Nursing is inherently relational and team-based, and the classroom should reflect those values.</p>
+
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.1rem;">Reflection is central to my identity as an educator. As John Dewey is often paraphrased, <em>"We do not learn from experience; we learn from reflecting on experience."</em> I continually reflect on what is working, what is not working, and how my teaching can better support student learning. This reflective practice allows me to adapt my methods, respond to student needs, and remain open to growth as an instructor.</p>
+
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.1rem;">Finally, I am a strong supporter of thoughtful educational technology. As a technophile, I am interested in tools such as virtual reality, simulation, AI chatbots, and other digital resources that can enrich student learning. However, I believe technology should be used purposefully, not simply for novelty. When used well, technology can increase engagement, support practice, provide immediate feedback, and help students visualize complex concepts. My goal is to integrate technology in ways that strengthen learning, deepen understanding, and prepare students for the evolving realities of contemporary nursing practice.</p>
+
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 0;">Overall, my teaching philosophy is rooted in the belief that students flourish when they are supported, challenged, actively engaged, and encouraged to reflect on their learning. I aim to be a warm, student-centred, and reflective educator who helps first-year nursing students develop the knowledge, confidence, motivation, and responsibility they need to succeed in their academic journey and future professional practice.</p>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Expanded philosophy toggle functionality moved to scripts.js -->
+
+<!-- PERSONAL COMPASS -->
+<section id="compass">
+  <div class="container">
+    <div class="section-label">Personal Compass</div>
+    <h2>What <em>Guides Me</em></h2>
+    <p class="section-intro">The Personal Compass is a reflective tool for understanding the values, tensions, needs, and aspirations that orient your teaching journey. Complete each quadrant with honesty.</p>
+    <div class="compass-grid">
+
+      <div class="compass-card excites">
+        <div class="compass-icon">✨</div>
+        <div class="compass-heading">What Excites Me</div>
+        <div class="compass-text">
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0.85rem;">What excites me most as a nursing educator is seeing students begin to recognize their own potential. I find great meaning in those moments when a concept that once felt abstract suddenly becomes relevant to their nursing practice — when cardiovascular physiology helps a student better understand vital signs; when pathophysiology explains a client's clinical presentation; or when anatomy becomes more than memorization and begins to shape clinical judgment. The biomedical sciences are not separate from nursing practice; they provide the foundation for safe, client-centred assessment, sound clinical judgment, and meaningful patient care.</p>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.7;">I am also energized by the opportunity to use technology thoughtfully to support student-centred learning, whether through virtual reality, interactive resources, or emerging tools such as AI chatbots. What excites me is not technology for its own sake, but its ability to spark curiosity, deepen understanding, and help students see themselves as knowledgeable, engaged, and developing members of the nursing profession.</p>
+        </div>
+      </div>
+
+      <div class="compass-card worries">
+        <div class="compass-icon">⚡</div>
+        <div class="compass-heading">What Concerns Me</div>
+        <div class="compass-text">
+          <p>If I am being honest about what occupies my thoughts in the quiet hours of the night, it is student motivation that concerns me most; not because I doubt my students' capacity or commitment, but because I see just how much weight and burden they are carrying. The students who enter my classrooms are rarely navigating their education in isolation; they are balancing financial hardship, family obligations, and personal health challenges, often all at once, and frequently while working substantial hours simply to remain enrolled in the program. Asking these students to engage deeply with the rigorous science content while their attention is justifiably divided across the pressing realities of their lives is a problem that I have not resolved, and perhaps never will. Layered atop this is a newer and rapidly intensifying challenge: the pervasive, indiscriminate use of AI has made the design of meaningful online assessments genuinely difficult, forcing me to continually rethink how I evaluate authentic learning in an environment where the line between a student's own reasoning and the AI's output has grown increasingly blurred. And these concerns do not exist in isolation; they compete for my finite time and energy against a host of other obligations that pull me in multiple directions. Demands such as the substantial preparation that good teaching requires, my responsibilities as Chair of the GCREB, the research projects that I am committed to seeing through, the new online learning tools I am building to complement the current OER resources that, beyond the textbook itself (if present), remain conspicuously sparse, the imperative to prepare students early so that they pass the NCLEX on their first attempt, and the steady drumbeat of administrative work tied to accreditation and program renewal. Any one of these tasks would be demanding on its own. Together, though, they can feel genuinely overwhelming, and I would be dishonest with myself to suggest otherwise.</p>
+          <p>And yet these are not the worries of someone who has given up; they are the worries of someone who cares deeply, and that distinction matters enormously to me. Each of these challenges also functions as a source of motivation, a reason to keep working, experimenting, and refining rather than lapsing into resignation. I have come to accept that my role is not to find cures for these challenges (such cures rarely exist) but to seek thoughtful, partial, iterative solutions, and to do so in genuine collaboration with colleagues who share both my concerns and my conviction that the work is worth doing well. I take real comfort in knowing I am not facing any of this alone, and that I have a whole faculty team behind me. If I am still awake thinking about how to help my students succeed, then I believe that I am still in exactly the right place and that, more than any magical solution, is what gives me hope for the work ahead.</p>
+        </div>
+      </div>
+
+      <div class="compass-card needs">
+        <div class="compass-icon">🧭</div>
+        <div class="compass-heading">What I Need</div>
+        <div class="compass-text">
+          <p>When I reflect on what would help me become a better educator, my needs cluster around a single conviction: students learn best through active, hands-on, kinesthetic engagement. To that end, I would benefit enormously from greater resources to develop interactive OER materials (e.g., virtual physiology experiments such as blood typing simulations) that can bring abstract physiological concepts to life for students who learn by doing. Equally, I find myself wishing for dedicated budget dollars, scarce as I know they are, to acquire the equipment that makes real experimentation possible in the classroom: an electromyograph to let students see their own muscle activity, spirometry apparatus to measure lung function firsthand, a 3-lead ECG to reveal the electrical activity of the heart in real time. These are pedagogical investments because the moment a student watches their own physiology unfold before them is the moment the content stops being something to memorize and instead becomes something they understand deeply. Beyond equipment, I aspire to establish a regular rhythm of peer feedback on the courses I teach. This kind of constructive collegial review will help me continually revise and strengthen my learning resources rather than letting them ossify. And perhaps most elusively, I need time: quiet, protected time to think deeply about scholarship and research, which grows increasingly difficult to find amid the relentless pace of the teaching semester. I am keenly aware of the budgetary realities that constrain this institution, and I want to be clear that I do not voice these needs from a place of dissatisfaction, but from a place of aspiration. I am genuinely grateful for all that I already have at my disposal — the resources (e.g., CTL), my faculty peers, and the institutional support that have helped me grow into the educator that I am and hope to become. Regardless of what additional resources may or may not materialize, I remain committed to making fuller, more creative use of what is already within my reach, so that I can continue to fulfill my mandate to my students with the care and rigour they deserve.</p>
+        </div>
+      </div>
+
+      <div class="compass-card growth">
+        <div class="compass-icon">🌿</div>
+        <div class="compass-heading">My Growth Aspirations</div>
+        <div class="compass-text">
+          <p>When I imagine where I want to be three to five years from now, my aspiration is simple and perhaps even trivial-sounding, though I have come to believe it is anything but. I want to be better at everything that matters in my job: better at helping my students learn, better at carrying out my administrative responsibilities, better at striking that ever-elusive balance between teaching and scholarship. While my concrete, measurable objectives belong in the Goals section that follows, this aspiration is something larger and more difficult to quantify. It is a commitment to continual growth across every dimension of my practice. My ultimate dream, the one that animates all the rest, is to see every student succeed: to watch them grow into caring, compassionate RNs who go on to find gainful, meaningful employment in roles they genuinely love and in which they have room to flourish. Of course, I hold the secondary goal that all of my students pass the NCLEX on their first attempt but I have made peace with a gentler and, I think, wiser measure of success: that each student achieves whatever goal they set for themselves when they first walked through the doors of Georgian, and that they arrived there without ever compromising the values that brought them to this profession in the first place. More than anything, I aspire to help students recognize the immense, often unseen potential within themselves; to help them dig deep and unlock the gifts and talents that are already. In the simplest terms, my central aspiration is to become better at motivating and supporting our nursing students. They give so much of themselves to this demanding path, and at the very least, they deserve nothing less than that from me — and I intend to spend the coming years striving to become the best version of myself.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv" class="alt-bg">
+  <div class="container">
+    <div class="section-label">Curriculum Vitae</div>
+    <h2>Academic <em>Profile</em></h2>
+    <div class="divider"></div>
+    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap;">
+      <!--
+        CV LINK — TWO OPTIONS depending on where you upload files in SharePoint:
+        Option A (Site Assets library — recommended first try):
+          href="files/CV_AThadani.docx"   ← works if HTML is in Site Assets/
+        Option B (paste full SharePoint URL after uploading):
+          href="https://georgiancollege.sharepoint.com/sites/AvinashThadani-FFR/Shared%20Documents/files/CV_AThadani.docx"
+        Update the href below once you confirm which library works for you.
+      -->
+      <a href="files/CV_AThadani.docx" download
+         style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--navy); color: white; text-decoration: none; padding: 0.6rem 1.25rem; border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; transition: background 0.2s;">
+        ⬇ Download Full CV (Word)
+      </a>
+      <a href="files/CV_AThadani.pdf" download
+         style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--teal); text-decoration: none; padding: 0.6rem 1.25rem; border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; border: 1px solid var(--teal); transition: all 0.2s; opacity: 0.45; cursor: not-allowed;" title="PDF version coming soon">
+        ⬇ Download Full CV (PDF) — coming soon
+      </a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+
+      <div>
+        <h3 style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; font-weight: 500;">Education</h3>
+        <div style="border-left: 2px solid var(--border); padding-left: 1.25rem;">
+          <div style="margin-bottom: 1.25rem;">
+            <div style="font-weight: 500; font-size: 0.92rem; color: var(--navy);">Doctor of Philosophy — Medical Chemistry</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">University of Toronto · 2001</div>
+          </div>
+          <div style="margin-bottom: 1.25rem;">
+            <div style="font-weight: 500; font-size: 0.92rem; color: var(--navy);">Master of Science — Chemistry</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">University of Toronto · 1998</div>
+          </div>
+          <div>
+            <div style="font-weight: 500; font-size: 0.92rem; color: var(--navy);">B.Sc. (Hons.) — Biochemistry</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">University of Toronto · 1996</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; font-weight: 500;">Academic Appointments</h3>
+        <div style="border-left: 2px solid var(--border); padding-left: 1.25rem;">
+          <div style="margin-bottom: 1.25rem;">
+            <div style="font-weight: 500; font-size: 0.92rem; color: var(--navy);">Faculty — HBSN Nursing Program</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">Georgian College · Dec 2011 – Present</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">School of Health, Wellness and Sciences</div>
+          </div>
+          <div style="margin-bottom: 1.25rem;">
+            <div style="font-weight: 500; font-size: 0.92rem; color: var(--navy);">Assistant Professor — Chemistry &amp; Biochemistry</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">University of Windsor · 2004 – 2011</div>
+          </div>
+          <div>
+            <div style="font-weight: 500; font-size: 0.92rem; color: var(--navy);">NSERC Post-Doctoral Fellow</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">University of Chicago · 2001 – 2004</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; font-weight: 500;">Current Teaching — Georgian College</h3>
+        <ul style="list-style: none; border-left: 2px solid var(--border); padding-left: 1.25rem;">
+          <li style="padding: 0.45rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; color: var(--slate);"><span style="font-weight:500; color:var(--navy);">NURS 1016</span> — Anatomy &amp; Physiology 1</li>
+          <li style="padding: 0.45rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; color: var(--slate);"><span style="font-weight:500; color:var(--navy);">NURS 1020</span> — Anatomy &amp; Physiology 2</li>
+          <li style="padding: 0.45rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; color: var(--slate);"><span style="font-weight:500; color:var(--navy);">NURS 1017</span> — Pathophysiology 1</li>
+          <li style="padding: 0.45rem 0; font-size: 0.88rem; color: var(--slate);"><span style="font-weight:500; color:var(--navy);">NURS 1021</span> — Pathophysiology 2</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; font-weight: 500;">Selected Highlights</h3>
+        <div style="border-left: 2px solid var(--border); padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.9rem;">
+          <div>
+            <div style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); font-weight: 500; margin-bottom: 2px;">Research</div>
+            <div style="font-size: 0.85rem; color: var(--slate);">Co-Investigator, Future Skills Canada VR Grant (2021–2023); publication in <em>Canadian Journal of Learning and Technology</em> (2025)</div>
+          </div>
+          <div>
+            <div style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 500; margin-bottom: 2px;">Intellectual Property</div>
+            <div style="font-size: 0.85rem; color: var(--slate);">5 US Patents in organic and pharmaceutical chemistry (2006–2014)</div>
+          </div>
+          <div>
+            <div style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: #5c52bf; font-weight: 500; margin-bottom: 2px;">Service</div>
+            <div style="font-size: 0.85rem; color: var(--slate);">Chair, Georgian College Research Ethics Board (2023–present)</div>
+          </div>
+          <div>
+            <div style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: #3b6d11; font-weight: 500; margin-bottom: 2px;">Memberships</div>
+            <div style="font-size: 0.85rem; color: var(--slate);">Canadian Society of Chemistry · American Chemical Society</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCY FRAMEWORK -->
+<section id="competencies">
+  <div class="container">
+    <div class="section-label">Faculty Competency Framework</div>
+    <h2>Eight Roles, <em>One Journey</em></h2>
+    <p class="section-intro">The Georgian College Faculty Competency Framework identifies eight core roles that educators embody. Below I map where I see myself — emerging, performing, or transforming — in each role, and link my reflective entries.</p>
+    <div class="role-grid">
+      <!-- Design -->
+      <div class="role-card" style="--role-color: #1a7a6e; --role-bg: #e4f2ef;" onclick="document.getElementById('design-entry').scrollIntoView({behavior:'smooth'})">
+        <div class="role-icon">✏️</div>
+        <div class="role-name">Designer</div>
+        <div class="role-desc">Courses, classes, teaching &amp; learning activities, and assessments.</div>
+        <div class="role-status">
+          <span class="status-badge badge-performing">Performing</span>
+          <span class="add-icon">→</span>
+        </div>
+      </div>
+      <!-- Researcher -->
+      <div class="role-card" style="--role-color: #c8923f; --role-bg: #fdf3e7;" onclick="document.getElementById('researcher-entry').scrollIntoView({behavior:'smooth'})">
+        <div class="role-icon">🔬</div>
+        <div class="role-name">Researcher</div>
+        <div class="role-desc">Engaging in research to inform teaching and learning practices.</div>
+        <div class="role-status">
+          <span class="status-badge badge-performing">Performing</span>
+          <span class="add-icon">→</span>
+        </div>
+      </div>
+      <!-- Inclusive Practitioner -->
+      <div class="role-card" style="--role-color: #5c52bf; --role-bg: #eef0ff;" onclick="document.getElementById('inclusive-entry').scrollIntoView({behavior:'smooth'})">
+        <div class="role-icon">🤝</div>
+        <div class="role-name">Inclusive Practitioner</div>
+        <div class="role-desc">Exploring and embracing inclusive teaching practices.</div>
+        <div class="role-status">
+          <span class="status-badge badge-emerging">Emerging</span>
+          <span class="add-icon">+</span>
+        </div>
+      </div>
+      <!-- Changemaker -->
+      <div class="role-card" style="--role-color: #a03860; --role-bg: #fce9f0;" onclick="document.getElementById('changemaker-entry').scrollIntoView({behavior:'smooth'})">
+        <div class="role-icon">🌱</div>
+        <div class="role-name">Changemaker</div>
+        <div class="role-desc">Driving positive change within the educational environment.</div>
+        <div class="role-status">
+          <span class="status-badge badge-emerging">Emerging</span>
+          <span class="add-icon">→</span>
+        </div>
+      </div>
+      <!-- Digital Explorer -->
+      <div class="role-card" style="--role-color: #185fa5; --role-bg: #e6f1fb;" onclick="document.getElementById('digital-entry').scrollIntoView({behavior:'smooth'})">
+        <div class="role-icon">💻</div>
+        <div class="role-name">Digital Explorer</div>
+        <div class="role-desc">Innovating with digital solutions in teaching and learning.</div>
+        <div class="role-status">
+          <span class="status-badge badge-transforming">Transforming</span>
+          <span class="add-icon">→</span>
+        </div>
+      </div>
+      <!-- Collaborator -->
+      <div class="role-card" style="--role-color: #3b6d11; --role-bg: #eaf3de;" onclick="document.getElementById('collaborator-entry').scrollIntoView({behavior:'smooth'})">
+        <div class="role-icon">👥</div>
+        <div class="role-name">Collaborator</div>
+        <div class="role-desc">Working effectively with others to enhance the learning experience.</div>
+        <div class="role-status">
+          <span class="status-badge badge-performing">Performing</span>
+          <span class="add-icon">→</span>
+        </div>
+      </div>
+      <!-- Reflector -->
+      <div class="role-card" style="--role-color: #1a7a6e; --role-bg: #e4f2ef;" onclick="document.getElementById('reflector-entry').scrollIntoView({behavior:'smooth'})">
+        <div class="role-icon">🪞</div>
+        <div class="role-name">Reflector</div>
+        <div class="role-desc">Integrating feedback to continuously improve teaching practices.</div>
+        <div class="role-status">
+          <span class="status-badge badge-performing">Performing</span>
+          <span class="add-icon">→</span>
+        </div>
+      </div>
+      <!-- Mentor -->
+      <div class="role-card" style="--role-color: #854f0b; --role-bg: #faeeda;" onclick="document.getElementById('mentor-entry').scrollIntoView({behavior:'smooth'})">
+        <div class="role-icon">⭐</div>
+        <div class="role-name">Mentor</div>
+        <div class="role-desc">Guiding and supporting peers and students in their development.</div>
+        <div class="role-status">
+          <span class="status-badge badge-emerging">Emerging</span>
+          <span class="add-icon">→</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1.5rem; text-align: right; font-style: italic;">Click any role card to jump to its reflection entry below.</p>
+  </div>
+</section>
+
+<!-- REFLECTIVE JOURNEY / TIMELINE -->
+<section id="journey" class="alt-bg">
+  <div class="container">
+    <div class="section-label">Reflective Practice</div>
+    <h2>My <em>Reflections</em></h2>
+    <p class="section-intro">Each entry below captures a moment of growth, challenge, or insight across the eight faculty roles. Artifacts, evidence, and narrative are added here as the journey unfolds.</p>
+    <div class="timeline">
+
+      <!-- Designer -->
+      <div class="timeline-entry" id="design-entry">
+        <div class="timeline-dot"></div>
+        <div class="entry-meta">
+          <span class="entry-date">2022 – Present</span>
+          <span class="entry-role-tag">Designer</span>
+          <span class="status-badge badge-performing" style="font-size:0.68rem;">Performing</span>
+        </div>
+        <div class="entry-title">Rebuilding HBSN Science Courses with Open Educational Resources</div>
+        <div class="entry-body">
+          <p>One of the most practically impactful decisions I made in developing the science courses in the HBSN program was the deliberate transition away from costly commercial publisher textbooks toward Open Educational Resources (OER) in Anatomy and Physiology 1 and 2, and Pathophysiology 1 and 2. The impetus was straightforward but urgent: the cost of traditional science textbooks has risen so much that they have reached a stage where they are unaffordable for many students. A significant number of students in the BScN program balance full-time study with paid employment to meet basic living costs, and the persistent pattern of students arriving to class without the required textbook was not a matter of academic disengagement, it was a matter of economic necessity. For that reason, I adopted the Anatomy and Physiology, 2nd edition from OpenStax (openstax.org), a peer-reviewed, freely accessible OER textbook for the A&amp;P courses (NURS 1016 and 1020). For pathophysiology, where no comparable OER textbook exists, I turned to the Merck Manual, Professional Edition (merckmanuals.com) which is a clinically authoritative, freely available resource that provided the content at a depth and relevancy appropriate for BScN nursing students.</p>
+          <p>The transition from traditional textbook to OER, however, was far from effortless. Without the supplementary packages that accompany commercial textbooks (e.g., slide decks, image banks, test question repositories, videos, and formative assessment tools), I had to rebuild the entire instructional scaffolding of all four courses largely from scratch. Specifically, I had to carefully curate Creative Commons-licensed diagrams and images, develop original slide presentations, and identify freely available videos and interactive resources to replace what a publisher's package had previously provided. It was painstaking, time-consuming work that demanded patience and creativity, but it was also, ultimately, deeply rewarding. The student response was almost uniformly positive, and the feedback I received confirmed that the decision to transition to OER had been the right one.</p>
+          <p>One student's comment that has stayed with me as a defining moment in this journey is when they shared that the money they would otherwise have spent on textbooks could now be spent on rent. That single remark crystallized, more powerfully than any metric could, what equitable course design actually means in practice. It means that a student does not have to choose between their education and their basic needs. I remain committed to continuing to refine and enrich these OER-based courses, and I see this work not simply as a cost-saving measure but as a concrete expression of the equity values that live in the HBSN/HBNA programs.</p>
+        </div>
+        <div class="artifact-chips">
+          <a href="files/evidences/NURS1016_Course_Syllabus.pdf" class="chip" target="_blank">📄 NURS 1016 Course Design</a>
+          <a href="files/evidences/NURS1020_Course_Syllabus.pdf" class="chip" target="_blank">📄 NURS 1020 Course Design</a>
+          <a href="files/evidences/NURS1016_Chapter_1.pdf" class="chip" target="_blank">📄 OpenStax OER Integration</a>
+          <a href="files/evidences/NURS1020_Physiology_Assignment.pdf" class="chip" target="_blank">📄 Assessment Alignment</a>
+          <span class="chip add">+ Add Artifact</span>
+        </div>
+      </div>
+
+      <!-- Researcher -->
+      <div class="timeline-entry" id="researcher-entry">
+        <div class="timeline-dot"></div>
+        <div class="entry-meta">
+          <span class="entry-date">2021 – 2023</span>
+          <span class="entry-role-tag">Researcher</span>
+          <span class="status-badge badge-performing" style="font-size:0.68rem;">Performing</span>
+        </div>
+        <div class="entry-title">Virtual Reality in Anatomy: Researching Motivation &amp; Learning Gains</div>
+        <div class="entry-body">
+          <p>My identity as an educator has been profoundly shaped by my identity as a researcher, though the nature of that research has evolved considerably over the course of my career. My earlier academic life was devoted almost exclusively to discovery-based research in medicinal chemistry: a domain characterized by the pursuit of knowledge for its own sake, removed from the immediate concerns of the classroom. As I matured professionally, however, I found myself increasingly drawn to a different kind of inquiry: one oriented not toward molecules, but toward minds and specifically how students learn, and how evidence can be used to design better educational experiences. This intellectual shift brought me to collaborate with a group of like-minded colleagues at Georgian College in securing a $955,200 grant from the Government of Canada's Future Skills Program, administered through the Future Skills Centre, to support the institution's Digital Transformation Strategy, a campus-wide initiative integrating extended reality (XR) technologies to enhance teaching, learning, and inclusivity across Georgian College's seven Central Ontario campuses. As a Co-Investigator on the human anatomy and physiology component of this larger project, I set out to investigate a focused but pedagogically consequential question: does the modality of virtual reality, specifically, the difference between fully immersive VR using headsets and desktop-based VR on a personal computer meaningfully affect student motivation in learning anatomy and physiology?</p>
+          <p>The study, recently published in the <em>Canadian Journal of Learning and Technology</em> (Thadani et al., 2025), recruited 21 students from the nursing, paramedic, and biotechnology-health programs and employed a quasi-experimental design using four subscales of the Intrinsic Motivation Inventory (IMI) as the primary outcome measures. The data were revealing: students in the immersive VR group reported statistically significantly higher scores on both the interest/enjoyment subscale (U = 20, z = -2.049, p = .043) and the perceived competence subscale (U = 12, z = -2.704, p = .006), indicating that immersive VR not only made anatomy more engaging, but also strengthened students' belief in their own capacity to learn the material; a key behavioural predictor of intrinsic motivation. No significant differences were found on the pressure/tension or perceived choice subscales, suggesting that students in both conditions felt equally in control of their learning and were not unduly stressed by the assigned technology. These findings, while appropriately qualified by the study's small sample size and the challenges inherent in conducting controlled research within a live academic environment, align with a growing body of literature documenting VR's potential to enhance spatial understanding and motivation in anatomy education. The study also surfaced important lessons about the challenges of educational research itself: low instrument completion rates, volunteer bias, and the difficulties of participant recruitment in demanding health science programs. I consider these insights as valuable as the primary findings as I design future investigations.</p>
+          <p>Conducting this research has genuinely changed how I think about evidence and pedagogy. It has deepened my appreciation for the complexity of learning environments, sharpened my methodological humility, and reinforced my conviction that good teaching and good research are not separate vocations but mutually informing practices. Today, my scholarly attention has turned to the intersection of artificial intelligence and nursing licensure preparation. Specifically, I have started researching the development of AI agent-driven systems capable of generating and delivering tailored, next-generation NCLEX-style questions to help students prepare for and pass their licensing examination on their first attempt. This work is ongoing, and its eventual findings will directly inform our program's NCLEX preparation strategy. I am guided throughout this process by the recognition that the Canadian nursing competency framework identifies the scholar role as one of the core competencies of a registered nurse. This role is a reminder that the commitment to inquiry, evidence, and continuous learning is not merely an academic virtue, but a professional obligation that begins in the classroom and extends across an entire career.</p>
+        </div>
+        <div class="artifact-chips">
+          <a href="files/evidences/CJLT_Publication.pdf" class="chip" target="_blank">📄 CJLT Publication (2025)</a>
+          <a href="https://fsc-ccf.ca/projects/digital-transformation-strategy/" class="chip" target="_blank">🌐 FSC Grant — Co-Investigator</a>
+          <span class="chip add">+ Add Artifact</span>
+        </div>
+      </div>
+
+      <!-- Inclusive Practitioner -->
+      <div class="timeline-entry" id="inclusive-entry">
+        <div class="timeline-dot" style="background:#5c52bf; box-shadow: 0 0 0 2px #5c52bf;"></div>
+        <div class="entry-meta">
+          <span class="entry-date">2024 – Present</span>
+          <span class="entry-role-tag">Inclusive Practitioner</span>
+          <span class="status-badge badge-emerging" style="font-size:0.68rem;">Emerging</span>
+        </div>
+        <div class="entry-title">Inclusive Practice: Equity in Science Education</div>
+        <div class="entry-body">
+          <p>Inclusive practice in the classroom, as I have come to understand, is rarely instituted by a single dramatic change. Rather, it is more often a steady accumulation of deliberate choices, each one signalling to students that they belong here and that their success matters. One instance that captures this for me has been my decision to move away from costly commercial textbooks toward Open Educational Resources across my science courses. This change is rooted in the recognition that many of my students face real financial hardship, often balancing employment and family responsibilities alongside full-time study. By removing the textbook as a financial barrier, I witnessed something meaningful: students who might otherwise have gone without the required course materials now arrived with equal access to the resources they needed to succeed, and the quiet stress of that particular choice is now lifted from their shoulders. Inclusion, in that moment, was not abstract; it was the simple, concrete fact of a level starting line.</p>
+          <p>Building on this, I have intentionally expanded the case-based patient scenarios in my courses to reflect the genuine cultural diversity of the communities our graduates will serve. I have begun to confront, openly and directly, the deficiencies embedded in long-standing Eurocentric clinical assessment tools. For example, teaching students why relying on skin phototype classifications for melanoma screening can fail patients with darker skin tones, and what culturally responsive, evidence-informed practice demands instead. These conversations will hopefully change how my students see their future clients and patients, and how they see the responsibility they carry as nurses to question inherited assumptions rather than accept them uncritically.</p>
+          <p>I am the first to acknowledge that this work is far from finished. There remains a great deal I have yet to learn and incorporate but I approach what lies ahead with a firm commitment to researching the relevant scholarship in each of these areas so that I can continue incorporate inclusive, culturally responsive pedagogy more deeply into my courses. Every step in this direction, however modest, makes the classroom a little more welcoming and a little more just, and that is a journey I am proud and eager to continue.</p>
+        </div>
+        <div class="artifact-chips">
+          <span class="chip add">+ Add Artifact</span>
+        </div>
+      </div>
+
+      <!-- Changemaker -->
+      <div class="timeline-entry" id="changemaker-entry">
+        <div class="timeline-dot" style="background:#a03860; box-shadow: 0 0 0 2px #a03860;"></div>
+        <div class="entry-meta">
+          <span class="entry-date">2022 – Present</span>
+          <span class="entry-role-tag">Changemaker</span>
+          <span class="status-badge badge-emerging" style="font-size:0.68rem;">Emerging</span>
+        </div>
+        <div class="entry-title">Developing the HBSN Curriculum: A Program-Level Transformation</div>
+        <div class="entry-body">Few professional experiences have tested my assumptions, expanded my collaborative skills, and deepened my commitment to nursing education quite as much as my involvement in the development of Georgian College's Bachelor of Science in Nursing (HBSN) program. This process was a multi-year undertaking that began in 2019 and culminated in the successful attainment of College of Nurses of Ontario (CNO) approval and the program's inaugural launch in Fall 2022. The process was transformational not only for the institution, but for me personally as an educator. The starting foundational work of articulating the program's vision, mission, values, and philosophy was not merely an administrative exercise; it was a deliberate act of collective meaning-making that gave the entire curriculum its moral and pedagogical compass, ensuring that every subsequent decision about course design, sequencing, and assessment was anchored in a shared set of convictions about what nursing education at the baccalaureate level should aspire to produce. The most clarifying and I would argue most genuinely changemaking insight that emerged from this process was the power of backward design: rather than building the curriculum forward from content coverage, we worked backward from the image of an ideal graduate: a nurse capable of safe, compassionate, patient-centred care, equipped with the clinical judgment skills demanded by modern healthcare (and the NCLEX exam). We then allowed that vision to discipline and organize every decision we made thereafter. This approach, well-supported in the curriculum theory literature through the work of scholars such as Wiggins and McTighe (2005) and further elaborated in the context of competency-based nursing education by Iwasiw, Andrusyszyn, and Goldenberg (2020), transformed what could have been an unwieldy content-mapping exercise into a purposeful, outcomes-driven design process. What I had not adequately anticipated, however, was the sheer breadth and complexity of the work that surrounds curriculum development itself: the policies, procedures, accreditation documentation, program standards alignment, and institutional approvals that constitute the less visible but equally demanding scaffolding of a new program. My initial assumption that the process would be relatively straightforward was, I will admit candidly, demolished early and thoroughly. But what genuinely surprised me, and what I count among the most meaningful professional gifts of this experience, was the relational dimension of the work: the process of building something consequential together broke down the silos that had limited our collegial relationships, and what emerged in their place was a team characterized by shared values, mutual trust, and an authentic commitment to student-centred learning that made even the most challenging moments of the journey navigable. The program's launch in Fall 2022 was the culmination of a tremendous amount of hard work by the team, and I am extremely glad to have been a part of that changemaking team.</div>
+        <div class="artifact-chips">
+          <span class="chip">HBSN Curriculum Development</span>
+          <span class="chip">CNO Program Approval</span>
+          <span class="chip add">+ Add Artifact</span>
+        </div>
+      </div>
+
+      <div class="timeline-entry" id="changemaker-reb-entry">
+        <div class="timeline-dot" style="background:#a03860; box-shadow: 0 0 0 2px #a03860;"></div>
+        <div class="entry-meta">
+          <span class="entry-date">2023 – Present</span>
+          <span class="entry-role-tag">Changemaker</span>
+        </div>
+        <div class="entry-title">Demystifying Course-Based Research: GCREB Education &amp; Institutional Culture</div>
+        <div class="entry-body">While the notion of a "changemaker" can evoke images of sweeping, large-scale transformation, I understand my role in this regard as something more grounded and deliberate: specifically a commitment to initiating small but meaningful and sustainable change within the college. My primary focus as a changemaker centres on cultivating a culture of research engagement among students and faculty alike, rooted in the conviction that research literacy and inquiry-based thinking are skills that every college graduate requires. The evidence supports this urgency: scholars such as Boyer (1990) and, more recently, Brew (2006) have argued compellingly that the integration of research into teaching deepens student learning, fosters critical thinking, and prepares graduates for evidence-informed professional practice. In my current role as Chair of the Georgian College Research Ethics Board (GCREB), I have taken concrete steps toward this goal by providing sustained education and support to faculty around the design and conduct of course-based research, ensuring that the ethical frameworks governing such work are accessible, clearly understood, and not experienced as a barrier to participation. Most recently, my colleague Prem Batten and I had the privilege of presenting at Georgian College's Focus on Teaching and Learning conference, where we introduced faculty to the processes, procedures, and application requirements for course-based research. This activity was a small but meaningful step toward demystifying the research process and lowering the threshold for faculty engagement. Yet I am under no illusion that these early efforts constitute the full scope of the change I hope to contribute to; a great deal of work remains. My longer-term aspiration is to collaborate with faculty researchers, Associate Deans, and the Vice-President Academic to develop a coherent, institution-wide strategy that broadens student involvement in research along a continuum from participating as informed, consenting research subjects, to engaging as active collaborators in faculty-led research, to ultimately conceiving and executing independent student-initiated research projects. This vision aligns with the strategic mandate plan of Georgian College which aims to "enhanc(e) targeted research, innovation, and entrepreneurship activity". In addition, a growing body of literature on undergraduate research consistently demonstrates that even modest exposure to authentic research processes significantly enhances student motivation, professional identity formation, and post-graduation outcomes (Lopatto, 2010; Shanahan et al., 2015). I recognize that shifting institutional culture is sometimes a slow, non-linear work that requires patience, coalition-building, and a tolerance for incremental progress. But I also believe that change has to start somewhere. I strive to invite others into this conversation and remain committed to the long arc of this work.</div>
+        <div class="artifact-chips">
+          <span class="chip">GCREB Chair</span>
+          <span class="chip">Course-Based Research Presentation</span>
+          <span class="chip add">+ Add Artifact</span>
+        </div>
+      </div>
+
+      <!-- Digital Explorer -->
+      <div class="timeline-entry" id="digital-entry">
+        <div class="timeline-dot" style="background:#185fa5; box-shadow: 0 0 0 2px #185fa5;"></div>
+        <div class="entry-meta">
+          <span class="entry-date">2024 – Present</span>
+          <span class="entry-role-tag">Digital Explorer</span>
+          <span class="status-badge badge-transforming" style="font-size:0.68rem;">Transforming</span>
+        </div>
+        <div class="entry-title">Building a Custom NGN Question Platform in JavaScript</div>
+        <div class="entry-body">[Add your reflective narrative here. Reflect on developing a custom web-based platform for Next Generation NCLEX (NGN) questions. What motivated you to build this rather than use off-the-shelf tools? What did you learn — technically and pedagogically? How have students responded? How do you think about the ethics of custom digital tools in professional licensing preparation?]</div>
+        <div class="artifact-chips">
+          <span class="chip">NGN JavaScript Platform</span>
+          <span class="chip">NCLEX Preparation</span>
+          <span class="chip">VR Teaching (FSC Project)</span>
+          <span class="chip">Ontario Extend Micro-credentials</span>
+          <span class="chip add">+ Add Artifact</span>
+        </div>
+      </div>
+
+      <!-- Collaborator -->
+      <div class="timeline-entry" id="collaborator-entry">
+        <div class="timeline-dot" style="background:#3b6d11; box-shadow: 0 0 0 2px #3b6d11;"></div>
+        <div class="entry-meta">
+          <span class="entry-date">2023 – Present</span>
+          <span class="entry-role-tag">Collaborator</span>
+          <span class="status-badge badge-performing" style="font-size:0.68rem;">Performing</span>
+        </div>
+        <div class="entry-title">Leading Georgian's Research Ethics Board</div>
+        <div class="entry-body">[Add your reflective narrative here. Reflect on your role as Chair of the GCREB. How has this cross-college, cross-disciplinary role shaped your sense of collaboration? What has it taught you about navigating power, disagreement, and shared standards? How does your scientific research background inform your approach to ethical review of course-based research?]</div>
+        <div class="artifact-chips">
+          <span class="chip">GCREB Chair (2023–present)</span>
+          <span class="chip">TCPS2 CORE Training</span>
+          <span class="chip">Ethics Review Resources</span>
+          <span class="chip add">+ Add Artifact</span>
+        </div>
+      </div>
+
+      <!-- Reflector -->
+      <div class="timeline-entry" id="reflector-entry">
+        <div class="timeline-dot" style="background:#1a7a6e; box-shadow: 0 0 0 2px #1a7a6e;"></div>
+        <div class="entry-meta">
+          <span class="entry-date">2024 – Present</span>
+          <span class="entry-role-tag">Reflector</span>
+          <span class="status-badge badge-performing" style="font-size:0.68rem;">Performing</span>
+        </div>
+        <div class="entry-title">Integrating Student Evaluations to Optimize Nursing Science Pedagogy</div>
+        <div class="entry-body">Analysis of student evaluations across multiple terms (Winter 2024 through Winter 2026) highlights a consensus regarding the efficacy of integrated formative assessments, custom chapter practice quizzes, and multimodal study aids (e.g., narrated lectures, cadaver videos, and handwritten notes) in mitigating the high cognitive load of the A&P and Patho courses. To build on these student-reported successes, I plan to systematically incorporate more structured retrieval practice (Roediger & Karpicke, 2006) and low-stakes formative feedback loops (Black & Wiliam, 1998) directly into classroom sessions. These learning activities are grounded in Cognitive Load Theory (Sweller, 1988) and Mayer’s Cognitive Theory of Multimedia Learning (Mayer, 2002). Future iterations of these learning resources will focus on refining these digital tools and blackboard organization to ensure that the learning resources are scaffolded to meet diverse student needs, thereby bolstering student self-efficacy and performance in these fundamental nursing courses.</div>
+        <div class="artifact-chips">
+          <span class="chip add">+ Add Artifact</span>
+        </div>
+      </div>
+
+      <!-- Mentor -->
+      <div class="timeline-entry" id="mentor-entry">
+        <div class="timeline-dot" style="background:#854f0b; box-shadow: 0 0 0 2px #854f0b;"></div>
+        <div class="entry-meta">
+          <span class="entry-date">2022 – Present</span>
+          <span class="entry-role-tag">Mentor</span>
+          <span class="status-badge badge-emerging" style="font-size:0.68rem;">Emerging</span>
+        </div>
+        <div class="entry-title">Fostering Faculty Development and Student Success through Collaborative Mentorship</div>
+        <div class="entry-body">My approach to mentorship is dual-faceted, focusing on scaffolding the development of both part-time and full-time faculty colleagues and nursing students to elevate the overall quality of nursing education. Across the Barrie and Owen Sound campuses, I have mentored numerous faculty teaching the science-based courses (i.e., A&P, Patho, and Microbiology). This work involved assisting colleagues in mastering critical educational technologies—such as standardized Blackboard shell configurations and online quizzing platforms—and guiding them in translating complex biomedical concepts into active classroom strategies. Simultaneously, my student mentorship is driven by a commitment to helping students achieve their full academic and professional potential. Evidence from student evaluations and letters demonstrates the impact of this support; for instance, a student noted in a course evaluation that "due to faculty support [I] was able to exceed my own expectations" in a challenging 1st year course. Furthermore, my mentorship is illustrated by testimonials stating that I "played a pivotal role in helping me navigate my path in this new country and establish a strong foundation for my budding career" (Z. Vahedi, personal communication, November 9, 2023) and was vital in helping them "maximize [their] full potential" (I. Roberge, personal communication, May 2022). By maintaining high accessibility, providing one-on-one academic coaching both online and in-person, and writing reference letters for clinical appointments (e.g., University Health Network, William Osler Hospital), I foster a supportive yet rigorous academic environment that prepares students to excel and reach their full potential in their nursing careers.</div>
+        <div class="artifact-chips">
+          <span class="chip add">+ Add Artifact</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCHOLARSHIP -->
+<section id="scholarship">
+  <div class="container">
+    <div class="section-label">Scholarship</div>
+    <h2>Research &amp; <em>Teaching Scholarship</em></h2>
+    <p class="section-intro">My scholarship spans discovery research in chemistry and active investigation of technology-enhanced learning in nursing education. Below are selected works and ongoing scholarship activities.</p>
+
+    <h3 style="font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:1rem; font-weight:500;">Scholarship of Teaching &amp; Learning</h3>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-type">Journal Article</span>
+        <div>
+          <div class="pub-title">Student Motivation Using Virtual Reality in Human Anatomy and Physiology Courses</div>
+          <div class="pub-citation">Thadani, A., Deschamps, I., Doran, J., Forlani, C., Theriault, R., &amp; Madorin, S. (2025). Canadian Journal of Learning and Technology, 51(2), 1–21.</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-type">Platform Dev</span>
+        <div>
+          <div class="pub-title">Development of an Online Platform for Customized Next Generation NCLEX Questions</div>
+          <div class="pub-citation">Thadani, A. (2024). Web-based JavaScript platform delivering tailored NGN questions for A&amp;P and Pathophysiology courses in the HBSN program.</div>
+        </div>
+      </li>
+      <li class="pub-item pub-placeholder">
+        <span class="pub-type" style="background:var(--mist); color:var(--text-muted); border-style:dashed;">Add Entry</span>
+        <div>
+          <div class="pub-title">[Add a future scholarship project, work-in-progress, conference presentation, or peer publication here]</div>
+        </div>
+      </li>
+    </ul>
+
+    <h3 style="font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin:2rem 0 1rem; font-weight:500;">Scholarship of Discovery — Selected Prior Work</h3>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-type">US Patent</span>
+        <div>
+          <div class="pub-title">Methods of Performing Cycloadditions and Asymmetric Catalytic Reactions</div>
+          <div class="pub-citation">US Patent 7230125 — Rawal, V.H.; Huang, Y.; Unni, A.K.; Thadani, A.N.</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-type">US Patent</span>
+        <div>
+          <div class="pub-title">Methods of Preparing Tertiary Carbinamine Compounds</div>
+          <div class="pub-citation">US Patent 8143451 — Thadani, A.N.; Dhudshia, B.</div>
+        </div>
+      </li>
+      <li class="pub-item" style="border-style: dashed; background: var(--mist);">
+        <span class="pub-type" style="background:var(--mist); color:var(--text-muted); border-style:dashed;">Note</span>
+        <div>
+          <div class="pub-title" style="color:var(--text-muted); font-style:italic; font-weight:400;">Three additional US Patents available — see full CV for complete list.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- GOALS / 3-YEAR PLAN -->
+<section id="goals" class="alt-bg">
+  <div class="container">
+    <div class="section-label">Three-Year Goal Plan</div>
+    <h2>Looking Back to <em>Look Forward</em></h2>
+    <p class="section-intro">Goal setting is central to the FFR process. Below I map my professional growth intentions across the three-year cycle, grounded in where I am and where I aspire to be.</p>
+    <div class="goals-grid">
+
+      <div class="goal-card active">
+        <div class="goal-year">Year 1 — Active</div>
+        <div class="goal-roles-legend">
+          <span class="goal-roles-legend-title">Competency Legend:</span>
+          <span class="role-legend-badge designer">✏️ Designer</span>
+          <span class="role-legend-badge digital-explorer">💻 Digital Explorer</span>
+        </div>
+        <div class="goal-title">1. Expanding the library of AI-assisted virtual simulations</div>
+        <div class="goal-desc">I will continue to develop interactive virtual simulations, built with the assistance of AI coding agents, to fill the gaps in the open educational resources (OER) currently used in my A&P (NURS 1016, NURS 1020) and Pathophysiology (NURS 1017, NURS 1021) courses. The current OER, beyond the textbook itself, remains very limited. This workflows from my conviction that students learn most deeply through active learning. Although these simulations are not direct hands-on, kinesthetic activities, nevertheless they provide a greater level of engagement and immersion that just reading a textbook or listening to a lecture. The moment a student can change a physiological variable and watch their own physiology respond in ‘real-time’ is the moment the content stops being something to memorize and becomes something they understand. Whereas current budgetary realities place tools such as an EMG machine or hospital-grade spirometer out of reach, well-designed simulations (for example, virtual blood-typing or ECG simulations) can bring those experiences into all student’s hands and minds. Building on my existing Digital Explorer work, I aim to grow a small but purposeful library of simulations embedded across the aforementioned courses. These simulations will not just be used for novelty, but because I believe they will spark curiosity, provide immediate feedback, and make abstract concepts more understandable to the students. I will know this approach is working when students report, through course feedback, that these simulations have helped them better understand difficult physiology concepts rather than simply memorizing certain facts.</div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 35%"></div></div>
+        <div class="progress-label"><span>In progress</span><span>35%</span></div>
+        <div class="artifact-chips" style="margin-top: 1rem;">
+          <a href="#" class="chip" onclick="event.preventDefault(); openSimulationModal('files/simulations/blood_typing.html');" style="display: inline-flex; align-items: center; gap: 0.35rem;">
+            <span>👁️</span> Play Blood Typing Simulation
+          </a>
+        </div>
+      </div>
+
+      <div class="goal-card planned">
+        <div class="goal-year planned">Year 1 — Planned</div>
+        <div class="goal-roles-legend">
+          <span class="goal-roles-legend-title">Competency Legend:</span>
+          <span class="role-legend-badge inclusive-practitioner">🤝 Inclusive Practitioner</span>
+        </div>
+        <div class="goal-title">2. Moving from acknowledgement to action in EDIB and Indigenous ways of knowing</div>
+        <div class="goal-desc">I will pursue professional development in equity-informed pedagogy and, most pressingly, in Indigenous ways of knowing. I will begin with offerings such as the Centre for Teaching &amp; Learning's (CTL) Beyond Acknowledgement workshop series, and perhaps other Indigenous cultural training through other institutions, and then translate that learning into concrete changes in my courses. I want to be honest that this is the area where the gap between where I am and where I need to be is widest. I open most classes with a land acknowledgement, but I am acutely aware that a land acknowledgement is not in itself a teaching practice, and that reciting it without deeper integration risks reducing a gesture of respect to an empty ritual. The Truth and Reconciliation Commission's Calls to Action 18 through 24 speak directly to health educators like me. My aim is to learn how Indigenous understandings of health — holistic, relational, and rooted in connection to land, community, and spirit both complement and challenge the biomedical frameworks I teach. I also wish to develop the intercultural competency and anti-racism practices needed to address the barriers Indigenous students navigate in a predominantly Eurocentric curriculum. One concrete aim that I have is to incorporate at least one substantive Indigenous curricular integration that moves meaningfully beyond just a land acknowledgement. I will measure progress not by just by goal achievement, since reconciliation is a continuous practice of unlearning and relearning, but also by completed professional development. I owe this to my Indigenous students, colleagues, and the communities we collectively serve.</div>
+      </div>
+
+      <div class="goal-card active">
+        <div class="goal-year">Year 1 — Active</div>
+        <div class="goal-roles-legend">
+          <span class="goal-roles-legend-title">Competency Legend:</span>
+          <span class="role-legend-badge collaborator">👥 Collaborator</span>
+          <span class="role-legend-badge mentor">⭐ Mentor</span>
+        </div>
+        <div class="goal-title">3. Cultivating a culture of research engagement at the college</div>
+        <div class="goal-desc">Through my role as Chair of the Georgian College Research Ethics Board (GCREB), I will continue the work of fostering a culture of research literacy and inquiry among both students and faculty. I believe that integrating research into teaching deepens learning, sharpens critical thinking, and prepares graduates for evidence-informed practice. I intend to demystifying course-based research and lower the threshold for faculty participation by doing the following: (i) Offering workshops during Focus on Teaching and Learning (FOTL) days, building on the session my colleague Prem Batten and I delivered in 2026; (ii) Ensuring that clear, accessible guidance if offered through the GCREB website and staff news; and (iii) Providing one-on-one consultations to interested faculty and students so that ethical review is understood as a support rather than a barrier. My longer-term aspiration is to collaborate with faculty researchers, associate deans, and other administrators to develop a strategy that broadens student involvement in research. Instead of students just participating in research as informed, consenting subjects, they should now engage as active collaborators in faculty-led research. Ultimately, the goal is for students to develop and implement independent student-initiated projects. This vision aligns with Georgian's strategic mandate and the literature consistently shows that even modest exposure to authentic research strengthens student motivation, professional identity, and post-graduation outcomes. I will know I am making headway when faculty report feeling more confident initiating course-based research and when student participation in research, in any form, grows.</div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 10%"></div></div>
+        <div class="progress-label"><span>Early stage</span><span>10%</span></div>
+      </div>
+
+      <div class="goal-card planned">
+        <div class="goal-year planned">Year 1 — Planned</div>
+        <div class="goal-roles-legend">
+          <span class="goal-roles-legend-title">Competency Legend:</span>
+          <span class="role-legend-badge collaborator">👥 Collaborator</span>
+        </div>
+        <div class="goal-title">4. Build a regular and reciprocal cycle of peer observation</div>
+        <div class="goal-desc">I will build a regular and reciprocal cycle of peer observation within the HBSN/HBNA teaching team as well as with other science teaching faculty. Constructive collegial review is what keeps my learning resources and teaching style from becoming stale and deteriorating over time. I intend to invite a trusted colleague or two into my A&amp;P and Patho classrooms at least once per year, and to reciprocate in theirs, agreeing on a specific area to focus on in advance rather than settling for a general impression. After each visit we will debrief with them openly, and I will document at least one concrete change I intend make into a teaching strategy or learning resource as a direct result. I do feel vulnerable in opening my classroom to a peer, but I have come to see that fear as the very condition for growth as a Reflector and Collaborator. The proof that this peer review cycle works will occur when I have completed at least two full observation cycles, recorded a short reflection on what the experience has taught me, and can point to a resource I strengthened because of this process.</div>
+      </div>
+
+      <div class="goal-card planned">
+        <div class="goal-year planned">Year 2 — Planned</div>
+        <div class="goal-roles-legend">
+          <span class="goal-roles-legend-title">Competency Legend:</span>
+          <span class="role-legend-badge mentor">⭐ Mentor</span>
+          <span class="role-legend-badge collaborator">👥 Collaborator</span>
+        </div>
+        <div class="goal-title">5. Formalizing and extending mentorship of science faculty</div>
+        <div class="goal-desc">I will move my mentorship of colleagues from something informal and as-needed toward a more formalized onboarding pathway for new and part-time faculty teaching the nursing science courses across both the Barrie and Owen Sound campuses. For years, I have informally supported colleagues teaching A&amp;P, Pathophysiology, and Microbiology courses via helping them master technologies such as standardized Blackboard shell configurations and online quizzing platforms, and guiding them in translating course concepts into active learning strategies. However, now I would like to formalize this process. This means assembling a shared resource hub (standardized course shell templates, NGN and practice-quiz banks, and teaching notes) on a Sharepoint site, drafting a brief onboarding guide, and holding regularly scheduled check-ins through a new colleague's first term so that no one has to navigate that steep early learning curve alone. My aim is to elevate the overall quality and consistency of science instruction across the program while easing the transition for those joining it. I will consider this goal achieved when the onboarding resources exist and are genuinely in use, when I have mentored at least one new colleague through a full semester, and when their feedback tells me what has helped and what still needs refining.</div>
+      </div>
+
+      <div class="goal-card planned">
+        <div class="goal-year planned">Year 2 — Planned</div>
+        <div class="goal-roles-legend">
+          <span class="goal-roles-legend-title">Competency Legend:</span>
+          <span class="role-legend-badge designer">✏️ Designer</span>
+          <span class="role-legend-badge reflector">🪞 Reflector</span>
+        </div>
+        <div class="goal-title">6. Designing authentic assessment for an age of AI</div>
+        <div class="goal-desc">I will take an iterative redesign of my assessments to protect academic integrity and capture authentic learning in an environment where the pervasive, indiscriminate use of AI has made the line between a student's own reasoning and a tool's output increasingly difficult to discern. I am not naïve enough to believe that there is a tidy solution here. Rather my aim is to rebalance my courses toward assessments that AI cannot easily complete on a student's behalf. For example, the assessment can be more geared towards applied, case-based, and clinical-reasoning tasks using more in-class and oral components. In addition, assignments that scaffold the work and that makes a student's thinking more visible will likely decrease the likelihood of using AI tools. I do acknowledge that there might be some hypocrisy present here. I am enthusiastically building new learning resources with the help of AI to enrich how my students learn, even as I carefully and critically think about how AI affects the way I evaluate that learning. I intend to achieve this goal by redesigning the assessments for at least one course. I will then solicit student feedback about whether they feel that those assessments are fair, meaningful, and helped them better achieve the learning outcomes of the course.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROFESSIONAL DEVELOPMENT -->
+<section id="development">
+  <div class="container">
+    <div class="section-label">Professional Development</div>
+    <h2>Ongoing <em>Learning</em></h2>
+    <p class="section-intro">Professional development is a cornerstone of the Reflector and Researcher roles. Below are formal learning experiences that have shaped my practice.</p>
+    <div class="pd-grid">
+
+      <div class="pd-card">
+        <div class="pd-year">2023</div>
+        <div class="pd-name">Research Ethics — TCPS 2: CORE 2022</div>
+        <div class="pd-org">Panel of Research Ethics / Georgian College</div>
+      </div>
+      <div class="pd-card">
+        <div class="pd-year">2021</div>
+        <div class="pd-name">VR Educator Micro-credential</div>
+        <div class="pd-org">Georgian College</div>
+      </div>
+      <div class="pd-card">
+        <div class="pd-year">2020</div>
+        <div class="pd-name">Curator &amp; Technologist Micro-credentials</div>
+        <div class="pd-org">Ontario Extend</div>
+      </div>
+      <div class="pd-card">
+        <div class="pd-year">2017</div>
+        <div class="pd-name">Keystones of Healthcare Simulation Certificate</div>
+        <div class="pd-org">SIM-one, Healthcare Simulation Network</div>
+      </div>
+      <div class="pd-card">
+        <div class="pd-year">FRAME 2025</div>
+        <div class="pd-name">FRAME Kick-Off Session</div>
+        <div class="pd-org">Centre for Teaching &amp; Learning, Georgian College</div>
+      </div>
+      <div class="pd-card add-card">
+        <div class="plus">+</div>
+        Add Professional Development
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- EDIB -->
+<section id="edib" class="alt-bg">
+  <div class="container">
+    <div class="section-label">Equity, Diversity, Inclusion &amp; Belonging</div>
+    <h2>EDIB &amp; <em>Indigenous Ways of Knowing</em></h2>
+    <p class="section-intro">The FFR process asks each faculty member to reflect on how they have incorporated EDIB principles and Indigenous Ways of Knowing into their curriculum, assessment, and student engagement practices.</p>
+
+    <div class="edib-entry">
+      <span class="edib-tag">Curriculum &amp; Assessment</span>
+      <div class="edib-title">Inclusive Case Design and Equitable Assessment in Pathophysiology</div>
+      <div class="edib-body">A deliberate and formative shift in my approach to curriculum design came when I recognized that the patient case studies embedded in my Pathophysiology courses were overwhelmingly drawn from a narrow demographic profile — predominantly white, middle-class, and Western in cultural context — rendering much of the clinical content implicitly exclusionary for both the students in my classroom and the diverse patient populations they would soon serve in southern Ontario. Prompted by this recognition, and informed by conversations with students from diverse backgrounds who expressed difficulty seeing themselves or their communities reflected in the case studies, I undertook a systematic revision of these case studies to represent a far broader range of patients (e.g., individuals from South Asian, Black, Indigenous, and newcomer immigrant communities), with attention to how language barriers, cultural health beliefs, and social determinants of health shaped each patient's presentation. In doing so, I was also careful to avoid tokenism or stereotype — for instance, when incorporating cases involving conditions with genuine ancestral or genetic relevance, such as sickle cell anemia, I paired the clinical content with explicit discussion of the difference between race as a social construct and ancestry as a biological variable, ensuring students developed nuanced rather than reductive clinical judgment. On the assessment side, I moved away from time-pressured, single-mode evaluations that inadvertently disadvantaged a subset of students by introducing flexible submission options, varied question formats, and transparent rubrics designed to assess conceptual mastery rather than test-taking performance. I hope to  create course content and assessments where students report greater engagement with the concepts, a stronger sense of relevance to their future practice, and a growing awareness that equitable, culturally responsive nursing care begins not at the bedside, but in the first year classroom.</div>
+    </div>
+
+    <div class="edib-entry">
+      <span class="edib-tag">Student Engagement</span>
+      <div class="edib-title">Cultivating a Belonging-Centred Classroom and Culturally Humble Clinical Practice</div>
+      <div class="edib-body">As an educator in a baccalaureate nursing program serving the richly diverse communities of southern Ontario, fostering an inclusive and belonging-centred classroom environment is not merely a pedagogical aspiration, it is a professional and ethical imperative. Right from the beginning of each course, I work collaboratively with students to co-construct class norms that affirm every student's right to be heard, respected, and valued while explicitly emphasizing our shared commitment to psychological safety, mutual accountability, and respectful dialogue. When inappropriate assumptions arise, whether about cultural health practices or the conflation of race with human biology, I address them directly and constructively in the moment. I intentionally incorporate patient narratives from a wide range of cultural backgrounds, immigrant experiences, and socioeconomic circumstances throughout classroom discussion, helping students recognize how social determinants of health (e.g., housing instability, language barriers, precarious employment, and systemic marginalization) disproportionately affect racialized and equity-deserving communities thereby shaping the nursing assessments and interventions those communities require. In discussing clinical manifestations, I challenge students to move beyond Eurocentric clinical defaults. For example, when teaching the clinical manifestations of melanoma, I ensure we examine melanoma recognition and cyanosis detection across the full spectrum of skin tones, while warning against the exclusive reliance on skin phototype scales (which are not designed with darker-skinned individuals in mind). This behavior models the culturally humble, evidence-informed practice that we expect of our graduates who are entering a diverse healthcare landscape. Equity in the classroom also means actively interrogating whether my instructional approaches and in-class interactions create differential barriers for students from equity-deserving groups, and remaining genuinely responsive to adjusting my practice so that the rigorous biomedical content of the HBSN program is challenging without being exclusionary. Ultimately, one of my primary desires is to cultivate a community of caring learners: an environment where belonging is proactively built rather than incidentally assumed, and where every student feels not only safe enough to take intellectual risks, but genuinely affirmed as a future nurse who brings an irreplaceable perspective to the profession and to the patients they will care for.</div>
+    </div>
+
+    <div class="edib-entry">
+      <span class="edib-tag">Indigenous Ways of Knowing</span>
+      <div class="edib-title">A Journey of Unlearning and Relearning: Reconciliation in Health Sciences Education</div>
+      <div class="edib-body">Of all the dimensions of EDIB-informed teaching, my engagement with Indigenous perspectives, epistemologies, and ways of knowing remains the area where I must be most honest about the significant gap between where I am and where I need to be. My current practice begins with a land acknowledgement at the outset of most of my classes but I am acutely aware that a land acknowledgement, while meaningful as a starting point, is not in itself a teaching practice, and that reciting it without deeper integration of Indigenous knowledge frameworks into my courses risks reducing a gesture of respect to an empty ritual. I have not yet meaningfully incorporated Indigenous epistemologies into my course content and this is a deficit I take seriously, particularly since Indigenous peoples in Canada experience profoundly disproportionate health burdens shaped by the intergenerational trauma of colonization, systemic racism in healthcare, and the historic and ongoing erasure of Indigenous healing knowledge and practices from the biomedical curricula. I recognize that the Truth and Reconciliation Commission of Canada's 94 Calls to Action speak directly and urgently to health educators like myself, particularly Calls 18 through 24, which call upon governments, healthcare institutions, and training programs to acknowledge the health impacts of residential schools, close gaps in health outcomes, recognize the value of Indigenous healing practices, and ensure that healthcare professionals receive cultural competency training that specifically addresses the needs and rights of Indigenous peoples. The HBSN and HBNA curricula have developed and delivered a distinct course in Indigenous Health and Reconciliation (NURS 2011) but I was not involved in the course design or development. I recognize that genuine reconciliation in nursing education requires me to move well beyond a land acknowledgement and into substantive action: pursuing formal professional development by enrolling in courses through CTL (e.g., Beyond Acknowledgement: A Land Acknowledgement Workshop Series) and other Indigenous cultural safety training offered through other institutions. I need to learn how Indigenous understandings of health - holistic, relational, and rooted in connection to land, community, and spirit - both complement and challenge the biomedical frameworks that I teach. I also need to develop the intercultural competency, conflict literacy, and anti-racism practice necessary to address the specific and often invisible barriers that Indigenous students face in navigating a predominantly Eurocentric HBSN curriculum. I am committed to approaching this work with humility and with sustained effort while understanding that reconciliation is not a destination I will arrive at, but a continuous and necessary reflective practice of unlearning and relearning. I owe this to my Indigenous students, colleagues, and the Indigenous communities that we collectively serve.</div>
+    </div>
+
+    <div class="edib-entry placeholder">
+      <span class="edib-tag" style="background:var(--mist); color:var(--text-muted); border-style:dashed;">Add Entry</span>
+      <div class="edib-title" style="color:var(--text-muted); font-style:italic; font-weight:400;">Add another EDIB reflection</div>
+      <div class="edib-body" style="font-style:italic; color:rgba(107,127,143,0.6);">Click to add an additional equity, diversity, inclusion &amp; belonging reflection entry.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STUDENT FEEDBACK -->
+<section id="student-feedback">
+  <div class="container">
+    <div class="section-label">Student Feedback</div>
+    <h2>Student <em>Testimonials</em></h2>
+    <p class="section-intro">Student voices are among the most meaningful forms of evidence of teaching effectiveness. This collection includes a special handwritten gift from the first BScN cohort, and written comments from Georgian College Course Feedback Surveys across multiple courses and years.</p>
+
+    <!-- Intro strip -->
+    <div class="feedback-intro-strip">
+      <div class="strip-icon">💬</div>
+      <p><strong>About this collection:</strong> The testimonials and course feedback below span Winter 2023 through Fall 2024 across NURS 1016, 1017, 1020, and 2020. Click any card to browse selected student quotes, or use the PDF link to view the full survey report.</p>
+    </div>
+
+    <!-- Summary stats -->
+    <div class="feedback-summary">
+      <div class="summary-stat">
+        <div class="summary-number">9</div>
+        <div class="summary-label">CFS Reports</div>
+      </div>
+      <div class="summary-stat">
+        <div class="summary-number">4</div>
+        <div class="summary-label">Courses</div>
+      </div>
+      <div class="summary-stat">
+        <div class="summary-number">W23–F24</div>
+        <div class="summary-label">Date Range</div>
+      </div>
+      <div class="summary-stat">
+        <div class="summary-number">10</div>
+        <div class="summary-label">Letters in Book</div>
+      </div>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="feedback-filters">
+      <button class="filter-btn active" onclick="filterTestimonials('all', this)">All</button>
+      <button class="filter-btn" onclick="filterTestimonials('a-and-p', this)">Anatomy &amp; Physiology</button>
+      <button class="filter-btn" onclick="filterTestimonials('patho', this)">Pathophysiology</button>
+      <button class="filter-btn" onclick="filterTestimonials('cfs', this)">Course Evaluations</button>
+      <button class="filter-btn" onclick="filterTestimonials('general', this)">Special</button>
+    </div>
+
+    <!-- Course Evaluations Selector Panel -->
+    <div class="cfs-selector-panel" id="cfs-selector-panel" style="display: none;">
+      <div class="selector-row">
+        <div class="selector-field">
+          <label for="cfs-semester-select" class="selector-label">Semester</label>
+          <div class="select-wrapper">
+            <select id="cfs-semester-select" onchange="handleSemesterChange(this.value)">
+              <option value="all">All Semesters</option>
+              <option value="Winter 2026">Winter 2026</option>
+              <option value="Winter 2025">Winter 2025</option>
+              <option value="Fall 2024">Fall 2024</option>
+              <option value="Winter 2024">Winter 2024</option>
+              <option value="Fall 2023">Fall 2023</option>
+              <option value="Winter 2023">Winter 2023</option>
+            </select>
+          </div>
+        </div>
+        <div class="selector-field">
+          <label for="cfs-report-select" class="selector-label">Course Evaluation Report</label>
+          <div class="select-wrapper">
+            <select id="cfs-report-select" onchange="handleReportChange(this.value)">
+              <option value="all">All Reports in Semester</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial grid -->
+    <div class="testimonial-grid" id="testimonial-grid">
+
+      <!-- CARD 0: "Best Nursing Professor Ever" Student Book -->
+      <div class="testimonial-card book-card" data-category="general" data-type="book" data-index="0" onclick="openBookModal()">
+        <img src="files/testimonials/IMG_0001.jpg" class="testimonial-thumb" alt="Best Nursing Professor Ever — student notebook cover">
+        <div class="testimonial-meta">
+          <div class="testimonial-tag" style="color:#c8923f;">✦ Special Gift · BScN Cohort 1 · April 2023</div>
+          <div class="testimonial-label">"Best Nursing Professor Ever" — Student Notebook</div>
+          <div class="testimonial-sub">Handwritten letters from the first BScN cohort · 10 pages</div>
+          <span class="testimonial-view-btn">Browse all pages →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 1: F23 NURS1016 A&P 1 — Section 12516 -->
+      <div class="testimonial-card" data-category="a-and-p cfs" data-type="cfs" data-index="1"
+           data-pdf="files/course_feedback/F23_NURS1016_AP1_Section12516.pdf"
+           data-quotes='["Avinash is hands down the best professor I have ever had in my experience here at Georgian. You can really tell he wants students to succeed. I found his practice quizzes, hand outs, and extra videos to be very helpful. He is also amazing at making complex things understandable.","He truly cares about his students and wants all of us to succeed. He shows that he knows the content very well and that helps when learning. Even when he had to shift to an online class he still tries to ensure we are understanding and always asks for ways he can improve.","Creating a calming learning environment, being flexible, breaking things down well, and answering everyone\u0027s questions.","He is the best teacher out of all other teachers. I am very lucky and honoured to be in his class.","Engaging with us, giving us TONS of additional resources as well as positive feedback.","Providing many additional ways of learning and answers any questions I have. Talks so nice and respectful."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #e4f2ef 0%, #d0ebe5 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-top:0.4rem;">17/34 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Anatomy &amp; Physiology 1 · NURS1016</div>
+          <div class="testimonial-label">Fall 2023 · CFS Report</div>
+          <div class="testimonial-sub">Section 12516 · 6 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 2: F23 NURS1017 Patho 1 — Section 12520 -->
+      <div class="testimonial-card" data-category="patho cfs" data-type="cfs" data-index="2"
+           data-pdf="files/course_feedback/F23_NURS1017_Patho1_Section12520.pdf"
+           data-quotes='["Making learning this difficult content easy — lots of resources.","Best teacher I ever had.","Being extremely kind and helpful, always provided helpful feedback and tips.","Exceptional teaching and expertise in the health sciences. Instruction has helped and inspired me to achieve my best. Thorough explanation of learning expectations, assignments, and tests. I greatly appreciate the thoughtful and caring teaching style and always feel supported in class.","Providing endless learning material to assist in productive study. Fantastic professor — I appreciate the time and effort he puts into all his lectures."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #fdf3e7 0%, #fae8d0 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--gold); margin-top:0.4rem;">16/35 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Pathophysiology 1 · NURS1017</div>
+          <div class="testimonial-label">Fall 2023 · CFS Report</div>
+          <div class="testimonial-sub">Section 12520 · 7 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 3: W23 NURS1020 A&P 2 — Section 22515 -->
+      <div class="testimonial-card" data-category="a-and-p cfs" data-type="cfs" data-index="3"
+           data-pdf="files/course_feedback/W23_NURS1020_AP2_Section22515.pdf"
+           data-quotes='["Avinash has been a great professor! He is very welcoming and provides excellent support. He is very helpful and it is clear he wants students to succeed.","Breaking down big concepts into good metaphors for better recall and easy understanding — for example, explaining PT and PTT using table tennis and tennis."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #e4f2ef 0%, #d0ebe5 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-top:0.4rem;">4/39 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Anatomy &amp; Physiology 2 · NURS1020</div>
+          <div class="testimonial-label">Winter 2023 · CFS Report</div>
+          <div class="testimonial-sub">Section 22515 · 2 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 4: W23 NURS1020 A&P 2 — Section 22517 -->
+      <div class="testimonial-card" data-category="a-and-p cfs" data-type="cfs" data-index="4"
+           data-pdf="files/course_feedback/W23_NURS1020_AP2_Section22517.pdf"
+           data-quotes='["Teaching for a variety of learning styles.","Always taking time to explain concepts or ideas when they are not understood by the entire class.","His lectures are superb! Very energetic, engaging and interesting. All the course materials are provided. Can\u0027t afford to miss his lectures — please never let him leave (at least for the next 4 years). I have never seen such a knowledgeable professor who teaches so well. Highly respectable person.","I appreciate the fact that A&P and Pathophysiology are synchronized to the same systems during the same week.","He provides every resource to support my learning and answers all my questions.","There is no need for any improvement — I think everything in his courses (anatomy and pathophysiology) is perfect!"]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #e4f2ef 0%, #d0ebe5 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-top:0.4rem;">7/24 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Anatomy &amp; Physiology 2 · NURS1020</div>
+          <div class="testimonial-label">Winter 2023 · CFS Report</div>
+          <div class="testimonial-sub">Section 22517 · 6 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 5: F24 NURS1016 A&P 1 — Section 12449 -->
+      <div class="testimonial-card" data-category="a-and-p cfs" data-type="cfs" data-index="5"
+           data-pdf="files/course_feedback/F24_NURS1016_AP1_Section12449.pdf"
+           data-quotes='["Avinash is one of the greatest professors I have been taught by. The videos he uploaded to Blackboard that aligned with the in-class lectures with more detail were extremely beneficial. He is very kind and approachable. He always answers questions, even during breaks, and elaborates and explains how and why in terms and ways that are easy to understand.","After the first quiz I did not do very well and Avinash booked an online meeting with me and asked if I needed any extra help.","Avinash is an amazing professor — he reached out to me when I did poorly on a quiz in the first few weeks and always allows questions during class, breaks, emails, and office hours. His assignments and tests make sense and relate to the material and he provides clear instructions and rubrics.","Giving us practice quizzes. HUGE help. Learning outcomes also directly correlate with assessments.","Making myself and other students feel supported — like you want us to become nurses.","Providing many resources for weekly learning like practice quizzes for each unit, additional slideshows, and worksheets. Avinash always provided lots of feedback on assignments and was very engaging during class time. He provided videos, nursing examples, and drew diagrams to assist with our learning."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #e4f2ef 0%, #d0ebe5 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-top:0.4rem;">21/42 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Anatomy &amp; Physiology 1 · NURS1016</div>
+          <div class="testimonial-label">Fall 2024 · CFS Report</div>
+          <div class="testimonial-sub">Section 12449 · 15+ written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 6: F24 NURS1016 A&P 1 — Section 12450 -->
+      <div class="testimonial-card" data-category="a-and-p cfs" data-type="cfs" data-index="6"
+           data-pdf="files/course_feedback/F24_NURS1016_AP1_Section12450.pdf"
+           data-quotes='["Hand outs, in-class PowerPoint, narrative PowerPoint, hand-written notes — you name it and Avinash is using it. He\u0027s a master in the classroom and excels at his job.","Avinash is a remarkable teacher.","Creating a great learning environment, making great analogies, providing extra notes.","The professor includes multiple different formats of the course content for people who learn differently or who need extra support.","Genuinely seems like he wants us all to succeed and that made me feel really motivated to learn.","Being patient and considerate of the learning styles and paces students work at. Amazing professor.","Nothing could be added — this course ran so smoothly and Avinash taught it great!"]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #e4f2ef 0%, #d0ebe5 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-top:0.4rem;">12/36 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Anatomy &amp; Physiology 1 · NURS1016</div>
+          <div class="testimonial-label">Fall 2024 · CFS Report</div>
+          <div class="testimonial-sub">Section 12450 · 8 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 7: F24 NURS1017 Patho 1 — Section 12452 -->
+      <div class="testimonial-card" data-category="patho cfs" data-type="cfs" data-index="7"
+           data-pdf="files/course_feedback/F24_NURS1017_Patho1_Section12452.pdf"
+           data-quotes='["Avinash has been such a wonderful teacher throughout this semester. He is very knowledgeable, and you can tell that he has an interest in the content he is teaching. I feel like the feedback he gives is very reasonable and helps support my learning. I hope that I have Avinash as a professor in other classes throughout my time at Georgian.","Avinash has been the most amazing professor throughout this semester. He went out of his way to support my learning through answering my long emails, meeting with me privately, and supporting me along this learning journey. I have never felt so supported by a professor. He never made me feel silly or stupid for not understanding. He supported me as a student and an individual. Thank you Avinash for everything!","He is beyond knowledgeable, kind, resourceful, helpful and really allows students to engage in the material with real life examples.","He is very open to questions and loves to allow us to elaborate to facilitate independent learning. He is very funny and welcoming in class. He returns projects in a timely manner with amazing feedback that genuinely helps me learn.","No recommendations. He was amazing and I cannot wait to take more courses with him next semester. Thank you for supporting my learning unconditionally and providing positive and encouraging feedback!"]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #fdf3e7 0%, #fae8d0 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--gold); margin-top:0.4rem;">21/43 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Pathophysiology 1 · NURS1017</div>
+          <div class="testimonial-label">Fall 2024 · CFS Report</div>
+          <div class="testimonial-sub">Section 12452 · 16 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 8: F24 NURS1017 Patho 1 — Section 12453 -->
+      <div class="testimonial-card" data-category="patho cfs" data-type="cfs" data-index="8"
+           data-pdf="files/course_feedback/F24_NURS1017_Patho1_Section12453.pdf"
+           data-quotes='["Overall great professor — enjoyed his class very much.","Providing practice quizzes and case studies to prepare me for test evaluations.","Providing lots of resources, practice quizzes, available help, clear notes — and he\u0027s very good at explaining content.","Presenting the course content across multiple platforms and relating tough content to real life to break it down for his students.","Avinash is one of the greatest professors I have been taught by. He always answers questions, even during breaks, and elaborates and explains how and why in terms and ways that are easy to understand.","He is very knowledgeable. It\u0027s obvious he knows the material and exponentially more than what is taught in class.","None. It is perfect the way it is."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #fdf3e7 0%, #fae8d0 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--gold); margin-top:0.4rem;">17/39 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Pathophysiology 1 · NURS1017</div>
+          <div class="testimonial-label">Fall 2024 · CFS Report</div>
+          <div class="testimonial-sub">Section 12453 · 9 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 9: F24 NURS2020 Patho & Micro — Section 12488 -->
+      <div class="testimonial-card" data-category="patho cfs" data-type="cfs" data-index="9"
+           data-pdf="files/course_feedback/F24_NURS2020_PathoMicro_Section12488.pdf"
+           data-quotes='["Dr. Thadani has been an incredibly helpful instructor. His PowerPoint presentations on each weekly subject were clear, detailed, and very useful in supporting my learning. I\u0027m really glad we had the opportunity to learn from him, as his style of teaching made the content much easier to follow.","We were provided Professor Thadani\u0027s audio lecture for the patho class. This helped us a lot as a source to focus on for that course. Thank you Professor Thadani — you explained all the course materials very well. We all hoped that you were our patho professor.","His very well-done slides.","He is a wonderful Professor — I would love to have him back for any class.","Putting up clear narrated videos that helped me deepen my understanding.","Have Olga and Avinash teach the course together. They make a great team."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #fdf3e7 0%, #fae8d0 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--gold); margin-top:0.4rem;">21/42 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Pathophysiology &amp; Microbiology · NURS2020</div>
+          <div class="testimonial-label">Fall 2024 · CFS Report</div>
+          <div class="testimonial-sub">Section 12488 · 12 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 10: W24 NURS1020 A&P 2 — Section 22596 -->
+      <div class="testimonial-card" data-category="a-and-p cfs" data-type="cfs" data-index="10"
+           data-pdf="files/course_feedback/W24_NURS1020_AP2_Section22596.pdf"
+           data-quotes='["Professor provided handwritten notes, power points, recorded lectures and detailed explanation in an easy way to remember.","Professor is very knowledgeable and connects learning to other courses as well.","Avinash is the best prof I have ever had here at Georgian. He is always there to answer questions and is able to break down complex processes in a way I am able to understand. The videos posted on blackboard are very helpful as well if I am not able to make it to class.","Always explaining and judgement-free. Best ever!","Avinash was incredibly helpful in both semesters 1 & 2. I will miss having him as one of my professors next year :)","He is always willing to help and explain all questions and concerns thoroughly, replying to any emails in a reasonable time period."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #e4f2ef 0%, #d0ebe5 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-top:0.4rem;">18/36 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Anatomy &amp; Physiology 2 · NURS1020</div>
+          <div class="testimonial-label">Winter 2024 · CFS Report</div>
+          <div class="testimonial-sub">Section 22596 · 12 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 11: W24 NURS1020 A&P 2 — Section 22598 -->
+      <div class="testimonial-card" data-category="a-and-p cfs" data-type="cfs" data-index="11"
+           data-pdf="files/course_feedback/W24_NURS1020_AP2_Section22598.pdf"
+           data-quotes='["Providing details about how to improve, and timely feedback (even after taking over the pathophysiology classes, all feedback for both classes were done within 2 weeks).","Providing support where it was necessary, thoroughly explaining the concepts and aiding me in understanding the material through his patience.","Avinash is a great teacher. He makes sure we have the proper materials to learn, and is always willing to answer questions.","Dr. Avinash Thadani is the most amazing professor. He is approachable and such a resource for his students, I can not thank him enough for his time and patience.","He answers his emails promptly, stay after class if we need any extra help or clarification, and always answers questions during breaks in class. He is very supportive to our learning.","Avinash is extremely smart and highly educated. He can explain any question you have and gives very detailed feedback on assignments."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #e4f2ef 0%, #d0ebe5 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-top:0.4rem;">9/30 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Anatomy &amp; Physiology 2 · NURS1020</div>
+          <div class="testimonial-label">Winter 2024 · CFS Report</div>
+          <div class="testimonial-sub">Section 22598 · 6 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 12: W24 NURS1021 Patho 2 — Section 22600 -->
+      <div class="testimonial-card" data-category="patho cfs" data-type="cfs" data-index="12"
+           data-pdf="files/course_feedback/W24_NURS1021_Patho2_Section22600.pdf"
+           data-quotes='["Professor Avinash is well knowledgeable and an expert in his lessons.","He creates room for questions and ensures understanding and support.","Best professor ever! One of the best I have ever had. He encourages us and motivates us!"]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #fdf3e7 0%, #fae8d0 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--gold); margin-top:0.4rem;">8/29 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Pathophysiology 2 · NURS1021</div>
+          <div class="testimonial-label">Winter 2024 · CFS Report</div>
+          <div class="testimonial-sub">Section 22600 · 3 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 13: W24 NURS1021 Patho 2 — Section 22601 -->
+      <div class="testimonial-card" data-category="patho cfs" data-type="cfs" data-index="13"
+           data-pdf="files/course_feedback/W24_NURS1021_Patho2_Section22601.pdf"
+           data-quotes='["Being helpful in explaining theories discussed in class that I am unsure of, explaining clearly the lecture content.","Provides examples relating to the contents, providing amazing content and taking a strong interest in student success.","Professor Thadani provides detailed powerpoints, as well as handwritten notes and connects the learning to other courses which helps to understand material and learn it faster.","I would not want another teacher teaching this, he helps make it really understandable.","Always being available to answer questions if needed. He is always able to break down any complex process in a way that students are able to understand.","Avinash has been my favorite professor in first year. He is very knowledgeable, is quick to answer any questions, gets marks back in a timely manner, and is very patient. He has even helped me with my other courses when I needed extra help."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #fdf3e7 0%, #fae8d0 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--gold); margin-top:0.4rem;">13/33 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Pathophysiology 2 · NURS1021</div>
+          <div class="testimonial-label">Winter 2024 · CFS Report</div>
+          <div class="testimonial-sub">Section 22601 · 6 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 14: W25 NURS1020 A&P 2 — Section 22569 -->
+      <div class="testimonial-card" data-category="a-and-p cfs" data-type="cfs" data-index="14"
+           data-pdf="files/course_feedback/W25_NURS1020_AP2_Section22569.pdf"
+           data-quotes='["Best professor ever, very detailed and gives so much knowledge and information about topics.","Encouraging questions for more difficult material and provides us other resources such as the textbook or other websites for further learning and understanding.","Answering my questions, providing explanations and giving useful feedback on the assignments.","In various ways, he was always there to help me. He always helps me with one-on-one sessions to give me techniques to prepare for better notes and learning skills. He is so helpful and kind.","Explaining concepts well and providing reviews when needed, motivating us, and also providing course material to study."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #e4f2ef 0%, #d0ebe5 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-top:0.4rem;">13/42 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Anatomy &amp; Physiology 2 · NURS1020</div>
+          <div class="testimonial-label">Winter 2025 · CFS Report</div>
+          <div class="testimonial-sub">Section 22569 · 5 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 15: W25 NURS1020 A&P 2 — Section 22571 -->
+      <div class="testimonial-card" data-category="a-and-p cfs" data-type="cfs" data-index="15"
+           data-pdf="files/course_feedback/W25_NURS1020_AP2_Section22571.pdf"
+           data-quotes='["Avinash does a great job simplifying and breaking down content so it is easier to understand. He provides reviews and summaries for midterms and exams.","When I started A&amp;P 1, I was told by some seniors that it was the most difficult first year course. But Dr. Avinash made it so easy to understand concepts, taught us mnemonics where necessary, and always encouraged me. He is an excellent instructor committed to student success.","Avinash is an incredible teacher who genuinely cares about his students success and learning. He is the best, prioritizing understanding over memorization.","Providing detailed feedback and takes the time to explain the content in ways the students will understand. Makes the assessments fair for student learning.","Answering all my questions, explaining things in detail. He gets us engaged. He teaches thoroughly. He goes above and beyond, creates practice quizzes for us, and explains why wrong answers are wrong and why right answers are right."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #e4f2ef 0%, #d0ebe5 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-top:0.4rem;">14/44 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Anatomy &amp; Physiology 2 · NURS1020</div>
+          <div class="testimonial-label">Winter 2025 · CFS Report</div>
+          <div class="testimonial-sub">Section 22571 · 8 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 16: W25 NURS1021 Patho 2 — Section 22573 -->
+      <div class="testimonial-card" data-category="patho cfs" data-type="cfs" data-index="16"
+           data-pdf="files/course_feedback/W25_NURS1021_Patho2_Section22573.pdf"
+           data-quotes='["I learned a lot! I appreciate how well organized Avinash s classes are. The additional videos, the case studies, and quizzes really helped me with studying. I enjoyed every class.","He is very, very informed on the subjects in which he teaches and is very passionate about pathophysiology. He is able to answer any questions that my peers or I may have.","Explaining everything well, and provided additional resources to support learning. Super good teacher!","Motivating me and also supporting us in class."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #fdf3e7 0%, #fae8d0 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--gold); margin-top:0.4rem;">13/43 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Pathophysiology 2 · NURS1021</div>
+          <div class="testimonial-label">Winter 2025 · CFS Report</div>
+          <div class="testimonial-sub">Section 22573 · 5 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 17: W25 NURS1021 Patho 2 — Section 22574 -->
+      <div class="testimonial-card" data-category="patho cfs" data-type="cfs" data-index="17"
+           data-pdf="files/course_feedback/W25_NURS1021_Patho2_Section22574.pdf"
+           data-quotes='["Providing feedback and further learning tips and tricks to be successful in the course.","Providing case studies at the end of his presentations as a review of the material we learned.","For such a difficult subject, Avinash managed to organize lessons and content in a way that seemed less daunting. He always provided clarification when needed, went above and beyond to prepare review materials, and always provided detailed feedback. One of the best teachers.","Answering all my questions, explaining things in detail. He gets us engaged, teaches thoroughly, and goes above and beyond by creating practice quizzes."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #fdf3e7 0%, #fae8d0 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--gold); margin-top:0.4rem;">8/35 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Pathophysiology 2 · NURS1021</div>
+          <div class="testimonial-label">Winter 2025 · CFS Report</div>
+          <div class="testimonial-sub">Section 22574 · 4 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 18: W26 NURS1020 A&P 2 — Section 22171 -->
+      <div class="testimonial-card" data-category="a-and-p cfs" data-type="cfs" data-index="18"
+           data-pdf="files/course_feedback/W26_NURS1020_AP2_Section22171.pdf"
+           data-quotes='["Best professor ever, makes learning fun and you wanting to attend all classes because of his delivery method of the course.","Providing extra time for assignments and making practice quizzes similar to what we actually will be tested on. Creating assignments that reinforce concepts and better our understanding.","It is very helpful that he teaches both A&amp;P and Patho since they go hand-in-hand. The cadaver videos help a lot in seeing the anatomy of the body in real life.","Providing extra help if needed, he is invested in every student s learning and was an amazing professor. Goes above and beyond for his students.","I really enjoy the way Avinash teaches. I think he provides great resources and wants all of his students to succeed! He really helped me to understand the concepts that will help me in my nursing career.","Caring about my education and working hard to provide the necessary support when needed to ensure everyone is successful. He is kind and friendly and makes the learning atmosphere fun and engaging.","Honestly, Mr. Thadani does an amazing job with organization, preparation, and lectures. I always find myself understanding things so well in his classes. He gives great examples, and I never have a problem, especially with a heavy course like A&amp;P 2."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #e4f2ef 0%, #d0ebe5 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-top:0.4rem;">27/57 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Anatomy &amp; Physiology 2 · NURS1020</div>
+          <div class="testimonial-label">Winter 2026 · CFS Report</div>
+          <div class="testimonial-sub">Section 22171 · 11 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 19: W26 NURS1020 A&P 2 — Section 22172 -->
+      <div class="testimonial-card" data-category="a-and-p cfs" data-type="cfs" data-index="19"
+           data-pdf="files/course_feedback/W26_NURS1020_AP2_Section22172.pdf"
+           data-quotes='["Being supportive to students learning as well as going into depth on each subject. The professor supported my learning by providing ample resources and being kind, patient, respectful, and accommodating.","It is evident that Avinash cares and wants his students to succeed. He provides several resources such as learning outcomes, class slides, labeled diagrams, narrated videos, practice quizzes, and exams. He will always provide clear outlines and never leave you confused.","Providing visual support with in-class lessons alongside detailed video recordings of his lessons that allow me to go back and review any topics I had missed.","Having practice quizzes for each unit help me understand what I know and where I need to improve. Summary notes provide additional help for studying.","Avinash is organized! A poorly organized Blackboard shell and overly crowded PPT slides make it difficult to learn, but Avinash s shell is clean and organized.","Being supportive and approachable with any issues. Avinash shows he cares about each student and aims to help everyone not only understand the material but feel supported."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #e4f2ef 0%, #d0ebe5 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-top:0.4rem;">21/50 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Anatomy &amp; Physiology 2 · NURS1020</div>
+          <div class="testimonial-label">Winter 2026 · CFS Report</div>
+          <div class="testimonial-sub">Section 22172 · 10 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 20: W26 NURS1021 Patho 2 — Section 22174 -->
+      <div class="testimonial-card" data-category="patho cfs" data-type="cfs" data-index="20"
+           data-pdf="files/course_feedback/W26_NURS1021_Patho2_Section22174.pdf"
+           data-quotes='["Creating practice quizzes on each unit to help with studying as well as making our case study assignments very practical to reinforce what we have learned. He teaches each component thoroughly.","Providing detailed slideshows and explaining every concept extremely well helped me understand these very difficult concepts much easier. Avinash also provided very valuable feedback on assignments and tests.","He is invested in every student s learning and provides support specific to you. Best professor ever!","Explaining concepts in a way that are understandable. He is incredibly knowledgeable but also down-to-earth in a way that engages students and provides an atmosphere of mutual respect.","Professor Thadani is one of the most kind and caring professors I have ever met. He genuinely cares about his students and will help you if you don t feel confident.","Pathophysiology is a pretty complex course that builds off of Anatomy and Physiology. Mr. Thadani made things much easier with his teaching style; he is great at explaining complex material in a simple manner."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #fdf3e7 0%, #fae8d0 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--gold); margin-top:0.4rem;">25/56 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Pathophysiology 2 · NURS1021</div>
+          <div class="testimonial-label">Winter 2026 · CFS Report</div>
+          <div class="testimonial-sub">Section 22174 · 8 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+      <!-- CFS CARD 21: W26 NURS1021 Patho 2 — Section 22175 -->
+      <div class="testimonial-card" data-category="patho cfs" data-type="cfs" data-index="21"
+           data-pdf="files/course_feedback/W26_NURS1021_Patho2_Section22175.pdf"
+           data-quotes='["By providing a lot of resources such as practice questions and exam reviews, which were very helpful for learning, understanding, and retaining the content. I would like to thank and congratulate him for the great work he does.","Avinash provides so many resources to help students succeed! He provides us with practice exams, as well as weekly practice quizzes, so that we can check our learning. He is also very knowledgeable and keeps us up-to-date on current research.","Being extremely knowledgeable about course content, being passionate about the material being taught, and caring for the success of his students. He remains very personable and approachable.","It is evident that Avinash cares and wants his students to succeed. He provides clear outlines and never leaves you confused. His classes are engaging and he is a very highly talked about teacher.","Avinash is one of the most empathetic instructors that truly shows he cares about student success in all our courses."]'
+           onclick="openCfsModal(this)">
+        <div class="testimonial-thumb-placeholder" style="background: linear-gradient(135deg, #fdf3e7 0%, #fae8d0 100%);">
+          <div style="font-size:2rem; opacity:0.5;">📋</div>
+          <div class="thumb-label" style="margin-top:0.5rem;">Course Feedback Survey</div>
+          <div style="font-size:0.95rem; font-weight:600; color:var(--gold); margin-top:0.4rem;">15/53 responded</div>
+        </div>
+        <div class="testimonial-meta">
+          <div class="testimonial-tag">Pathophysiology 2 · NURS1021</div>
+          <div class="testimonial-label">Winter 2026 · CFS Report</div>
+          <div class="testimonial-sub">Section 22175 · 6 written comments</div>
+          <span class="testimonial-view-btn">Read student quotes →</span>
+        </div>
+      </div>
+
+
+    </div><!-- /testimonial-grid -->
+
+  </div>
+</section>
+
+<!-- BOOK MODAL — "Best Nursing Professor Ever" student notebook -->
+<div class="book-modal-overlay" id="book-modal" onclick="closeBookModalOnBg(event)">
+  <div class="book-modal">
+
+    <div class="book-modal-header">
+      <span class="book-modal-title" id="book-modal-title">"Best Nursing Professor Ever" — BScN Cohort 1, April 2023</span>
+      <button class="book-modal-close" onclick="closeBookModal()">✕</button>
+    </div>
+
+    <div class="book-page-viewer" id="book-page-viewer">
+      <img id="book-page-img" class="book-page-img" src="" alt="Page">
+      <div class="book-tap-prev" onclick="bookPage(-1)"><div class="book-tap-arrow">‹</div></div>
+      <div class="book-tap-next" onclick="bookPage(1)"><div class="book-tap-arrow">›</div></div>
+    </div>
+
+    <div class="book-page-meta">
+      <div class="book-page-author" id="book-page-author"></div>
+    </div>
+
+    <div class="book-modal-footer">
+      <button class="book-nav-btn" id="book-prev" onclick="bookPage(-1)">← Previous</button>
+      <div class="book-dots" id="book-dots"></div>
+      <button class="book-nav-btn" id="book-next" onclick="bookPage(1)">Next →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- CFS QUOTES MODAL -->
+<div class="book-modal-overlay" id="cfs-modal" onclick="closeCfsModalOnBg(event)" style="z-index:2100;">
+  <div class="book-modal" style="max-width:660px;">
+
+    <div class="book-modal-header">
+      <div>
+        <span class="book-modal-title" id="cfs-modal-title">Course Feedback Survey</span>
+        <div id="cfs-modal-sub" style="font-size:0.72rem; color:rgba(255,255,255,0.45); margin-top:2px; letter-spacing:0.05em;"></div>
+      </div>
+      <button class="book-modal-close" onclick="closeCfsModal()">✕</button>
+    </div>
+
+    <!-- Quote viewer -->
+    <div style="flex:1; overflow-y:auto; padding:2rem 2.5rem; background:#0d1525; display:flex; flex-direction:column; justify-content:center; min-height:200px;" id="cfs-quote-body">
+      <div id="cfs-quote-text" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.25rem; color:rgba(255,255,255,0.88); line-height:1.65;"></div>
+    </div>
+
+    <!-- Page meta -->
+    <div class="book-page-meta" style="justify-content:space-between; padding: 0.6rem 1.5rem;">
+      <span id="cfs-quote-counter" style="font-size:0.75rem; color:rgba(255,255,255,0.4); letter-spacing:0.05em;"></span>
+      <a id="cfs-pdf-link" href="#" target="_blank"
+         style="font-size:0.72rem; font-weight:500; letter-spacing:0.07em; text-transform:uppercase; color:var(--teal-mid); text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; transition:opacity 0.2s;"
+         onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+        View Full PDF Report ↗
+      </a>
+    </div>
+
+    <div class="book-modal-footer">
+      <button class="book-nav-btn" id="cfs-prev" onclick="cfsQuote(-1)">← Previous</button>
+      <div class="book-dots" id="cfs-dots"></div>
+      <button class="book-nav-btn" id="cfs-next" onclick="cfsQuote(1)">Next →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- SIMULATION MODAL -->
+<div class="book-modal-overlay" id="sim-modal" style="display: none;" onclick="closeSimulationModalOnBg(event)">
+  <div class="book-modal" style="max-width: 950px; height: 85vh; display: flex; flex-direction: column;">
+    <div class="book-modal-header" style="background: rgba(255, 255, 255, 0.03); color: white;">
+      <div>
+        <span class="book-modal-title" id="sim-modal-title">Interactive Simulation Evidence</span>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.45); margin-top:2px; letter-spacing:0.05em;">Evidence for Goal #1 — Expanding the library of AI-assisted virtual simulations</div>
+      </div>
+      <button class="book-modal-close" onclick="closeSimulationModal()">✕</button>
+    </div>
+    <div style="flex: 1; position: relative; background: #ffffff;">
+      <iframe id="sim-iframe" src="" style="width: 100%; height: 100%; border: none; background: #ffffff;" allow="fullscreen"></iframe>
+    </div>
+    <div class="book-modal-footer" style="padding: 0.8rem 1.5rem; justify-content: flex-end;">
+      <span style="font-size: 0.75rem; color: var(--text-muted); font-style: italic; margin-right: auto;">Built with the assistance of AI coding agents</span>
+      <button class="book-nav-btn" onclick="closeSimulationModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX OVERLAY (kept for any future image/PDF cards) -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightboxOnBg(event)">
+  <div class="lightbox-inner">
+    <div class="lightbox-header">
+      <span class="lightbox-title" id="lightbox-title">Student Testimonial</span>
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    </div>
+    <div class="lightbox-body" id="lightbox-body"></div>
+    <div class="lightbox-nav">
+      <button class="lightbox-nav-btn" id="lb-prev" onclick="shiftLightbox(-1)">← Previous</button>
+      <span class="lightbox-counter" id="lb-counter"></span>
+      <button class="lightbox-nav-btn" id="lb-next" onclick="shiftLightbox(1)">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- FACULTY PEER REVIEW -->
+<section id="peer-review" class="alt-bg">
+  <div class="container">
+    <div class="section-label">Faculty Peer Review</div>
+    <h2>Peer <em>Observations</em></h2>
+    <p class="section-intro">Peer observation and feedback is a cornerstone of reflective teaching practice. The entries below document formal and informal peer review of my teaching, connecting to the Reflector and Collaborator roles in the Faculty Competency Framework.</p>
+
+    <div class="peer-review-grid">
+
+      <div class="peer-review-card">
+        <div class="review-date">June, 2026</div>
+        <div class="review-title">Administrative/Committee Work</div>
+        <div class="review-reviewer">Michael Smith, Committee Member</div>
+        <div class="review-body">I have had the absolute pleasure of working with Avinash Thadani in the Georgian College Program Evaluation Committee for the HBSN/HBNA program. Avinash consistently demonstrates exceptional leadership, professionalism, and commitment to excellence in nursing education.
+        As a leader within the Program Evaluation Committee, Avinash is highly organized and thorough in his approach to planning, evaluation, and continuous quality improvement. Avinash brings a strong sense of dedication and motivation to ensuring that all aspects of content that the committee delivers are of the highest quality. He ensures that committee work is completed efficiently and with careful attention to detail. Avinash's leadership fosters collaboration, encourages diverse perspectives, and helps the team work toward shared goals.
+        Avinash is also a supportive and compassionate colleague who is always willing to assist others, share expertise, and contribute positively to the work environment. His kindness, approachability, and respect for colleagues create a culture of trust, teamwork, and mentorship. Most importantly, Avinash consistently demonstrates a genuine commitment to the success and well-being of the HBSN/HBNA program at Georgian College, faculty members, and the students we teach.
+        Overall, Avinash is an outstanding educator and leader whose organization, dedication, and collaborative spirit makes him an invaluable asset to the nursing program, Program Evaluation Committee, and academic community.</div>
+        <div class="review-artifacts">
+          <span class="chip">Program Evaluation Committee Feedback</span>
+        </div>
+      </div>
+
+      <div class="peer-review-card placeholder-card">
+        <div class="review-date">Add Date · Course</div>
+        <div class="review-title" style="color:var(--text-muted); font-style:italic;">Peer Observation #2 — Awaiting Entry</div>
+        <div class="review-reviewer">[Reviewer name and role]</div>
+        <div class="review-body" style="font-style:italic; color:rgba(107,127,143,0.65);">Describe the peer observation session. Consider: the teaching strategies used; how students responded; what the reviewer noticed that you had not. Reflect on what this peer relationship has meant to your development as a reflective educator.</div>
+        <div class="review-artifacts">
+          <span class="chip add">+ Add observation report</span>
+        </div>
+      </div>
+
+      <div class="peer-review-card placeholder-card" style="grid-column: 1 / -1;">
+        <div class="review-date">Reflective Note</div>
+        <div class="review-title" style="color:var(--text-muted); font-style:italic;">My Approach to Peer Review</div>
+        <div class="review-reviewer">[Add when ready]</div>
+        <div class="review-body" style="font-style:italic; color:rgba(107,127,143,0.65);">Use this space to reflect on peer review as a practice. What does it mean to invite a colleague into your classroom? What vulnerabilities and opportunities does this create? How does peer observation connect to your identity as a Reflector and Collaborator in the Faculty Competency Framework? What would you like a future peer reviewer to focus on?</div>
+        <div class="review-artifacts">
+          <span class="chip add">+ Add supporting document</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Script controllers are now loaded externally at the bottom of the body -->
+
+<!-- RESEARCH ETHICS BOARD -->
+<section id="ethics-board">
+  <div class="container">
+    <div class="section-label">More · Research Ethics</div>
+    <h2>Research <em>Ethics Board</em></h2>
+    <div class="divider"></div>
+    <div style="background: var(--mist); border: 1px dashed rgba(107,127,143,0.3); border-radius: var(--radius); padding: 2.5rem; max-width: 760px;">
+      <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; font-style: italic;">[Add your reflections and contributions as Chair of the Georgian College Research Ethics Board here. Consider: your leadership approach; notable decisions or policy work; how chairing the GCREB has shaped your understanding of research integrity; the learning resources you developed for applicants; and how this role connects to your identity as a researcher-educator.]</p>
+      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+        <div style="font-size: 0.75rem; color: var(--teal); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;">Key Roles</div>
+        <p style="font-size: 0.88rem; color: var(--slate);">Chair, GCREB — January 2023 – Present<br>Member, GCREB — September 2021 – December 2022</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM DEVELOPMENT -->
+<section id="program-dev" class="alt-bg">
+  <div class="container">
+    <div class="section-label">More · Program Development</div>
+    <h2>Program <em>Development</em></h2>
+    <div class="divider"></div>
+    <div style="background: var(--white); border: 1px dashed rgba(107,127,143,0.3); border-radius: var(--radius); padding: 2.5rem; max-width: 760px;">
+      <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; font-style: italic;">[Document your contributions to program development at Georgian College. This could include your role in building the HBSN program from the ground up, developing program-level learning outcomes, working toward CNO approval, or contributing to program review and renewal processes. What was your vision for the program? What challenges did you navigate? What are you most proud of?]</p>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM DESIGN -->
+<section id="curriculum">
+  <div class="container">
+    <div class="section-label">More · Curriculum Design</div>
+    <h2>Curriculum <em>Design</em></h2>
+    <div class="divider"></div>
+    <div style="background: var(--mist); border: 1px dashed rgba(107,127,143,0.3); border-radius: var(--radius); padding: 2.5rem; max-width: 760px;">
+      <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; font-style: italic;">[Showcase your curriculum design work here — particularly the four nursing science courses you have developed or are redeveloping (NURS 1016, 1017, 1020, 1021, and 2020). Describe your design principles, your use of OER (OpenStax), your approach to aligning assessments with learning outcomes, and any innovations you've introduced. Include course syllabi, sample learning activities, or assessment rubrics as artifacts.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACCREDITATION -->
+<section id="accreditation" class="alt-bg">
+  <div class="container">
+    <div class="section-label">More · Accreditation</div>
+    <h2>Accreditation <em>Work</em></h2>
+    <div class="divider"></div>
+    <div style="background: var(--white); border: 1px dashed rgba(107,127,143,0.3); border-radius: var(--radius); padding: 2.5rem; max-width: 760px;">
+      <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; font-style: italic;">[Document your contributions to accreditation and quality assurance processes. This may include CNO program approval work, curriculum mapping to professional competency standards, preparation of self-study documents, or participation in site visits. Reflect on what accreditation processes have taught you about program quality and accountability in professional nursing education.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMMITTEE WORK -->
+<section id="committees">
+  <div class="container">
+    <div class="section-label">More · Committees</div>
+    <h2>Committee <em>Work</em></h2>
+    <div class="divider"></div>
+    <div style="background: var(--mist); border: 1px dashed rgba(107,127,143,0.3); border-radius: var(--radius); padding: 2.5rem; max-width: 760px;">
+      <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; font-style: italic;">[List and reflect on your committee contributions at Georgian College and beyond. Consider: program-level committees, school-level governance, cross-college initiatives, and any external committee or advisory roles. For each, describe your contribution and what you gained. Committee work is evidence of your Collaborator and Changemaker roles within the Faculty Competency Framework.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Avinash Thadani, Ph.D.</div>
+  <div class="footer-divider"></div>
+  <div class="footer-sub">Faculty — HBSN Nursing Program · Georgian College · Formative Faculty Reflection Portfolio</div>
+  <ul class="footer-links">
+    <li><a href="https://www.georgiancollege.ca/profile/avinash-thadani/" target="_blank">Georgian Profile</a></li>
+    <li><a href="https://www.georgiancollege.ca/ctlae/faculty-competencies/#roles" target="_blank">Competency Framework</a></li>
+    <li><a href="#top">Back to Top</a></li>
+  </ul>
+</footer>
+
+<script src="scripts.js" defer></script>
+
+</body>
+</html>
