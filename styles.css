@@ -792,11 +792,15 @@ html[data-theme="dark"] .badge-transforming {
 }
 .entry-role-tag {
   font-size: 0.7rem;
+  font-weight: 500;
   padding: 2px 10px;
   border-radius: 100px;
   border: 1px solid var(--border);
   color: var(--text);
   background-color: var(--card-bg);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 .entry-title {
   font-family: 'Cormorant Garamond', serif;
@@ -1016,72 +1020,86 @@ html[data-theme="dark"] .goal-year.planned {
   align-items: center;
   gap: 4px;
 }
-.role-legend-badge.designer, .role-legend-badge.reflector {
+.role-legend-badge.designer, .role-legend-badge.reflector,
+.entry-role-tag.designer, .entry-role-tag.reflector {
   color: #1a7a6e;
   background: #e4f2ef;
   border: 1px solid rgba(26, 122, 110, 0.3);
 }
-html[data-theme="dark"] .role-legend-badge.designer, html[data-theme="dark"] .role-legend-badge.reflector {
+html[data-theme="dark"] .role-legend-badge.designer, html[data-theme="dark"] .role-legend-badge.reflector,
+html[data-theme="dark"] .entry-role-tag.designer, html[data-theme="dark"] .entry-role-tag.reflector {
   color: #85dfd3;
   background: rgba(26, 122, 110, 0.2);
   border: 1px solid rgba(133, 223, 211, 0.3);
 }
-.role-legend-badge.researcher {
+.role-legend-badge.researcher,
+.entry-role-tag.researcher {
   color: #c8923f;
   background: #fdf3e7;
   border: 1px solid rgba(200, 146, 63, 0.3);
 }
-html[data-theme="dark"] .role-legend-badge.researcher {
+html[data-theme="dark"] .role-legend-badge.researcher,
+html[data-theme="dark"] .entry-role-tag.researcher {
   color: #f7c37d;
   background: rgba(200, 146, 63, 0.2);
   border: 1px solid rgba(247, 195, 125, 0.3);
 }
-.role-legend-badge.inclusive-practitioner {
+.role-legend-badge.inclusive-practitioner,
+.entry-role-tag.inclusive-practitioner {
   color: #5c52bf;
   background: #eef0ff;
   border: 1px solid rgba(92, 82, 191, 0.3);
 }
-html[data-theme="dark"] .role-legend-badge.inclusive-practitioner {
+html[data-theme="dark"] .role-legend-badge.inclusive-practitioner,
+html[data-theme="dark"] .entry-role-tag.inclusive-practitioner {
   color: #9f96f9;
   background: rgba(92, 82, 191, 0.2);
   border: 1px solid rgba(159, 150, 249, 0.3);
 }
-.role-legend-badge.changemaker {
+.role-legend-badge.changemaker,
+.entry-role-tag.changemaker {
   color: #a03860;
   background: #fce9f0;
   border: 1px solid rgba(160, 56, 96, 0.3);
 }
-html[data-theme="dark"] .role-legend-badge.changemaker {
+html[data-theme="dark"] .role-legend-badge.changemaker,
+html[data-theme="dark"] .entry-role-tag.changemaker {
   color: #fca7c5;
   background: rgba(160, 56, 96, 0.2);
   border: 1px solid rgba(252, 167, 197, 0.3);
 }
-.role-legend-badge.digital-explorer {
+.role-legend-badge.digital-explorer,
+.entry-role-tag.digital-explorer {
   color: #185fa5;
   background: #e6f1fb;
   border: 1px solid rgba(24, 95, 165, 0.3);
 }
-html[data-theme="dark"] .role-legend-badge.digital-explorer {
+html[data-theme="dark"] .role-legend-badge.digital-explorer,
+html[data-theme="dark"] .entry-role-tag.digital-explorer {
   color: #72b2f6;
   background: rgba(24, 95, 165, 0.2);
   border: 1px solid rgba(114, 178, 246, 0.3);
 }
-.role-legend-badge.collaborator {
+.role-legend-badge.collaborator,
+.entry-role-tag.collaborator {
   color: #3b6d11;
   background: #eaf3de;
   border: 1px solid rgba(59, 109, 17, 0.3);
 }
-html[data-theme="dark"] .role-legend-badge.collaborator {
+html[data-theme="dark"] .role-legend-badge.collaborator,
+html[data-theme="dark"] .entry-role-tag.collaborator {
   color: #92d658;
   background: rgba(59, 109, 17, 0.2);
   border: 1px solid rgba(146, 214, 88, 0.3);
 }
-.role-legend-badge.mentor {
+.role-legend-badge.mentor,
+.entry-role-tag.mentor {
   color: #854f0b;
   background: #faeeda;
   border: 1px solid rgba(133, 79, 11, 0.3);
 }
-html[data-theme="dark"] .role-legend-badge.mentor {
+html[data-theme="dark"] .role-legend-badge.mentor,
+html[data-theme="dark"] .entry-role-tag.mentor {
   color: #e2ab5c;
   background: rgba(133, 79, 11, 0.2);
   border: 1px solid rgba(226, 171, 92, 0.3);
