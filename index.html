@@ -509,13 +509,13 @@
         </div>
       </div>
       <!-- Digital Explorer -->
-      <div class="role-card" style="--role-color: #185fa5; --role-bg: #e6f1fb; cursor: default;">
+      <div class="role-card" style="--role-color: #185fa5; --role-bg: #e6f1fb;" onclick="document.getElementById('digital-entry').scrollIntoView({behavior:'smooth'})">
         <div class="role-icon">💻</div>
         <div class="role-name">Digital Explorer</div>
         <div class="role-desc">Innovating with digital solutions in teaching and learning.</div>
         <div class="role-status">
           <span class="status-badge badge-transforming">Transforming</span>
-          <span class="add-icon">+</span>
+          <span class="add-icon">→</span>
         </div>
       </div>
       <!-- Collaborator -->
@@ -529,13 +529,13 @@
         </div>
       </div>
       <!-- Reflector -->
-      <div class="role-card" style="--role-color: #1a7a6e; --role-bg: #e4f2ef;" onclick="document.getElementById('reflector-entry').scrollIntoView({behavior:'smooth'})">
+      <div class="role-card" style="--role-color: #1a7a6e; --role-bg: #e4f2ef; cursor: default;">
         <div class="role-icon">🪞</div>
         <div class="role-name">Reflector</div>
         <div class="role-desc">Integrating feedback to continuously improve teaching practices.</div>
         <div class="role-status">
           <span class="status-badge badge-performing">Performing</span>
-          <span class="add-icon">→</span>
+          <span class="add-icon">+</span>
         </div>
       </div>
       <!-- Mentor -->
@@ -674,17 +674,23 @@
         </div>
       </div>
 
-      <!-- Reflector -->
-      <div class="timeline-entry" id="reflector-entry">
-        <div class="timeline-dot" style="background:#1a7a6e; box-shadow: 0 0 0 2px #1a7a6e;"></div>
+      <!-- Digital Explorer -->
+      <div class="timeline-entry" id="digital-entry">
+        <div class="timeline-dot" style="background:#185fa5; box-shadow: 0 0 0 2px #185fa5;"></div>
         <div class="entry-meta">
           <span class="entry-date">2024 – Present</span>
-          <span class="entry-role-tag">Reflector</span>
-          <span class="status-badge badge-performing" style="font-size:0.68rem;">Performing</span>
+          <span class="entry-role-tag">Digital Explorer</span>
+          <span class="status-badge badge-transforming" style="font-size:0.68rem;">Transforming</span>
         </div>
-        <div class="entry-title">Integrating Student Evaluations to Optimize Nursing Science Pedagogy</div>
-        <div class="entry-body">Analysis of student evaluations across multiple terms (Winter 2024 through Winter 2026) highlights a consensus regarding the efficacy of integrated formative assessments, custom chapter practice quizzes, and multimodal study aids (e.g., narrated lectures, cadaver videos, and handwritten notes) in mitigating the high cognitive load of the A&P and Patho courses. To build on these student-reported successes, I plan to systematically incorporate more structured retrieval practice (Roediger & Karpicke, 2006) and low-stakes formative feedback loops (Black & Wiliam, 1998) directly into classroom sessions. These learning activities are grounded in Cognitive Load Theory (Sweller, 1988) and Mayer’s Cognitive Theory of Multimedia Learning (Mayer, 2002). Future iterations of these learning resources will focus on refining these digital tools and blackboard organization to ensure that the learning resources are scaffolded to meet diverse student needs, thereby bolstering student self-efficacy and performance in these fundamental nursing courses.</div>
+        <div class="entry-title">Developing AI-assisted Virtual Simulations</div>
+        <div class="entry-body">
+          <p>My work as a Digital Explorer flows directly from a conviction that students learn most deeply not by passively absorbing information, but through active, engaged participation in their own learning. It is this belief that has led me to develop a growing collection of interactive virtual simulations built with the assistance of AI coding agents. These simulations will be designed specifically to fill the gaps in the Open Educational Resources I use across my Anatomy and Physiology (NURS 1016, NURS 1020) and Pathophysiology (NURS 1017, NURS 1021) courses. While the OER textbooks themselves are excellent, the supplementary materials that typically accompany commercial publisher packages (e.g., interactive tools, simulations, and rich formative activities) remain conspicuously sparse, and I have come to see this gap not as a limitation to lament but as an invitation to create. Although these digital simulations are not, strictly speaking, the hands-on kinesthetic experiences I would ideally provide, they nonetheless offer a depth of engagement and immersion that simply reading a textbook or listening to a lecture cannot match.</p>
+          <p>For me, the pedagogical moment that matters most arrives when a student can manipulate a physiological variable and watch the body respond in real time. Building on my existing Digital Explorer projects such as the virtual blood typing experiment (see link below), I am working towards developing a small but purposeful library of simulations embedded meaningfully across all four courses that I teach. These simulations will not exist as novelties but as deliberate pedagogical instruments chosen because I believe they spark curiosity, deliver immediate feedback, and render abstract physiological concepts immediately tangible and comprehensible. I remain mindful, too, that technology must always serve learning rather than the reverse, and I am committed to evaluating these tools honestly rather than assuming their value. I regard myself as a Digital Explorer not because of innovation for its own sake, but innovation in the service of deeper, more durable, and more equitable student learning.</p>
+        </div>
         <div class="artifact-chips">
+          <a href="#" class="chip" onclick="event.preventDefault(); openSimulationModal('files/simulations/blood_typing.html');" style="display: inline-flex; align-items: center; gap: 0.35rem;">
+            <span>👁️</span> Play Blood Typing Simulation
+          </a>
         </div>
       </div>
 
