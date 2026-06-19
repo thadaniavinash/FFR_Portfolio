@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Blood Typing Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0c1118;
+      --bench:     #141a22;
+      --card:      #1c2330;
+      --border:    #2a3444;
+      --text:      #dde6f0;
+      --dim:       #6b7e96;
+      --ui-blue:   #4fa8e8;
+      --blue-glow: rgba(79,168,232,0.25);
+      --green:     #3ecf70;
+      --red:       #e84f4f;
+      --blood:     #c01030;
+      --blood-hi:  #f04060;
+      /* Per-antibody colours */
+      --ab-a-dark:   #0b1e6e;
+      --ab-a-border: #2d5ce8;
+      --ab-a-liquid: rgba(55,110,240,0.55);
+      --ab-a-drop:   #5588ff;
+      --ab-b-dark:   #5a3c00;
+      --ab-b-border: #cc9a00;
+      --ab-b-liquid: rgba(215,165,10,0.55);
+      --ab-b-drop:   #eebb10;
+      --ab-r-dark:   #063220;
+      --ab-r-border: #1a9944;
+      --ab-r-liquid: rgba(35,175,85,0.55);
+      --ab-r-drop:   #33dd77;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      padding: 20px 16px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── HEADER ── */
+    .hdr {
+      width:100%; max-width:820px;
+      margin-bottom:18px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+    }
+    .hdr-title {
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:1.6rem; font-weight:700;
+      letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--ui-blue);
+      display:flex; align-items:center; gap:10px;
+    }
+    .hdr-title .dot { color:var(--blood-hi); }
+    .score-pill {
+      display:flex; gap:16px;
+      background:var(--card); border:1px solid var(--border);
+      border-radius:100px; padding:6px 18px;
+      font-family:'DM Mono',monospace; font-size:0.8rem;
+    }
+    .score-item { color:var(--dim); }
+    .score-item b { color:var(--text); }
+
+    /* ── PROGRESS ── */
+    .progress {
+      width:100%; max-width:820px;
+      display:flex; align-items:center;
+      margin-bottom:14px;
+    }
+    .prog-step {
+      flex:1; display:flex; flex-direction:column;
+      align-items:center; gap:5px; position:relative;
+    }
+    .prog-step:not(:last-child)::after {
+      content:''; position:absolute;
+      top:11px; left:55%; width:90%; height:2px;
+      background:var(--border); transition:background .4s;
+    }
+    .prog-step.done:not(:last-child)::after { background:var(--green); }
+    .prog-circle {
+      width:22px; height:22px; border-radius:50%;
+      border:2px solid var(--border); background:var(--card);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:.7rem; font-weight:700; color:var(--dim);
+      transition:all .3s; z-index:1;
+    }
+    .prog-step.active .prog-circle { border-color:var(--ui-blue); color:var(--ui-blue); box-shadow:0 0 0 3px var(--blue-glow); }
+    .prog-step.done   .prog-circle { border-color:var(--green); background:var(--green); color:#0c1118; }
+    .prog-label {
+      font-size:.6rem; letter-spacing:.5px; text-transform:uppercase;
+      color:var(--dim); font-family:'Barlow Condensed',sans-serif;
+    }
+    .prog-step.active .prog-label { color:var(--ui-blue); }
+    .prog-step.done   .prog-label { color:var(--green); }
+
+    /* ── INSTRUCTION ── */
+    .instr {
+      width:100%; max-width:820px;
+      padding:11px 18px;
+      background:rgba(79,168,232,.08); border:1px solid rgba(79,168,232,.25);
+      border-radius:8px; font-size:.87rem; color:var(--ui-blue);
+      margin-bottom:18px; min-height:42px;
+      display:flex; align-items:center; gap:8px;
+    }
+    .instr-icon { font-size:1rem; flex-shrink:0; }
+
+    /* ── BENCH ── */
+    .bench {
+      width:100%; max-width:820px;
+      background:var(--bench); border:1px solid var(--border);
+      border-radius:14px; padding:24px 20px 20px;
+      margin-bottom:16px;
+    }
+
+    /* ── FINGER AREA ── */
+    .finger-area {
+      display:flex; align-items:center; justify-content:center;
+      gap:36px; padding-bottom:22px; margin-bottom:22px;
+      border-bottom:1px solid var(--border);
+    }
+    .finger-svg { width:68px; height:130px; filter:drop-shadow(0 4px 12px rgba(0,0,0,.5)); }
+    .finger-status {
+      font-size:.7rem; color:var(--dim);
+      font-family:'Barlow Condensed',sans-serif;
+      letter-spacing:1px; text-transform:uppercase;
+      text-align:center; margin-top:6px;
+    }
+
+    /* Lancet */
+    .lancet {
+      display:flex; flex-direction:column; align-items:center;
+      gap:6px; cursor:pointer; user-select:none; transition:transform .1s;
+    }
+    .lancet:active:not(.used) { transform:scale(.93) translateY(2px); }
+    .lancet-body {
+      width:38px; height:86px;
+      background:linear-gradient(160deg,#4e5d73 0%,#2c3848 60%,#1e2a38 100%);
+      border-radius:7px 7px 3px 3px; border:1px solid #5a6e88;
+      position:relative; transition:box-shadow .3s;
+    }
+    .lancet-body::before {
+      content:''; position:absolute; top:8px; left:8px;
+      width:5px; height:60px;
+      background:rgba(255,255,255,.06); border-radius:3px;
+    }
+    .lancet-tip-wrap { width:38px; display:flex; justify-content:center; }
+    .lancet-tip {
+      width:10px; height:18px;
+      background:linear-gradient(180deg,#a0aec0 0%,#4a5568 100%);
+      clip-path:polygon(15% 0%,85% 0%,100% 100%,0% 100%);
+    }
+    .lancet-lbl {
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:.65rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--dim);
+    }
+    .lancet.pulse .lancet-body { animation:lancetPulse 1.6s ease-in-out infinite; }
+    .lancet.used  { opacity:.4; pointer-events:none; }
+    @keyframes lancetPulse {
+      0%,100% { box-shadow:0 0 0 0 rgba(79,168,232,0); }
+      50%     { box-shadow:0 0 14px 4px rgba(79,168,232,.45); }
+    }
+
+    /* ── STATIONS ── */
+    .stations {
+      display:flex; justify-content:center;
+      gap:22px; flex-wrap:wrap;
+    }
+    .station {
+      display:flex; flex-direction:column; align-items:center; gap:0;
+    }
+
+    /* Dropper */
+    .dropper {
+      display:flex; flex-direction:column; align-items:center;
+      cursor:pointer; user-select:none;
+      transition:transform .1s, opacity .3s;
+      padding-bottom:2px; position:relative;
+    }
+    .dropper:active:not(.disabled):not(.used) { transform:translateY(3px); }
+    .dropper.disabled { opacity:.22; cursor:not-allowed; pointer-events:none; }
+    .dropper.used     { opacity:.38; cursor:not-allowed; pointer-events:none; }
+    .dropper.active-drop { animation:dropperGlow 1.6s ease-in-out infinite; }
+    @keyframes dropperGlow {
+      0%,100% { filter:drop-shadow(0 0 0 rgba(255,255,255,0)); }
+      50%     { filter:drop-shadow(0 0 7px rgba(255,255,255,.5)); }
+    }
+
+    .dropper-cap {
+      width:26px; height:11px;
+      background:linear-gradient(180deg,#c08828 0%,#906018 100%);
+      border-radius:3px 3px 0 0; border:1px solid #d09030; border-bottom:none;
+    }
+    .dropper-bottle {
+      width:68px; height:94px;
+      border:1px solid #2e4060; border-radius:3px 3px 7px 7px;
+      position:relative; overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+    }
+    /* Per-antibody bottle styling */
+    #dropper-A .dropper-bottle {
+      background:linear-gradient(160deg,rgba(15,30,110,.9) 0%,rgba(8,18,70,1) 100%);
+      border-color:var(--ab-a-border);
+    }
+    #dropper-A .dropper-liquid { background:var(--ab-a-liquid); border-top-color:var(--ab-a-border); }
+    #dropper-B .dropper-bottle {
+      background:linear-gradient(160deg,rgba(90,65,0,.9) 0%,rgba(60,42,0,1) 100%);
+      border-color:var(--ab-b-border);
+    }
+    #dropper-B .dropper-liquid { background:var(--ab-b-liquid); border-top-color:var(--ab-b-border); }
+    #dropper-Rh .dropper-bottle {
+      background:linear-gradient(160deg,rgba(8,70,35,.9) 0%,rgba(4,45,22,1) 100%);
+      border-color:var(--ab-r-border);
+    }
+    #dropper-Rh .dropper-liquid { background:var(--ab-r-liquid); border-top-color:var(--ab-r-border); }
+
+    .dropper-bottle::before {
+      content:''; position:absolute; top:0; left:8px;
+      width:7px; height:100%;
+      background:rgba(255,255,255,.05); border-radius:0;
+    }
+    .dropper-liquid {
+      position:absolute; bottom:0; left:0; right:0;
+      height:62%; border-top:1px solid rgba(255,255,255,.2);
+    }
+    .dropper-label {
+      position:relative; z-index:2;
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:.82rem; font-weight:700;
+      letter-spacing:.8px; text-transform:uppercase;
+      color:rgba(225,235,250,.9);
+      text-align:center; line-height:1.3; padding:0 5px;
+    }
+    .dropper-nozzle {
+      width:14px; height:18px;
+      border:1px solid #2e4060; border-top:none;
+      border-radius:0 0 4px 4px;
+    }
+    #dropper-A  .dropper-nozzle { background:var(--ab-a-dark); border-color:var(--ab-a-border); }
+    #dropper-B  .dropper-nozzle { background:var(--ab-b-dark); border-color:var(--ab-b-border); }
+    #dropper-Rh .dropper-nozzle { background:var(--ab-r-dark); border-color:var(--ab-r-border); }
+
+    /* Slide */
+    .slide-wrap { position:relative; }
+    .slide {
+      display:block;
+      background:rgba(180,210,240,.05);
+      border:1px solid rgba(100,160,220,.3);
+      border-radius:2px; cursor:default;
+      transition:border-color .3s, box-shadow .3s;
+    }
+    .slide.await-blood {
+      cursor:pointer;
+      animation:slideGlow 1.6s ease-in-out infinite;
+    }
+    @keyframes slideGlow {
+      0%,100% { border-color:rgba(100,160,220,.3); box-shadow:none; }
+      50%     { border-color:rgba(79,168,232,.8);  box-shadow:0 0 10px rgba(79,168,232,.3); }
+    }
+
+    /* Flying drop (blood or antibody) */
+    .fly-drop {
+      position:fixed;
+      width:8px; height:10px;
+      border-radius:50% 50% 60% 60%;
+      pointer-events:none; z-index:1000;
+    }
+
+    /* ── ANSWER ── */
+    .answer-wrap {
+      width:100%; max-width:820px;
+      background:var(--bench); border:1px solid var(--border);
+      border-radius:14px; padding:20px;
+      margin-bottom:14px; display:none;
+    }
+    .answer-wrap.show { display:block; }
+    .answer-hd {
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:1.15rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+      color:var(--text); margin-bottom:14px;
+    }
+    .answer-row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .answer-input {
+      flex:1; min-width:140px; max-width:220px;
+      padding:10px 15px;
+      background:var(--card); border:1px solid var(--border);
+      border-radius:8px; color:var(--text);
+      font-family:'DM Mono',monospace; font-size:1rem;
+      outline:none; transition:border-color .2s, box-shadow .2s;
+    }
+    .answer-input:focus { border-color:var(--ui-blue); box-shadow:0 0 0 3px var(--blue-glow); }
+    .answer-input::placeholder { color:var(--dim); font-size:.85rem; }
+    .submit-btn {
+      padding:10px 26px;
+      background:var(--ui-blue); color:#0c1118;
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:1rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+      border:none; border-radius:8px; cursor:pointer;
+      transition:background .15s, transform .1s;
+    }
+    .submit-btn:hover  { background:#72bef4; }
+    .submit-btn:active { transform:scale(.96); }
+
+    /* Feedback */
+    .feedback { margin-top:16px; padding:16px; border-radius:10px; display:none; }
+    .feedback.show    { display:block; }
+    .feedback.correct { background:rgba(62,207,112,.08);  border:1px solid rgba(62,207,112,.3); }
+    .feedback.wrong   { background:rgba(232,79,79,.08);   border:1px solid rgba(232,79,79,.3);  }
+    .fb-heading {
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:.72rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--dim); margin-bottom:10px;
+    }
+    .fb-result {
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:1.25rem; letter-spacing:1px; margin-bottom:10px;
+    }
+    .feedback.correct .fb-result { color:var(--green); }
+    .feedback.wrong   .fb-result { color:var(--red);   }
+    .rxn-table { width:100%; border-collapse:collapse; margin:10px 0; font-size:.8rem; }
+    .rxn-table th, .rxn-table td { padding:6px 12px; border:1px solid var(--border); text-align:center; }
+    .rxn-table th {
+      background:var(--card); font-family:'Barlow Condensed',sans-serif;
+      letter-spacing:1px; text-transform:uppercase; color:var(--dim); font-size:.72rem;
+    }
+    .clumped  { color:var(--red);   font-weight:500; }
+    .no-clump { color:var(--dim); }
+    .fb-explanation {
+      margin-top:12px; padding-top:12px; border-top:1px solid var(--border);
+      font-size:.86rem; font-weight:500; color:var(--text); line-height:1.75;
+    }
+    .fb-explanation em { color:var(--text); font-style:italic; }
+
+    /* Reset */
+    .reset-btn {
+      display:none; width:100%; max-width:820px;
+      padding:12px; background:transparent;
+      border:1px solid var(--border); border-radius:10px;
+      color:var(--dim);
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:.95rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+      cursor:pointer; transition:border-color .2s, color .2s; margin-bottom:8px;
+    }
+    .reset-btn:hover { border-color:var(--ui-blue); color:var(--ui-blue); }
+    .reset-btn.show  { display:block; }
+
+    @media (max-width:520px) {
+      .stations { gap:14px; }
+      .dropper-bottle { width:60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-title"><span class="dot">⬤</span> Blood Typing Lab</div>
+  <div class="score-pill">
+    <span class="score-item">Attempts <b id="sAttempts">0</b></span>
+    <span class="score-item">Correct <b id="sCorrect">0</b></span>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress">
+  <div class="prog-step active" id="ps1"><div class="prog-circle">1</div><div class="prog-label">Prick</div></div>
+  <div class="prog-step"        id="ps2"><div class="prog-circle">2</div><div class="prog-label">Load Slides</div></div>
+  <div class="prog-step"        id="ps3"><div class="prog-circle">3</div><div class="prog-label">Add Antibody</div></div>
+  <div class="prog-step"        id="ps4"><div class="prog-circle">4</div><div class="prog-label">Interpret</div></div>
+</div>
+
+<!-- INSTRUCTION -->
+<div class="instr">
+  <span class="instr-icon">🔬</span>
+  <span id="instrText">Step 1 — Click the lancet to prick your finger and collect a blood sample.</span>
+</div>
+
+<!-- BENCH -->
+<div class="bench">
+
+  <!-- FINGER + LANCET -->
+  <div class="finger-area">
+    <div>
+      <svg class="finger-svg" id="fingerSVG" viewBox="0 0 68 130" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="skinG" cx="40%" cy="35%" r="60%">
+            <stop offset="0%"   stop-color="#f8d9c8"/>
+            <stop offset="100%" stop-color="#d4987c"/>
+          </radialGradient>
+          <radialGradient id="nailG" cx="40%" cy="30%" r="70%">
+            <stop offset="0%"   stop-color="#fceee8"/>
+            <stop offset="100%" stop-color="#e8c4b0"/>
+          </radialGradient>
+          <radialGradient id="bloodG" cx="35%" cy="30%" r="65%">
+            <stop offset="0%"   stop-color="#ff6070"/>
+            <stop offset="60%"  stop-color="#c01030"/>
+            <stop offset="100%" stop-color="#7a0010"/>
+          </radialGradient>
+        </defs>
+        <path d="M18,130 L18,52 Q18,6 34,6 Q50,6 50,52 L50,130 Z"
+              fill="url(#skinG)" stroke="#c08060" stroke-width=".8"/>
+        <ellipse cx="34" cy="28" rx="9.5" ry="16"
+                 fill="url(#nailG)" stroke="#d4a888" stroke-width=".7" opacity=".9"/>
+        <path d="M19,80 Q34,77 49,80" fill="none" stroke="#c08060" stroke-width=".8" opacity=".6"/>
+        <path d="M19,100 Q34,97 49,100" fill="none" stroke="#c08060" stroke-width=".7" opacity=".4"/>
+        <!-- Blood drop – starts invisible -->
+        <circle id="fingerDrop" cx="34" cy="8" r="0"
+                fill="url(#bloodG)" opacity="0"/>
+      </svg>
+      <div class="finger-status" id="fingerStatus">Ready</div>
+    </div>
+
+    <div class="lancet pulse" id="lancetBtn" onclick="prickFinger()">
+      <div class="lancet-body"></div>
+      <div class="lancet-tip-wrap"><div class="lancet-tip"></div></div>
+      <div class="lancet-lbl">Lancet</div>
+    </div>
+  </div>
+
+  <!-- STATIONS -->
+  <div class="stations">
+
+    <div class="station" id="st-A">
+      <div class="dropper disabled" id="dropper-A" onclick="addAntibody('A')">
+        <div class="dropper-cap"></div>
+        <div class="dropper-bottle"><div class="dropper-liquid"></div><div class="dropper-label">Anti-A<br>Antibody</div></div>
+        <div class="dropper-nozzle"></div>
+      </div>
+      <div class="slide-wrap">
+        <canvas class="slide" id="slide-A" width="134" height="110" onclick="placeBlood('A')"></canvas>
+      </div>
+    </div>
+
+    <div class="station" id="st-B">
+      <div class="dropper disabled" id="dropper-B" onclick="addAntibody('B')">
+        <div class="dropper-cap"></div>
+        <div class="dropper-bottle"><div class="dropper-liquid"></div><div class="dropper-label">Anti-B<br>Antibody</div></div>
+        <div class="dropper-nozzle"></div>
+      </div>
+      <div class="slide-wrap">
+        <canvas class="slide" id="slide-B" width="134" height="110" onclick="placeBlood('B')"></canvas>
+      </div>
+    </div>
+
+    <div class="station" id="st-Rh">
+      <div class="dropper disabled" id="dropper-Rh" onclick="addAntibody('Rh')">
+        <div class="dropper-cap"></div>
+        <div class="dropper-bottle"><div class="dropper-liquid"></div><div class="dropper-label">Anti-Rh<br>Antibody</div></div>
+        <div class="dropper-nozzle"></div>
+      </div>
+      <div class="slide-wrap">
+        <canvas class="slide" id="slide-Rh" width="134" height="110" onclick="placeBlood('Rh')"></canvas>
+      </div>
+    </div>
+
+  </div>
+</div><!-- end .bench -->
+
+<!-- ANSWER -->
+<div class="answer-wrap" id="answerWrap">
+  <div class="answer-hd">What is the blood type?</div>
+  <div class="answer-row">
+    <input class="answer-input" id="answerInput" type="text"
+           placeholder="e.g.,  B+  or  O-" maxlength="24" autocomplete="off"/>
+    <button class="submit-btn" onclick="submitAnswer()">Submit</button>
+  </div>
+  <div class="feedback" id="feedback">
+    <div class="fb-heading">Feedback</div>
+    <div class="fb-result"  id="fbResult"></div>
+    <div id="fbDetail"></div>
+    <div class="fb-explanation" id="fbExplanation"></div>
+  </div>
+</div>
+
+<button class="reset-btn" id="resetBtn" onclick="resetLab()">↺ &nbsp; New Blood Sample</button>
+
+<script>
+/* ── Data ───────────────────────────────────────────────────────────────── */
+const BT_WEIGHTS = [
+  {type:'O+', w:39.0},{type:'A+', w:36.0},{type:'B+', w:7.6},
+  {type:'O-', w:7.0}, {type:'A-', w:6.0}, {type:'B-', w:1.4},
+  {type:'AB+',w:2.5}, {type:'AB-',w:0.5},
+];
+
+const REACTIONS = {
+  'O+': {A:false,B:false,Rh:true }, 'O-': {A:false,B:false,Rh:false},
+  'A+': {A:true, B:false,Rh:true }, 'A-': {A:true, B:false,Rh:false},
+  'B+': {A:false,B:true, Rh:true }, 'B-': {A:false,B:true, Rh:false},
+  'AB+':{A:true, B:true, Rh:true }, 'AB-':{A:true, B:true, Rh:false},
+};
+
+const EXPLANATIONS = {
+  'A+': 'The agglutination caused by the addition of the Anti-A antibody means that the A antigen is present on the surface of the RBC. The lack of agglutination caused by the addition of the Anti-B antibody means that there is no B antigen present. Finally, the agglutination that occurs with the addition of the Anti-Rh antibody means that the Rh antigen is present on the surface of the RBC. Hence, the blood type is A+.',
+  'A-': 'The agglutination caused by the addition of the Anti-A antibody means that the A antigen is present on the surface of the RBC. The lack of agglutination caused by the addition of the Anti-B antibody means that there is no B antigen present. Finally, the lack of agglutination with the addition of the Anti-Rh antibody means that the Rh antigen is absent from the surface of the RBC. Hence, the blood type is A\u2212.',
+  'B+': 'The lack of agglutination caused by the addition of the Anti-A antibody means that the A antigen is not present on the surface of the RBC. The agglutination caused by the addition of the Anti-B antibody means that the B antigen is present. Finally, the agglutination that occurs with the addition of the Anti-Rh antibody means that the Rh antigen is present on the surface of the RBC. Hence, the blood type is B+.',
+  'B-': 'The lack of agglutination caused by the addition of the Anti-A antibody means that the A antigen is not present on the surface of the RBC. The agglutination caused by the addition of the Anti-B antibody means that the B antigen is present. Finally, the lack of agglutination with the addition of the Anti-Rh antibody means that the Rh antigen is absent from the surface of the RBC. Hence, the blood type is B\u2212.',
+  'AB+':'The agglutination caused by the addition of the Anti-A antibody means that the A antigen is present on the surface of the RBC. The agglutination caused by the addition of the Anti-B antibody means that the B antigen is also present on the surface of the RBC. Finally, the agglutination that occurs with the addition of the Anti-Rh antibody means that the Rh antigen is present on the surface of the RBC. Hence, the blood type is AB+.',
+  'AB-':'The agglutination caused by the addition of the Anti-A antibody means that the A antigen is present on the surface of the RBC. The agglutination caused by the addition of the Anti-B antibody means that the B antigen is also present on the surface of the RBC. Finally, the lack of agglutination with the addition of the Anti-Rh antibody means that the Rh antigen is absent from the surface of the RBC. Hence, the blood type is AB\u2212.',
+  'O+': 'The lack of agglutination caused by the addition of the Anti-A antibody means that the A antigen is not present on the surface of the RBC. The lack of agglutination caused by the addition of the Anti-B antibody means that the B antigen is not present either. Finally, the agglutination that occurs with the addition of the Anti-Rh antibody means that the Rh antigen is present on the surface of the RBC. Hence, the blood type is O+.',
+  'O-': 'The lack of agglutination caused by the addition of the Anti-A antibody means that the A antigen is not present on the surface of the RBC. The lack of agglutination caused by the addition of the Anti-B antibody means that the B antigen is not present either. Finally, the lack of agglutination with the addition of the Anti-Rh antibody means that the Rh antigen is also absent from the surface of the RBC. Hence, the blood type is O\u2212.',
+};
+
+// Colours for each antibody drop
+const AB_DROP_COLOR = { A:'#5588ff', B:'#eebb10', Rh:'#33dd77' };
+
+/* ── State ──────────────────────────────────────────────────────────────── */
+let S = {
+  bt:null, phase:0,
+  blood:{A:false,B:false,Rh:false},
+  abody:{A:false,B:false,Rh:false},
+  total:0, right:0,
+};
+
+/* ── Init ───────────────────────────────────────────────────────────────── */
+function resetLab() { init(); }
+function init() {
+  S.bt    = pickBT();
+  S.phase = 0;
+  S.blood = {A:false,B:false,Rh:false};
+  S.abody = {A:false,B:false,Rh:false};
+
+  const ln = document.getElementById('lancetBtn');
+  ln.classList.remove('used'); ln.classList.add('pulse');
+
+  const fd = document.getElementById('fingerDrop');
+  fd.setAttribute('r','0'); fd.setAttribute('opacity','0');
+  setEl('fingerStatus','Ready');
+
+  ['A','B','Rh'].forEach(ab => {
+    const c = document.getElementById('slide-'+ab);
+    c.getContext('2d').clearRect(0,0,c.width,c.height);
+    drawEmptySlide(c);
+    c.classList.remove('await-blood');
+
+    const d = document.getElementById('dropper-'+ab);
+    d.classList.add('disabled');
+    d.classList.remove('active-drop','used');
+  });
+
+  document.getElementById('answerWrap').classList.remove('show');
+  document.getElementById('answerInput').value = '';
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback';
+  setEl('fbResult',''); setEl('fbExplanation','');
+  document.getElementById('fbDetail').innerHTML = '';
+  document.getElementById('resetBtn').classList.remove('show');
+
+  setInstr('Step 1 — Click the lancet to prick your finger and collect a blood sample.');
+  setProg(0);
+  updateScore();
+}
+
+function pickBT() {
+  const sum = BT_WEIGHTS.reduce((a,b)=>a+b.w,0);
+  let r = Math.random()*sum;
+  for (const b of BT_WEIGHTS) { r -= b.w; if (r<=0) return b.type; }
+  return BT_WEIGHTS[BT_WEIGHTS.length-1].type;
+}
+
+/* ── Step 1: prick ──────────────────────────────────────────────────────── */
+function prickFinger() {
+  if (S.phase !== 0) return;
+  S.phase = 1;
+
+  const ln = document.getElementById('lancetBtn');
+  ln.classList.remove('pulse'); ln.classList.add('used');
+
+  // Grow blood drop on finger
+  const fd = document.getElementById('fingerDrop');
+  let r = 0;
+  const tick = () => {
+    r = Math.min(r+0.45, 5.5);
+    fd.setAttribute('r', r);
+    fd.setAttribute('opacity', (r/5.5).toFixed(2));
+    if (r < 5.5) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+  setEl('fingerStatus','Blood collected');
+
+  ['A','B','Rh'].forEach(ab =>
+    document.getElementById('slide-'+ab).classList.add('await-blood'));
+
+  setInstr('Step 2 — Click each microscope slide to transfer a blood drop onto it. (0 / 3)');
+  setProg(1);
+}
+
+/* ── Step 2: place blood ────────────────────────────────────────────────── */
+function placeBlood(ab) {
+  if (S.phase !== 1) return;
+  if (S.blood[ab]) return;
+  S.blood[ab] = true;
+
+  // Animate drop FROM finger TO slide
+  const svgEl = document.getElementById('fingerSVG');
+  const canvas = document.getElementById('slide-'+ab);
+  const svgR = svgEl.getBoundingClientRect();
+  const canR = canvas.getBoundingClientRect();
+
+  // Fingertip blood drop is at SVG coords (34, 8); SVG is 68×130 px
+  const sx = svgR.left + (34 / 68) * svgR.width;
+  const sy = svgR.top  + ( 8 /130) * svgR.height;
+  const ex = canR.left + canR.width  / 2;
+  const ey = canR.top  + canR.height / 2;
+
+  flyDrop(sx, sy, ex, ey, '#c01030', 480, () => {
+    canvas.classList.remove('await-blood');
+    drawBloodDrop(canvas);
+  });
+
+  const placed = countTrue(S.blood);
+  if (placed < 3) {
+    setInstr(`Step 2 — Click each microscope slide to transfer a blood drop onto it. (${placed} / 3)`);
+  } else {
+    S.phase = 2;
+    ['A','B','Rh'].forEach(a => {
+      const d = document.getElementById('dropper-'+a);
+      d.classList.remove('disabled'); d.classList.add('active-drop');
+    });
+    setInstr('Step 3 — Click each antibody dropper to add it to the slide directly below it.');
+    setProg(2);
+  }
+}
+
+/* ── Step 3: add antibody ───────────────────────────────────────────────── */
+function addAntibody(ab) {
+  if (S.phase !== 2) return;
+  if (S.abody[ab]) return;
+  S.abody[ab] = true;
+
+  const d  = document.getElementById('dropper-'+ab);
+  d.classList.remove('active-drop'); d.classList.add('used');
+
+  // Animate drop FROM nozzle TO slide (colour matches antibody)
+  const nozzle = d.querySelector('.dropper-nozzle');
+  const canvas = document.getElementById('slide-'+ab);
+  const nR = nozzle.getBoundingClientRect();
+  const cR = canvas.getBoundingClientRect();
+
+  const sx = nR.left + nR.width / 2;
+  const sy = nR.bottom;
+  const ex = cR.left + cR.width  / 2;
+  const ey = cR.top  + cR.height / 2;
+  const color = AB_DROP_COLOR[ab];
+
+  flyDrop(sx, sy, ex, ey, color, 360, () => {
+    setTimeout(() => drawReaction(canvas, REACTIONS[S.bt][ab]), 40);
+  });
+
+  if (countTrue(S.abody) === 3) {
+    S.phase = 3;
+    setInstr('Step 4 — Observe all three slides. Determine the blood type and enter it below.');
+    setProg(3);
+    document.getElementById('answerWrap').classList.add('show');
+    setTimeout(() => document.getElementById('answerInput').focus(), 60);
+  }
+}
+
+/* ── Submit ─────────────────────────────────────────────────────────────── */
+function submitAnswer() {
+  if (S.phase !== 3) return;
+  const raw   = document.getElementById('answerInput').value;
+  const guess = normalise(raw);
+  const ok    = normalise(S.bt);
+  const right = guess === ok;
+
+  S.phase = 4;
+  S.total++;
+  if (right) S.right++;
+  updateScore();
+  setProg(4);
+
+  const rxn  = REACTIONS[S.bt];
+  const rows = [['A','Anti-A'],['B','Anti-B'],['Rh','Anti-Rh']].map(([k,lbl]) => {
+    const c = rxn[k];
+    return `<tr><td>${lbl}</td>
+      <td class="${c?'clumped':'no-clump'}">${c?'⊕ Agglutination':'− No reaction'}</td></tr>`;
+  }).join('');
+
+  setEl('fbResult', right
+    ? `✓ Correct! The blood type is ${S.bt}.`
+    : `✗ Not quite — the correct blood type is ${S.bt}.`);
+
+  document.getElementById('fbDetail').innerHTML =
+    (!right ? `<p style="font-size:.8rem;color:var(--dim);margin:6px 0 4px">You entered: <em>${raw||'(nothing)'}</em></p>` : '') +
+    `<table class="rxn-table"><thead><tr><th>Antibody</th><th>Slide Result</th></tr></thead>
+     <tbody>${rows}</tbody></table>`;
+
+  const exp = EXPLANATIONS[S.bt];
+  document.getElementById('fbExplanation').innerHTML =
+    exp ? exp : '<em>Explanation coming soon.</em>';
+
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback show ' + (right ? 'correct' : 'wrong');
+  document.getElementById('resetBtn').classList.add('show');
+}
+
+/* ── Flying drop animation ──────────────────────────────────────────────── */
+// Animates a coloured drop from (sx,sy) to (ex,ey), calls cb() on arrival.
+function flyDrop(sx, sy, ex, ey, color, dur, cb) {
+  const dot = document.createElement('div');
+  dot.className = 'fly-drop';
+  dot.style.background = color;
+  dot.style.left = (sx-4) + 'px';
+  dot.style.top  = (sy-5) + 'px';
+  document.body.appendChild(dot);
+
+  const t0 = performance.now();
+  function frame(now) {
+    const p = Math.min((now-t0)/dur, 1);
+    // Ease-in-out cubic
+    const e = p<.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2;
+    dot.style.left = (sx + (ex-sx)*e - 4) + 'px';
+    dot.style.top  = (sy + (ey-sy)*e - 5) + 'px';
+    dot.style.opacity = p>.82 ? (1-(p-.82)/.18).toString() : '1';
+    if (p < 1) { requestAnimationFrame(frame); }
+    else { dot.remove(); if (cb) cb(); }
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ── Canvas drawing ─────────────────────────────────────────────────────── */
+function drawEmptySlide(canvas) {
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = 'rgba(160,210,240,.04)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle = 'rgba(100,160,220,.08)';
+  ctx.lineWidth = .5;
+  [.25,.75].forEach(f => {
+    ctx.beginPath();
+    ctx.moveTo(0, canvas.height*f); ctx.lineTo(canvas.width, canvas.height*f);
+    ctx.stroke();
+  });
+}
+
+function drawBloodDrop(canvas) {
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  drawEmptySlide(canvas);
+  const cx=canvas.width/2, cy=canvas.height/2;
+  const r=Math.min(canvas.width, canvas.height-22)*.3;  // -22 reserves label space
+  const g=ctx.createRadialGradient(cx-r*.22,cy-.28*r,r*.04,cx,cy,r);
+  g.addColorStop(0,'#ff7080'); g.addColorStop(.45,'#c41e3a'); g.addColorStop(1,'#7a000f');
+  ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
+  ctx.fillStyle=g; ctx.fill();
+}
+
+function drawReaction(canvas, clumped) {
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  drawEmptySlide(canvas);
+  const W=canvas.width, H=canvas.height;
+  const cx=W/2, cy=H/2;
+  const R=Math.min(W, H-22)*.3;  // -22 reserves label space below oval
+
+  if (!clumped) {
+    // No reaction: smooth uniform red disc
+    const g=ctx.createRadialGradient(cx-R*.22,cy-R*.28,R*.04,cx,cy,R);
+    g.addColorStop(0,'#ff7080'); g.addColorStop(.45,'#c41e3a'); g.addColorStop(1,'#7a000f');
+    ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+    // label
+    ctx.font='500 8.5px "DM Sans",sans-serif';
+    ctx.fillStyle='rgba(220,150,165,.8)'; ctx.textAlign='center';
+    ctx.fillText('no reaction', cx, cy+R+11);
+
+  } else {
+    // ── AGGLUTINATION: darker-pink plasma + curvy string-like clumps ─────
+    // Oval is ~1.5× the radius of the original blood drop
+    const Rw=R*1.55, Rh=R*1.45;
+
+    // 1. Clip to oval
+    ctx.save();
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, Rw, Rh, 0, 0, Math.PI*2);
+    ctx.clip();
+
+    // 2. Darker pink plasma base
+    ctx.fillStyle = '#e8607a';
+    ctx.fillRect(0,0,W,H);
+    // Radial highlight so the centre reads slightly lighter
+    const pg = ctx.createRadialGradient(cx-Rw*.08, cy-Rh*.08, 1, cx, cy, Math.max(Rw,Rh));
+    pg.addColorStop(0,   'rgba(255,140,160,0.55)');
+    pg.addColorStop(0.45,'rgba(232, 80,105,0.35)');
+    pg.addColorStop(1,   'rgba(200, 45, 70,0.25)');
+    ctx.fillStyle=pg; ctx.fillRect(0,0,W,H);
+
+    // 3. Curvy string-like strands — evenly distributed across the oval
+    //    Each entry: [ox, oy, lenFrac, angle, curvFrac, thickness, hexColor]
+    //    ox/oy are offsets as fractions of Rw/Rh; lenFrac is fraction of Rw
+    const strands = [
+      // top row
+      [-0.30, -0.58, 0.46, 0.35, 0.32, 3.0, '#8a0018'],
+      [ 0.04, -0.62, 0.42, 1.25, 0.28, 2.8, '#7e0015'],
+      [ 0.36, -0.54, 0.44, 2.05, 0.35, 3.0, '#900018'],
+      // upper-middle row
+      [-0.52, -0.20, 0.40, 0.90, 0.30, 2.8, '#860016'],
+      [-0.18, -0.22, 0.52, 1.60, 0.26, 3.4, '#8c0018'],
+      [ 0.16, -0.18, 0.48, 0.25, 0.38, 3.2, '#82001a'],
+      [ 0.50, -0.10, 0.38, 1.85, 0.29, 2.8, '#900018'],
+      // lower-middle row
+      [-0.50,  0.16, 0.42, 2.40, 0.33, 3.0, '#88001a'],
+      [-0.14,  0.20, 0.54, 0.72, 0.27, 3.4, '#8c0018'],
+      [ 0.22,  0.18, 0.44, 1.45, 0.34, 3.0, '#840016'],
+      [ 0.52,  0.12, 0.36, 2.75, 0.28, 2.8, '#8a0018'],
+      // bottom row
+      [-0.30,  0.52, 0.42, 1.15, 0.31, 2.8, '#860016'],
+      [ 0.06,  0.58, 0.44, 2.30, 0.30, 3.0, '#8c0018'],
+      [ 0.38,  0.50, 0.38, 0.65, 0.33, 2.8, '#900018'],
+    ];
+
+    strands.forEach(([ox,oy,lenFrac,angle,curvFrac,thk,col]) => {
+      const x   = cx + ox*Rw;
+      const y   = cy + oy*Rh;
+      const len = lenFrac * Rw;
+      drawStrand(ctx, x, y, len, angle, curvFrac, thk, col);
+    });
+
+    ctx.restore(); // end clip
+
+    // label
+    ctx.font='500 8.5px "DM Sans",sans-serif';
+    ctx.fillStyle='rgba(200,40,70,.85)'; ctx.textAlign='center';
+    ctx.fillText('agglutination', cx, cy+Rh+11);
+  }
+}
+
+// Draws a single curvy strand centred at (x,y) with given length, angle and
+// S-curve curvature. Tips fade to transparent so strands look organic.
+function drawStrand(ctx, x, y, len, angle, curvFrac, thk, hexColor) {
+  const rc=parseInt(hexColor.slice(1,3),16);
+  const gc=parseInt(hexColor.slice(3,5),16);
+  const bc=parseInt(hexColor.slice(5,7),16);
+
+  const halfL = len/2;
+  const x1 = x - Math.cos(angle)*halfL,  y1 = y - Math.sin(angle)*halfL;
+  const x2 = x + Math.cos(angle)*halfL,  y2 = y + Math.sin(angle)*halfL;
+
+  // S-curve: control points offset perpendicular in opposite directions
+  const curve = len * curvFrac;
+  const px = -Math.sin(angle)*curve,  py = Math.cos(angle)*curve;
+  const cp1x = x1+(x2-x1)*.33+px,  cp1y = y1+(y2-y1)*.33+py;
+  const cp2x = x1+(x2-x1)*.67-px,  cp2y = y1+(y2-y1)*.67-py;
+
+  // Gradient fades at tips so the strand looks like a tapered biological thread
+  const grad = ctx.createLinearGradient(x1,y1, x2,y2);
+  grad.addColorStop(0,    `rgba(${rc},${gc},${bc},0.15)`);
+  grad.addColorStop(0.12, `rgba(${rc},${gc},${bc},0.88)`);
+  grad.addColorStop(0.50, `rgba(${rc},${gc},${bc},1.00)`);
+  grad.addColorStop(0.88, `rgba(${rc},${gc},${bc},0.88)`);
+  grad.addColorStop(1,    `rgba(${rc},${gc},${bc},0.15)`);
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(x1,y1);
+  ctx.bezierCurveTo(cp1x,cp1y, cp2x,cp2y, x2,y2);
+  ctx.strokeStyle = grad;
+  ctx.lineWidth   = thk;
+  ctx.lineCap     = 'round';
+  ctx.stroke();
+  ctx.restore();
+}
+
+/* ── Helpers ────────────────────────────────────────────────────────────── */
+function normalise(raw) {
+  let s=(raw||'').trim().toUpperCase()
+    .replace(/\bPOSITIVE\b/g,'+').replace(/\bNEGATIVE\b/g,'-')
+    .replace(/\bPOS\b/g,'+').replace(/\bNEG\b/g,'-')
+    .replace(/\bPLUS\b/g,'+').replace(/\bMINUS\b/g,'-')
+    .replace(/\s+/g,'');
+  if ((s.startsWith('+')||s.startsWith('-'))&&s.length>1) s=s.slice(1)+s[0];
+  return s;
+}
+function setEl(id,t)  { document.getElementById(id).textContent=t; }
+function setInstr(t)  { document.getElementById('instrText').textContent=t; }
+function countTrue(o) { return Object.values(o).filter(Boolean).length; }
+function updateScore(){ setEl('sAttempts',S.total); setEl('sCorrect',S.right); }
+function setProg(done){
+  ['ps1','ps2','ps3','ps4'].forEach((id,i)=>{
+    const el=document.getElementById(id);
+    el.className='prog-step';
+    if (i<done) el.classList.add('done');
+    else if (i===done) el.classList.add('active');
+  });
+}
+
+document.getElementById('answerInput').addEventListener('keydown', e => {
+  if (e.key==='Enter') submitAnswer();
+});
+
+init();
+</script>
+</body>
+</html>
