@@ -1,14 +1,10 @@
 # Project-Scoped Rules for FFR Portfolio
 
-## Auto-Sync and Push to GitHub
-Whenever you edit files in this workspace (e.g., `index.html`, `scripts.js`, `styles.css`, or folders under `files/`), you MUST automatically sync those edits to the local GitHub repository folder and push them to GitHub.
+## Direct Editing and Push to GitHub
+Whenever you edit files in this workspace, you MUST edit them directly inside the local GitHub repository folder `C:\Users\thada\Documents\GitHub\FFR_Portfolio` (e.g., `C:\Users\thada\Documents\GitHub\FFR_Portfolio\index.html`, `C:\Users\thada\Documents\GitHub\FFR_Portfolio\scripts.js`, etc.) and immediately push those edits to GitHub.
 
-### Sync and Push Procedure:
-1. **Sync Files**: Copy updated files from the current workspace (`c:\Users\thada\Desktop\Georgian\FRAME_FFR\Google_Antigravity\FFR_Website`) to the repository directory (`C:\Users\thada\Documents\GitHub\FFR_Portfolio`) excluding `.git` and `.gemini` folders.
-   Powershell command example:
-   ```powershell
-   Copy-Item -Path "c:\Users\thada\Desktop\Georgian\FRAME_FFR\Google_Antigravity\FFR_Website\*" -Destination "C:\Users\thada\Documents\GitHub\FFR_Portfolio" -Recurse -Force -Exclude ".git",".gemini"
-   ```
+### Edit and Push Procedure:
+1. **Direct Edit**: Modify files directly within the repository path `C:\Users\thada\Documents\GitHub\FFR_Portfolio`.
 2. **Git Add**: Stage the changes in the repository directory:
    ```powershell
    git -C "C:\Users\thada\Documents\GitHub\FFR_Portfolio" add .
@@ -21,3 +17,4 @@ Whenever you edit files in this workspace (e.g., `index.html`, `scripts.js`, `st
    ```powershell
    git -C "C:\Users\thada\Documents\GitHub\FFR_Portfolio" push origin main
    ```
+
