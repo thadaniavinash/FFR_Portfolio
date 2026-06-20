@@ -2083,3 +2083,33 @@ html[data-theme="dark"] #phil-toggle-btn:hover {
   color: #000000;
 }
 
+/* CV Download Button styling */
+.cv-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--navy-bg);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease;
+  border: 1px solid var(--navy-bg);
+}
+.cv-download-btn:hover {
+  background: transparent;
+  color: var(--navy-bg);
+}
+html[data-theme="dark"] .cv-download-btn {
+  background: var(--teal);
+  color: #000000;
+  border-color: var(--teal);
+}
+html[data-theme="dark"] .cv-download-btn:hover {
+  background: transparent;
+  color: var(--teal);
+}
+
