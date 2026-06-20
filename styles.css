@@ -1897,6 +1897,13 @@ footer {
   transition: color 0.2s ease;
 }
 .footer-links a:hover { color: var(--teal-mid); }
+.footer-credit {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 1.5rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
 
 /* ─── UTILITY ─────────────────────────────────────────────── */
 .divider {
