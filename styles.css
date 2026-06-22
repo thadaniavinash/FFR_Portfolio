@@ -1195,16 +1195,64 @@ html[data-theme="dark"] .entry-role-tag.mentor {
 html[data-theme="dark"] .compass-card.needs { background: #151428; }
 html[data-theme="dark"] .compass-card.growth { background: #26162a; }
 
-.compass-icon {
-  font-size: 1.5rem;
-  margin-bottom: 0.75rem;
+.compass-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
 }
+.compass-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.25s ease;
+}
+.compass-icon svg {
+  width: 20px;
+  height: 20px;
+}
+.compass-card.excites .compass-icon {
+  background: rgba(26, 122, 110, 0.12);
+  color: var(--teal);
+}
+.compass-card.worries .compass-icon {
+  background: rgba(200, 146, 63, 0.12);
+  color: var(--gold);
+}
+.compass-card.needs .compass-icon {
+  background: rgba(92, 82, 191, 0.12);
+  color: #5c52bf;
+}
+.compass-card.growth .compass-icon {
+  background: rgba(156, 74, 181, 0.12);
+  color: #9c4ab5;
+}
+
+/* Dark mode adjustments for icon background */
+html[data-theme="dark"] .compass-card.excites .compass-icon {
+  background: rgba(47, 168, 152, 0.2);
+}
+html[data-theme="dark"] .compass-card.worries .compass-icon {
+  background: rgba(226, 159, 63, 0.2);
+}
+html[data-theme="dark"] .compass-card.needs .compass-icon {
+  background: rgba(146, 138, 230, 0.2);
+  color: #928ae6;
+}
+html[data-theme="dark"] .compass-card.growth .compass-icon {
+  background: rgba(204, 124, 229, 0.2);
+  color: #cc7ce5;
+}
+
 .compass-heading {
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
 }
 .compass-card.excites .compass-heading { color: var(--teal); }
 .compass-card.worries .compass-heading { color: var(--gold); }
@@ -1215,7 +1263,7 @@ html[data-theme="dark"] .compass-card.needs .compass-heading { color: #928ae6; }
 html[data-theme="dark"] .compass-card.growth .compass-heading { color: #cc7ce5; }
 
 .compass-text {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.7;
 }
