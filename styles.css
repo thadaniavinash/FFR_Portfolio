@@ -1186,14 +1186,26 @@ html[data-theme="dark"] .entry-role-tag.mentor {
   position: relative;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+.compass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
 }
 .compass-card.excites { background: var(--teal-light); }
+.compass-card.excites:hover { border-color: var(--teal); }
 .compass-card.worries { background: var(--gold-light); }
+.compass-card.worries:hover { border-color: var(--gold); }
 .compass-card.needs { background: #eef0ff; }
+.compass-card.needs:hover { border-color: #5c52bf; }
 .compass-card.growth { background: #f9f0fa; }
+.compass-card.growth:hover { border-color: #9c4ab5; }
 
 html[data-theme="dark"] .compass-card.needs { background: #151428; }
+html[data-theme="dark"] .compass-card.needs:hover { border-color: #928ae6; }
 html[data-theme="dark"] .compass-card.growth { background: #26162a; }
+html[data-theme="dark"] .compass-card.growth:hover { border-color: #cc7ce5; }
 
 .compass-header {
   display: flex;
