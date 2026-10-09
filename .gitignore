@@ -1,0 +1,8 @@
+# Local working files, never publish
+scratch/
+.agents/
+Student Feedback/
+New folder/
+*.xlsx
+.DS_Store
+Thumbs.db
