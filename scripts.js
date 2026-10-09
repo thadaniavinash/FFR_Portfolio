@@ -135,7 +135,7 @@
      ========================================================================== */
   const bookPages = [
     { src: 'files/testimonials/IMG_0001.jpg', author: 'Cover — "Best Nursing Professor Ever"' },
-    { src: 'files/testimonials/IMG_0002.jpg', author: 'Inside cover — From your 1st BScN cohort' },
+    { src: 'files/testimonials/IMG_0002.jpg', author: 'Inside cover — From the first BScN cohort' },
     { src: 'files/testimonials/IMG_0003.jpg', author: 'C. C. · April 11, 2023' },
     { src: 'files/testimonials/IMG_0004.jpg', author: 'A. W. · April 12, 2023' },
     { src: 'files/testimonials/IMG_0005.jpg', author: 'C. P. · April 12, 2023' },

@@ -1738,22 +1738,6 @@ footer {
   align-items: center;
   gap: 0.75rem;
 }
-.footer-badges {
-  display: flex;
-  gap: 0.75rem;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0.25rem;
-}
-.footer-badges img {
-  height: 20px;
-  border-radius: 3px;
-  transition: opacity 0.2s ease;
-}
-.footer-badges img:hover {
-  opacity: 0.9;
-}
-
 /* ─── UTILITY ─────────────────────────────────────────────── */
 .divider {
   width: 48px;
