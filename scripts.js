@@ -663,12 +663,17 @@
   /* ==========================================================================
      8. SIMULATION MODAL
      ========================================================================== */
-  window.openSimulationModal = function (url, title) {
+  window.openSimulationModal = function (url, title, credit) {
     const modal = document.getElementById('sim-modal');
     const iframe = document.getElementById('sim-iframe');
     if (modal && iframe) {
       const titleEl = document.getElementById('sim-modal-title');
       if (titleEl) titleEl.textContent = title || 'Interactive Simulation Evidence';
+      const creditEl = document.getElementById('sim-credit');
+      if (creditEl) {
+        if (credit) creditEl.innerHTML = credit;
+        else creditEl.textContent = creditEl.dataset.default;
+      }
       const tabLink = document.getElementById('sim-open-tab');
       if (tabLink) {
         const external = /^https?:/.test(url);

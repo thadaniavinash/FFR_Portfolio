@@ -2078,3 +2078,5 @@ section.panel { padding: 3.5rem 0; min-height: calc(100vh - 150px); }
 .milestones li.next .ms-mark { border-color: var(--gold); background: transparent; opacity: 1; }
 .milestones li.next .ms-state { color: var(--gold); }
 .ms-date { color: var(--text-muted); font-size: 0.78rem; margin-left: 0.35rem; white-space: nowrap; }
+
+.chip-note a { color: var(--teal); }
