@@ -2074,3 +2074,5 @@ section.panel { padding: 3.5rem 0; min-height: calc(100vh - 150px); }
 .pat-ca { margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed var(--border); }
 
 .pat-sub { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin: 1.75rem 0 1rem; font-weight: 500; }
+
+.chip-note { font-size: 0.8rem; color: var(--text-muted); font-style: italic; align-self: center; }
