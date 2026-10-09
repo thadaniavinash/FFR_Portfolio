@@ -2028,11 +2028,11 @@ section.panel { padding: 3.5rem 0; min-height: calc(100vh - 150px); }
   .topbar-actions { display: flex; align-items: center; gap: 0.75rem; }
   .sidebar {
     transform: translateX(-100%);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    visibility: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.3s;
     width: min(300px, 86vw);
-    box-shadow: var(--shadow-lg);
   }
-  .sidebar.open { transform: translateX(0); }
+  .sidebar.open { transform: translateX(0); visibility: visible; box-shadow: var(--shadow-lg); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
   .mobile-menu-close { display: inline-block; }
   .side-foot #theme-toggle-btn { display: none; }
   .hero.panel { padding: 2.5rem 1rem 2rem; }
