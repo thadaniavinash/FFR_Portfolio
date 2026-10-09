@@ -663,10 +663,18 @@
   /* ==========================================================================
      8. SIMULATION MODAL
      ========================================================================== */
-  window.openSimulationModal = function (url) {
+  window.openSimulationModal = function (url, title) {
     const modal = document.getElementById('sim-modal');
     const iframe = document.getElementById('sim-iframe');
     if (modal && iframe) {
+      const titleEl = document.getElementById('sim-modal-title');
+      if (titleEl) titleEl.textContent = title || 'Interactive Simulation Evidence';
+      const tabLink = document.getElementById('sim-open-tab');
+      if (tabLink) {
+        const external = /^https?:/.test(url);
+        tabLink.hidden = !external;
+        if (external) tabLink.href = url;
+      }
       iframe.src = url;
       modal.style.display = 'flex';
       document.body.style.overflow = 'hidden'; // prevent page scroll
