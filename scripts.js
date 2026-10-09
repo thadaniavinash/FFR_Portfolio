@@ -491,14 +491,14 @@
       if (icon) icon.style.transform = 'rotate(90deg)';
       if (btn) {
         btn.textContent = '';
-        btn.insertAdjacentHTML('afterbegin', '<span id="phil-toggle-icon" style="font-size:0.7rem; transition:transform 0.25s; transform:rotate(90deg); display:inline-block;">▶</span> Collapse the fuller reflection');
+        btn.insertAdjacentHTML('afterbegin', '<span id="phil-toggle-icon" style="font-size:0.7rem; transition:transform 0.25s; transform:rotate(90deg); display:inline-block;">▶</span> Collapse the full reflection');
       }
     } else {
       panel.style.display = 'none';
       if (icon) icon.style.transform = 'rotate(0deg)';
       if (btn) {
         btn.textContent = '';
-        btn.insertAdjacentHTML('afterbegin', '<span id="phil-toggle-icon" style="font-size:0.7rem; transition:transform 0.25s; display:inline-block;">▶</span> Read the fuller reflection');
+        btn.insertAdjacentHTML('afterbegin', '<span id="phil-toggle-icon" style="font-size:0.7rem; transition:transform 0.25s; display:inline-block;">▶</span> Read the full reflection');
       }
     }
   };
