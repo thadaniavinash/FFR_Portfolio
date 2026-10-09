@@ -465,6 +465,22 @@
   /* ==========================================================================
      8. TEACHING PHILOSOPHY TOGGLER
      ========================================================================== */
+  window.copyPhilosophy = function () {
+    const el = document.getElementById('phil-short-text');
+    const btn = document.getElementById('phil-copy-btn');
+    if (!el || !btn) return;
+    const text = el.textContent.trim();
+    const done = () => { btn.textContent = 'Copied'; setTimeout(() => { btn.textContent = 'Copy'; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, () => {});
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  };
+
   window.togglePhilosophy = function () {
     const panel = document.getElementById('phil-extended');
     const icon  = document.getElementById('phil-toggle-icon');
@@ -475,14 +491,14 @@
       if (icon) icon.style.transform = 'rotate(90deg)';
       if (btn) {
         btn.textContent = '';
-        btn.insertAdjacentHTML('afterbegin', '<span id="phil-toggle-icon" style="font-size:0.7rem; transition:transform 0.25s; transform:rotate(90deg); display:inline-block;">▶</span> Collapse full teaching philosophy');
+        btn.insertAdjacentHTML('afterbegin', '<span id="phil-toggle-icon" style="font-size:0.7rem; transition:transform 0.25s; transform:rotate(90deg); display:inline-block;">▶</span> Collapse the fuller reflection');
       }
     } else {
       panel.style.display = 'none';
       if (icon) icon.style.transform = 'rotate(0deg)';
       if (btn) {
         btn.textContent = '';
-        btn.insertAdjacentHTML('afterbegin', '<span id="phil-toggle-icon" style="font-size:0.7rem; transition:transform 0.25s; display:inline-block;">▶</span> Read full teaching philosophy');
+        btn.insertAdjacentHTML('afterbegin', '<span id="phil-toggle-icon" style="font-size:0.7rem; transition:transform 0.25s; display:inline-block;">▶</span> Read the fuller reflection');
       }
     }
   };

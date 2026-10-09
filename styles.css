@@ -2080,3 +2080,17 @@ section.panel { padding: 3.5rem 0; min-height: calc(100vh - 150px); }
 .ms-date { color: var(--text-muted); font-size: 0.78rem; margin-left: 0.35rem; white-space: nowrap; }
 
 .chip-note a { color: var(--teal); }
+
+/* Copy button (philosophy) */
+.copy-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.25rem 0.8rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.copy-btn:hover { border-color: var(--teal); color: var(--teal); }
