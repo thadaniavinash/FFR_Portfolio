@@ -8,145 +8,126 @@
   const htmlEl = document.documentElement;
 
   function getSavedTheme() {
-    return localStorage.getItem(themeStorageKey);
+    try { return localStorage.getItem(themeStorageKey); } catch (e) { return null; }
   }
 
   function getPreferredTheme() {
     const saved = getSavedTheme();
     if (saved) return saved;
-    // Default to light mode for maximum readability, but respect system preferences
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return prefersDark ? 'dark' : 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
   function applyTheme(theme) {
     htmlEl.setAttribute('data-theme', theme);
-    localStorage.setItem(themeStorageKey, theme);
+    try { localStorage.setItem(themeStorageKey, theme); } catch (e) { /* storage blocked: theme still applies */ }
   }
 
   function toggleTheme() {
-    const current = htmlEl.getAttribute('data-theme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
+    applyTheme(htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   }
 
-  // Initial application of theme (placed inline in HTML to prevent flash, but initialized here too)
-  const initialTheme = getPreferredTheme();
-  applyTheme(initialTheme);
+  applyTheme(getPreferredTheme());
 
-  // Initialize theme toggler event listeners on DOMContentLoaded
   document.addEventListener('DOMContentLoaded', () => {
-    const desktopBtn = document.getElementById('theme-toggle-btn');
-    const mobileBtn = document.getElementById('theme-toggle-btn-mobile');
-
-    if (desktopBtn) desktopBtn.addEventListener('click', toggleTheme);
-    if (mobileBtn) mobileBtn.addEventListener('click', toggleTheme);
+    ['theme-toggle-btn', 'theme-toggle-btn-mobile'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.addEventListener('click', toggleTheme);
+    });
   });
 
   /* ==========================================================================
-     2. MOBILE NAVIGATION DRAWER
+     2. SIDEBAR DRAWER (MOBILE)
      ========================================================================== */
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('mobile-menu-toggle');
-    const closeBtn = document.getElementById('mobile-menu-close');
-    const drawer = document.getElementById('mobile-menu-drawer');
+  function setMenu(open) {
+    const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('mobile-menu-overlay');
-    const links = document.querySelectorAll('.mobile-nav-links a');
-
-    function openMenu() {
-      toggleBtn.classList.add('open');
-      drawer.classList.add('open');
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-      toggleBtn.classList.remove('open');
-      drawer.classList.remove('open');
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => {
-        if (drawer.classList.contains('open')) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-    }
-
-    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-    if (overlay) overlay.addEventListener('click', closeMenu);
-
-    // Close menu when mobile links are clicked
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-      });
-    });
-  });
-
-  /* ==========================================================================
-     3. SNAPPY SCROLL UTILITY (RESOLVES DISTRACTING SLOW SCROLL)
-     ========================================================================== */
-  function snappyScrollTo(targetElement, duration = 250) {
-    if (!targetElement) return;
-
-    const navHeight = 64; // nav bar height is 64px
-    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-
-    // Snappy easeOutQuad curve: fast start, soft slowdown
-    function easeOutQuad(t, b, c, d) {
-      t /= d;
-      return -c * t * (t - 2) + b;
-    }
-
-    function scrollAnimation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const run = easeOutQuad(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-
-      if (timeElapsed < duration) {
-        requestAnimationFrame(scrollAnimation);
-      } else {
-        window.scrollTo(0, targetPosition);
-        
-        // Add a temporary, subtle highlight effect to orient the user
-        targetElement.classList.add('highlighted-section');
-        setTimeout(() => {
-          targetElement.classList.remove('highlighted-section');
-        }, 1000);
-      }
-    }
-
-    requestAnimationFrame(scrollAnimation);
+    const toggle = document.getElementById('mobile-menu-toggle');
+    if (!sidebar) return;
+    sidebar.classList.toggle('open', open);
+    if (overlay) overlay.classList.toggle('open', open);
+    if (toggle) toggle.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Intercept all clicks on hash anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function (e) {
-        const id = this.getAttribute('href').slice(1);
-        if (!id) return;
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const close = document.getElementById('mobile-menu-close');
+    const overlay = document.getElementById('mobile-menu-overlay');
+    if (toggle) toggle.addEventListener('click', () => {
+      setMenu(!document.getElementById('sidebar').classList.contains('open'));
+    });
+    if (close) close.addEventListener('click', () => setMenu(false));
+    if (overlay) overlay.addEventListener('click', () => setMenu(false));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+  });
 
-        const target = id === 'top' ? document.body : document.getElementById(id);
-        if (target) {
-          e.preventDefault();
-          
-          // Fast scroll (250ms) to target section
-          snappyScrollTo(target, 250);
+  /* ==========================================================================
+     3. PANEL ROUTER (ONE SECTION AT A TIME, DEEP LINKS VIA #hash)
+     ========================================================================== */
+  const DEFAULT_PANEL = 'about';
 
-          // Update URL hash without browser jump
-          history.pushState(null, null, '#' + id);
-        }
+  function panelKeyFor(el) {
+    const panel = el && el.closest ? el.closest('.panel') : null;
+    return panel ? panel.dataset.panel : null;
+  }
+
+  function showPanel(key) {
+    document.querySelectorAll('.panel').forEach(p => { p.hidden = p.dataset.panel !== key; });
+    document.querySelectorAll('.side-link').forEach(a => {
+      if (a.dataset.panel === key) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  // Show whichever panel holds the target id, then scroll to it (or to the top)
+  function route(id, opts) {
+    opts = opts || {};
+    const target = id && id !== 'top' ? document.getElementById(id) : null;
+    const key = (target && panelKeyFor(target)) || (id && document.querySelector('.panel[data-panel="' + id + '"]') ? id : DEFAULT_PANEL);
+    showPanel(key);
+    const entryTarget = target && !target.classList.contains('panel') ? target : null;
+    if (entryTarget) {
+      const top = entryTarget.getBoundingClientRect().top + window.pageYOffset - 16;
+      window.scrollTo(0, top);
+      entryTarget.classList.add('highlighted-section');
+      setTimeout(() => entryTarget.classList.remove('highlighted-section'), 1000);
+    } else if (!opts.keepScroll) {
+      window.scrollTo(0, 0);
+    }
+    const label = document.querySelector('.panel[data-panel="' + key + '"] h2, .panel[data-panel="' + key + '"] h1');
+    if (label) document.title = label.textContent.replace(/\s+/g, ' ').trim() + ' | Avinash Thadani';
+  }
+
+  window.goToEntry = function (id) {
+    history.pushState(null, '', '#' + id);
+    route(id);
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('click', e => {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      const id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      e.preventDefault();
+      history.pushState(null, '', '#' + id);
+      setMenu(false);
+      route(id);
+    });
+
+    // Role cards: clickable and keyboard-operable
+    document.querySelectorAll('.role-card[data-goto]').forEach(card => {
+      card.setAttribute('role', 'link');
+      card.setAttribute('tabindex', '0');
+      const go = () => window.goToEntry(card.dataset.goto);
+      card.addEventListener('click', go);
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
       });
     });
+
+    window.addEventListener('popstate', () => route(location.hash.slice(1), { keepScroll: true }));
+    route(location.hash.slice(1), { keepScroll: true });
   });
 
   /* ==========================================================================
