@@ -2082,3 +2082,6 @@ section.panel { padding: 3.5rem 0; min-height: calc(100vh - 150px); }
 .ref-list a { color: var(--teal); }
 
 .pub-citation a { color: var(--teal); overflow-wrap: anywhere; }
+
+.ref-free { font-weight: 500; white-space: nowrap; }
+.ref-free::before { content: "· "; color: var(--text-muted); }
