@@ -2055,3 +2055,20 @@ section.panel { padding: 3.5rem 0; min-height: calc(100vh - 150px); }
   padding: 0;
 }
 .hamburger-line { display: block; height: 2px; width: 100%; background: #ffffff; border-radius: 2px; }
+
+
+/* ─── STUDENT QUOTES (OWN SURVEYS) ───────────────────────────── */
+.survey-block { margin: 0 0 3rem; }
+.survey-title { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 500; color: var(--navy-text); margin: 0 0 0.35rem; }
+.survey-sub { color: var(--text-muted); font-size: 0.92rem; max-width: 76ch; margin-bottom: 1.25rem; }
+.quote-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+.quote-card {
+  margin: 0; padding: 1.4rem 1.5rem;
+  background: var(--card-bg); border: 1px solid var(--border); border-left: 3px solid var(--gold);
+  border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; gap: 0.75rem; min-width: 0;
+}
+.quote-card.constructive { border-left-color: var(--teal); }
+.quote-card blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; line-height: 1.5; color: var(--text); margin: 0; }
+.quote-card figcaption { font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-top: auto; }
+.quote-note { font-size: 0.85rem; color: var(--text-muted); margin: 0; padding-top: 0.6rem; border-top: 1px dashed var(--border); }
