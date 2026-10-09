@@ -2055,3 +2055,26 @@ section.panel { padding: 3.5rem 0; min-height: calc(100vh - 150px); }
 .pat-sub { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin: 1.75rem 0 1rem; font-weight: 500; }
 
 .chip-note { font-size: 0.8rem; color: var(--text-muted); font-style: italic; align-self: center; }
+
+
+/* ─── STAGE MARKERS (FRAME ROLES) ───────────────────────────── */
+.stage { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 0.35rem; min-width: 0; }
+.stage-bar { display: inline-flex; gap: 3px; }
+.stage .seg { width: 20px; height: 6px; border-radius: 2px; background: var(--border); }
+.stage .seg.on { background: var(--role-color, var(--teal)); }
+.stage-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; color: var(--role-color, var(--teal)); }
+.stage-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); margin: -1.5rem 0 1.5rem; }
+.stage-legend .arrow { opacity: 0.6; }
+.stage-legend em { margin-left: 0.75rem; }
+
+/* ─── GOAL MILESTONES ──────────────────────────────────────── */
+.ms-title { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-top: 1.25rem; }
+.milestones { list-style: none; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.45rem; }
+.milestones li { display: grid; grid-template-columns: 14px 3.6rem 1fr; column-gap: 0.55rem; align-items: start; font-size: 0.85rem; color: var(--slate); line-height: 1.5; }
+.ms-mark { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--text-muted); opacity: 0.55; display: inline-block; align-self: start; margin-top: 0.4rem; }
+.ms-state { padding-top: 0.12rem; font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--text-muted); min-width: 3.4rem; }
+.milestones li.done .ms-mark { background: var(--teal); border-color: var(--teal); opacity: 1; }
+.milestones li.done .ms-state { color: var(--teal); }
+.milestones li.next .ms-mark { border-color: var(--gold); background: transparent; opacity: 1; }
+.milestones li.next .ms-state { color: var(--gold); }
+.ms-date { color: var(--text-muted); font-size: 0.78rem; margin-left: 0.35rem; white-space: nowrap; }
