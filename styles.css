@@ -2072,3 +2072,13 @@ section.panel { padding: 3.5rem 0; min-height: calc(100vh - 150px); }
 .quote-card blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; line-height: 1.5; color: var(--text); margin: 0; }
 .quote-card figcaption { font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-top: auto; }
 .quote-note { font-size: 0.85rem; color: var(--text-muted); margin: 0; padding-top: 0.6rem; border-top: 1px dashed var(--border); }
+
+
+/* ─── REFERENCE LIST (APA) ───────────────────────────────────── */
+.ref-details { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card-bg); padding: 1rem 1.25rem; }
+.ref-details summary { cursor: pointer; font-weight: 500; color: var(--teal); line-height: 1.5; }
+.ref-list { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.85rem; }
+.ref-list li { padding-left: 2rem; text-indent: -2rem; font-size: 0.9rem; line-height: 1.6; color: var(--slate); overflow-wrap: anywhere; }
+.ref-list a { color: var(--teal); }
+
+.pub-citation a { color: var(--teal); overflow-wrap: anywhere; }
