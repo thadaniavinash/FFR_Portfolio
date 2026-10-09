@@ -380,7 +380,7 @@
 <!-- INSTRUCTION -->
 <div class="instr">
   <span class="instr-icon">🔬</span>
-  <span id="instrText">Step 1 — Click the lancet to prick your finger and collect a blood sample.</span>
+  <span id="instrText">Step 1: Click the lancet to prick your finger and collect a blood sample.</span>
 </div>
 
 <!-- BENCH -->
@@ -553,7 +553,7 @@ function init() {
   document.getElementById('fbDetail').innerHTML = '';
   document.getElementById('resetBtn').classList.remove('show');
 
-  setInstr('Step 1 — Click the lancet to prick your finger and collect a blood sample.');
+  setInstr('Step 1: Click the lancet to prick your finger and collect a blood sample.');
   setProg(0);
   updateScore();
 }
@@ -588,7 +588,7 @@ function prickFinger() {
   ['A','B','Rh'].forEach(ab =>
     document.getElementById('slide-'+ab).classList.add('await-blood'));
 
-  setInstr('Step 2 — Click each microscope slide to transfer a blood drop onto it. (0 / 3)');
+  setInstr('Step 2: Click each microscope slide to transfer a blood drop onto it. (0 / 3)');
   setProg(1);
 }
 
@@ -617,14 +617,14 @@ function placeBlood(ab) {
 
   const placed = countTrue(S.blood);
   if (placed < 3) {
-    setInstr(`Step 2 — Click each microscope slide to transfer a blood drop onto it. (${placed} / 3)`);
+    setInstr(`Step 2: Click each microscope slide to transfer a blood drop onto it. (${placed} / 3)`);
   } else {
     S.phase = 2;
     ['A','B','Rh'].forEach(a => {
       const d = document.getElementById('dropper-'+a);
       d.classList.remove('disabled'); d.classList.add('active-drop');
     });
-    setInstr('Step 3 — Click each antibody dropper to add it to the slide directly below it.');
+    setInstr('Step 3: Click each antibody dropper to add it to the slide directly below it.');
     setProg(2);
   }
 }
@@ -656,7 +656,7 @@ function addAntibody(ab) {
 
   if (countTrue(S.abody) === 3) {
     S.phase = 3;
-    setInstr('Step 4 — Observe all three slides. Determine the blood type and enter it below.');
+    setInstr('Step 4: Observe all three slides. Determine the blood type and enter it below.');
     setProg(3);
     document.getElementById('answerWrap').classList.add('show');
     setTimeout(() => document.getElementById('answerInput').focus(), 60);
@@ -686,7 +686,7 @@ function submitAnswer() {
 
   setEl('fbResult', right
     ? `✓ Correct! The blood type is ${S.bt}.`
-    : `✗ Not quite — the correct blood type is ${S.bt}.`);
+    : `✗ Not quite: the correct blood type is ${S.bt}.`);
 
   document.getElementById('fbDetail').innerHTML =
     (!right ? `<p style="font-size:.8rem;color:var(--dim);margin:6px 0 4px">You entered: <em>${raw||'(nothing)'}</em></p>` : '') +
@@ -792,7 +792,7 @@ function drawReaction(canvas, clumped) {
     pg.addColorStop(1,   'rgba(200, 45, 70,0.25)');
     ctx.fillStyle=pg; ctx.fillRect(0,0,W,H);
 
-    // 3. Curvy string-like strands — evenly distributed across the oval
+    // 3. Curvy string-like strands, evenly distributed across the oval
     //    Each entry: [ox, oy, lenFrac, angle, curvFrac, thickness, hexColor]
     //    ox/oy are offsets as fractions of Rw/Rh; lenFrac is fraction of Rw
     const strands = [

@@ -134,8 +134,8 @@
      4. BOOK SLIDER MODAL ("Best Nursing Professor Ever")
      ========================================================================== */
   const bookPages = [
-    { src: 'files/testimonials/IMG_0001.jpg', author: 'Cover — "Best Nursing Professor Ever"' },
-    { src: 'files/testimonials/IMG_0002.jpg', author: 'Inside cover — From the first BScN cohort' },
+    { src: 'files/testimonials/IMG_0001.jpg', author: 'Cover: "Best Nursing Professor Ever"' },
+    { src: 'files/testimonials/IMG_0002.jpg', author: 'Inside cover: From the first BScN cohort' },
     { src: 'files/testimonials/IMG_0003.jpg', author: 'C. C. · April 11, 2023' },
     { src: 'files/testimonials/IMG_0004.jpg', author: 'A. W. · April 12, 2023' },
     { src: 'files/testimonials/IMG_0005.jpg', author: 'C. P. · April 12, 2023' },
@@ -403,7 +403,7 @@
     const tagVal = card.querySelector('.testimonial-tag')?.textContent || '';
 
     const titleEl = document.getElementById('lightbox-title');
-    if (titleEl) titleEl.textContent = `${labelVal} — ${tagVal}`;
+    if (titleEl) titleEl.textContent = `${labelVal}: ${tagVal}`;
 
     const counterEl = document.getElementById('lb-counter');
     if (counterEl) counterEl.textContent = `${currentLightboxIdx + 1} of ${visibleCards.length}`;
@@ -429,7 +429,7 @@
       bodyEl.innerHTML = `
         <div class="pdf-placeholder">
           <div class="pdf-icon">🖼️</div>
-          <p style="color:var(--text-muted);font-style:italic;">Placeholder — upload file and update data-type and data-src on this card.</p>
+          <p style="color:var(--text-muted);font-style:italic;">Placeholder: upload file and update data-type and data-src on this card.</p>
         </div>`;
     }
   }
