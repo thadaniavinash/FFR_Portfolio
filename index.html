@@ -405,7 +405,7 @@
         <div class="stage-legend"><span>Emerging</span><span class="arrow">→</span><span>Performing</span><span class="arrow">→</span><span>Transforming</span><em>My own placement in each role, with the evidence in the reflection it links to.</em></div>
     <div class="role-grid">
       <!-- Design -->
-      <div class="role-card" style="--role-color: #1a7a6e; --role-bg: #e4f2ef;" data-goto="design-entry">
+      <div class="role-card" style="--role-color: #1a7a6e; --role-bg: #e4f2ef;" data-role="designer">
         <div class="role-icon">✏️</div>
         <div class="role-name">Designer</div>
         <div class="role-desc">Courses, classes, teaching &amp; learning activities, and assessments.</div>
@@ -415,7 +415,7 @@
         </div>
       </div>
       <!-- Researcher -->
-      <div class="role-card" style="--role-color: #c8923f; --role-bg: #fdf3e7;" data-goto="researcher-entry">
+      <div class="role-card" style="--role-color: #c8923f; --role-bg: #fdf3e7;" data-role="researcher">
         <div class="role-icon">🔬</div>
         <div class="role-name">Researcher</div>
         <div class="role-desc">Engaging in research to inform teaching and learning practices.</div>
@@ -425,7 +425,7 @@
         </div>
       </div>
       <!-- Inclusive Practitioner -->
-      <div class="role-card" style="--role-color: #5c52bf; --role-bg: #eef0ff;" data-goto="inclusive-entry">
+      <div class="role-card" style="--role-color: #5c52bf; --role-bg: #eef0ff;" data-role="inclusive-practitioner">
         <div class="role-icon">🤝</div>
         <div class="role-name">Inclusive Practitioner</div>
         <div class="role-desc">Exploring and embracing inclusive teaching practices.</div>
@@ -435,7 +435,7 @@
         </div>
       </div>
       <!-- Changemaker -->
-      <div class="role-card" style="--role-color: #a03860; --role-bg: #fce9f0;" data-goto="changemaker-entry">
+      <div class="role-card" style="--role-color: #a03860; --role-bg: #fce9f0;" data-role="changemaker">
         <div class="role-icon">🌱</div>
         <div class="role-name">Changemaker</div>
         <div class="role-desc">Driving positive change within the educational environment.</div>
@@ -445,7 +445,7 @@
         </div>
       </div>
       <!-- Digital Explorer -->
-      <div class="role-card" style="--role-color: #185fa5; --role-bg: #e6f1fb;" data-goto="digital-entry">
+      <div class="role-card" style="--role-color: #185fa5; --role-bg: #e6f1fb;" data-role="digital-explorer">
         <div class="role-icon">💻</div>
         <div class="role-name">Digital Explorer</div>
         <div class="role-desc">Innovating with digital solutions in teaching and learning.</div>
@@ -455,7 +455,7 @@
         </div>
       </div>
       <!-- Collaborator -->
-      <div class="role-card" style="--role-color: #3b6d11; --role-bg: #eaf3de;" data-goto="collaborator-entry">
+      <div class="role-card" style="--role-color: #3b6d11; --role-bg: #eaf3de;" data-role="collaborator">
         <div class="role-icon">👥</div>
         <div class="role-name">Collaborator</div>
         <div class="role-desc">Working effectively with others to enhance the learning experience.</div>
@@ -465,7 +465,7 @@
         </div>
       </div>
       <!-- Reflector -->
-      <div class="role-card" style="--role-color: #1a7a6e; --role-bg: #e4f2ef;" data-goto="design-entry">
+      <div class="role-card" style="--role-color: #1a7a6e; --role-bg: #e4f2ef;" data-role="reflector" data-related="compass|Personal Compass;philosophy|Teaching Philosophy;peer-review|Faculty Peer Review">
         <div class="role-icon">🪞</div>
         <div class="role-name">Reflector</div>
         <div class="role-desc">Integrating feedback to continuously improve teaching practices.</div>
@@ -475,7 +475,7 @@
         </div>
       </div>
       <!-- Mentor -->
-      <div class="role-card" style="--role-color: #854f0b; --role-bg: #faeeda;" data-goto="mentor-entry">
+      <div class="role-card" style="--role-color: #854f0b; --role-bg: #faeeda;" data-role="mentor">
         <div class="role-icon">⭐</div>
         <div class="role-name">Mentor</div>
         <div class="role-desc">Guiding and supporting peers and students in their development.</div>
@@ -485,7 +485,7 @@
         </div>
       </div>
     </div>
-    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1.5rem; text-align: right; font-style: italic;">Click any role card to jump to its reflection entry below.</p>
+    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1.5rem; text-align: right; font-style: italic;">Click any role card to see every reflection tagged with that role.</p>
   </div>
 </section>
 
@@ -494,7 +494,9 @@
   <div class="container">
     <div class="section-label">Reflective Practice</div>
     <h2>My <em>Reflections</em></h2>
-    <p class="section-intro">Each entry below captures a moment of growth, challenge, or insight across the eight faculty roles. Artifacts, evidence, and narrative are added here as the journey unfolds.</p>
+    <p class="section-intro">Each entry captures a moment of growth, challenge, or insight across the eight faculty roles. An entry can carry more than one role. Choose a role to see all of its entries.</p>
+    <div id="role-filter" class="role-filter" role="group" aria-label="Filter reflections by role"></div>
+    <div id="role-filter-summary" class="role-filter-summary" aria-live="polite" hidden></div>
     <div class="timeline">
 
       <!-- Designer -->

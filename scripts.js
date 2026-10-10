@@ -82,6 +82,19 @@
   // Show whichever panel holds the target id, then scroll to it (or to the top)
   function route(id, opts) {
     opts = opts || {};
+    // Hash may carry a role filter: #journey?role=designer
+    let roleKey = null;
+    if (id && id.indexOf('?') !== -1) {
+      const q = id.split('?');
+      id = q[0];
+      const m = /(?:^|&)role=([a-z-]+)/.exec(q[1] || '');
+      roleKey = m ? m[1] : null;
+    }
+    if (window.applyRoleFilter) {
+      const t = id && id !== 'top' ? document.getElementById(id) : null;
+      // Deep link to a single entry: clear any filter so the entry is visible
+      window.applyRoleFilter(t && t.classList.contains('timeline-entry') ? null : roleKey);
+    }
     const target = id && id !== 'top' ? document.getElementById(id) : null;
     const key = (target && panelKeyFor(target)) || (id && document.querySelector('.panel[data-panel="' + id + '"]') ? id : DEFAULT_PANEL);
     showPanel(key);
@@ -97,6 +110,113 @@
     const label = document.querySelector('.panel[data-panel="' + key + '"] h2, .panel[data-panel="' + key + '"] h1');
     if (label) document.title = label.textContent.replace(/\s+/g, ' ').trim() + ' | Avinash Thadani';
   }
+
+  /* Role filter: entries carry one or more role tags; cards and tags filter the list */
+  function initRoleFilter() {
+    const bar = document.getElementById('role-filter');
+    const summary = document.getElementById('role-filter-summary');
+    const entries = Array.from(document.querySelectorAll('#journey .timeline-entry'));
+    const cards = Array.from(document.querySelectorAll('.role-card[data-role]'));
+    if (!bar || !entries.length) return;
+
+    const roles = cards.map(c => ({
+      key: c.dataset.role,
+      name: c.querySelector('.role-name').textContent.trim(),
+      icon: c.querySelector('.role-icon').textContent.trim(),
+      desc: c.querySelector('.role-desc').textContent.trim(),
+      related: (c.dataset.related || '').split(';').filter(Boolean).map(r => r.split('|'))
+    }));
+    const byKey = {};
+    roles.forEach(r => { byKey[r.key] = r; });
+
+    entries.forEach(e => {
+      e._roles = Array.from(e.querySelectorAll('.entry-role-tag')).map(t => {
+        const k = Array.from(t.classList).find(c => byKey[c] || c === 'designer' || c === 'reflector');
+        return k;
+      }).filter(Boolean);
+      e.querySelectorAll('.entry-role-tag').forEach(t => {
+        const k = Array.from(t.classList).find(c => byKey[c]);
+        if (!k) return;
+        t.setAttribute('role', 'button');
+        t.setAttribute('tabindex', '0');
+        t.title = 'Show all entries for ' + byKey[k].name;
+        t.style.cursor = 'pointer';
+        const go = () => window.goToRole(k);
+        t.addEventListener('click', go);
+        t.addEventListener('keydown', ev => {
+          if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(); }
+        });
+      });
+    });
+    const countFor = k => entries.filter(e => e._roles.indexOf(k) !== -1).length;
+
+    // Entry counts on the role cards
+    cards.forEach(c => {
+      const n = countFor(c.dataset.role);
+      const status = c.querySelector('.role-status');
+      if (!status) return;
+      const span = document.createElement('span');
+      span.className = 'role-count';
+      span.textContent = n + (n === 1 ? ' entry' : ' entries');
+      status.insertBefore(span, status.querySelector('.add-icon'));
+    });
+
+    // Filter buttons
+    const mk = (key, label, n) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'role-filter-btn';
+      b.dataset.role = key;
+      b.textContent = label + (n != null ? ' (' + n + ')' : '');
+      b.addEventListener('click', () => window.goToRole(key || null));
+      bar.appendChild(b);
+    };
+    mk('', 'All', entries.length);
+    roles.forEach(r => mk(r.key, r.icon + ' ' + r.name, countFor(r.key)));
+
+    window.applyRoleFilter = function (key) {
+      if (key && !byKey[key]) key = null;
+      entries.forEach(e => { e.hidden = !!key && e._roles.indexOf(key) === -1; });
+      bar.querySelectorAll('.role-filter-btn').forEach(b => {
+        b.setAttribute('aria-pressed', String((b.dataset.role || '') === (key || '')));
+      });
+      if (!key) { summary.hidden = true; summary.innerHTML = ''; return; }
+      const r = byKey[key];
+      const n = countFor(key);
+      summary.innerHTML = '';
+      const h = document.createElement('div');
+      h.className = 'rfs-title';
+      h.textContent = r.icon + ' ' + r.name + ': ' + n + (n === 1 ? ' entry' : ' entries');
+      const p = document.createElement('p');
+      p.textContent = r.desc;
+      summary.appendChild(h);
+      summary.appendChild(p);
+      if (n === 0) {
+        const none = document.createElement('p');
+        none.textContent = 'No reflections are tagged with this role yet.';
+        summary.appendChild(none);
+      }
+      if (r.related.length) {
+        const rel = document.createElement('div');
+        rel.className = 'rfs-related';
+        rel.appendChild(document.createTextNode('Related sections: '));
+        r.related.forEach((x, i) => {
+          const a = document.createElement('a');
+          a.href = '#' + x[0];
+          a.textContent = x[1];
+          rel.appendChild(a);
+          if (i < r.related.length - 1) rel.appendChild(document.createTextNode(', '));
+        });
+        summary.appendChild(rel);
+      }
+      summary.hidden = false;
+    };
+  }
+
+  window.goToRole = function (key) {
+    history.pushState(null, '', '#journey' + (key ? '?role=' + key : ''));
+    route('journey' + (key ? '?role=' + key : ''));
+  };
 
   window.goToEntry = function (id) {
     history.pushState(null, '', '#' + id);
@@ -115,11 +235,14 @@
       route(id);
     });
 
+    // Role filter on the Reflections panel
+    initRoleFilter();
+
     // Role cards: clickable and keyboard-operable
-    document.querySelectorAll('.role-card[data-goto]').forEach(card => {
+    document.querySelectorAll('.role-card[data-role]').forEach(card => {
       card.setAttribute('role', 'link');
       card.setAttribute('tabindex', '0');
-      const go = () => window.goToEntry(card.dataset.goto);
+      const go = () => window.goToRole(card.dataset.role);
       card.addEventListener('click', go);
       card.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
